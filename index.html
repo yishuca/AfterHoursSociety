@@ -649,7 +649,6 @@
             border: none;
             border-radius: 30px;
             text-decoration: none;
-            font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
             box-shadow: var(--shadow);
@@ -1259,12 +1258,16 @@
             margin-bottom: 1rem;
             color: var(--light);
             font-family: 'Poppins', sans-serif;
+            /* ADDED: Make titles visible immediately */
+            opacity: 1;
         }
 
         .news-excerpt {
             color: var(--light-gray);
             margin-bottom: 1rem;
             line-height: 1.6;
+            /* ADDED: Make excerpts visible immediately */
+            opacity: 1;
         }
 
         /* Mobile adjustments */
@@ -1647,7 +1650,7 @@
             <div class="page" id="pricing" tabindex="-1">
                 <section class="portfolio-section">
             <h2>About <br> After H<span class="flicker-e">our</span>s<span class="flicker-e">Society</span></h2>
-                    <p class="subtitle">Established in 2025, we’re all about rides, real connections, and hanging out with a crew that feels like family.
+                    <p class="subtitle">Established in 2025, we're all about rides, real connections, and hanging out with a crew that feels like family.
                          Cars brought us together, but the friendships keep us here. No drama, just good cars, good times, and people who get it.</p>
                     </div>
                 </section>
@@ -1887,6 +1890,19 @@
             }
 
             function initMainContent() {
+                // Make news items visible immediately
+                const newsTitles = document.querySelectorAll('.news-title');
+                const newsExcerpts = document.querySelectorAll('.news-excerpt');
+                
+                // Set opacity to 1 for all news titles and excerpts
+                newsTitles.forEach(title => {
+                    title.style.opacity = '1';
+                });
+                
+                newsExcerpts.forEach(excerpt => {
+                    excerpt.style.opacity = '1';
+                });
+
                 // Matrix-style title animation with flicker only on specific letters
                 const afterHoursTitle = document.getElementById('after-hours-title');
                 const societyTitle = document.getElementById('society-title');

@@ -1,0 +1,2252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="After Hours Society - A premier car club for automotive enthusiasts. Join our community of passionate car lovers.">
+    <meta name="keywords" content="car club, automotive, car meets, after hours society, car enthusiasts, modified cars">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="After Hours Society | Premier Car Club">
+    <meta property="og:description" content="After Hours Society - A premier car club for automotive enthusiasts. Join our community of passionate car lovers.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.afterhourssociety.com">
+    <meta property="og:image" content="https://example.com/logo.jpg"> <!-- Replace with your logo URL -->
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="After Hours Society | Premier Car Club">
+    <meta name="twitter:description" content="After Hours Society - A premier car club for automotive enthusiasts. Join our community of passionate car lovers.">
+    <meta name="twitter:image" content="https://example.com/logo.jpg"> <!-- Replace with your logo URL -->
+    <title>After Hours Society | Premier Car Club</title>
+    
+    <!-- Preload and Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" as="style">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data (Schema Markup) -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "After Hours Society",
+          "image": "https://example.com/logo.jpg", <!-- Replace with your logo URL -->
+          "@id": "https://www.afterhourssociety.com",
+          "url": "https://www.afterhourssociety.com",
+          "description": "A premier car club for automotive enthusiasts"
+        }
+    </script>
+    
+    <!-- Main CSS -->
+    <style>
+        /* Loading Screen Styles */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, #0a0a0a 100%, #000 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1.5s ease;
+        }
+
+        .loading-screen.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        :root {
+            --size: 360px;
+            --glow-color: rgba(255, 7, 58, 1);
+            --glow-intensity: 0; /* CHANGED: Start with zero glow */
+        }
+
+        .speedometer {
+            position: relative;
+            width: var(--size);
+            height: var(--size);
+            border-radius: 50%;
+            background: radial-gradient(circle at 50% 45%, #111 40%, #000 100%);
+            box-shadow: 0 0 60px rgba(255, 7, 58, var(--glow-intensity)), 
+                        inset 0 0 40px rgba(0, 0, 0, 0.8);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .reflection {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: linear-gradient(115deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 40%, transparent 100%);
+            animation: sweep 6s linear infinite;
+            mix-blend-mode: overlay;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        @keyframes sweep {
+            0% { transform: rotate(0deg); opacity: 0.4; }
+            50% { opacity: 0.6; }
+            100% { transform: rotate(360deg); opacity: 0.4; }
+        }
+
+        .numbers, .ticks, .needle, .center-cap {
+            position: absolute;
+            inset: 0;
+        }
+
+        .number {
+            position: absolute;
+            color: #00fff2;
+            font-size: 18px;
+            text-shadow: 0 0 8px rgba(255,255,255,0.8);
+            transform: translate(-50%, -50%);
+        }
+
+        .tick {
+            position: absolute;
+            width: 3px;
+            border-radius: 3px;
+            transform-origin: 50% 100%;
+        }
+
+        .needle {
+            width: 6px;
+            background: linear-gradient(to top, rgba(255,0,40,1), rgba(80, 6, 17, 0.918));
+            border-radius: 3px;
+            transform-origin: 50% 100%;
+            box-shadow: 0 0 15px rgba(255, 0, 51, 0.418);
+            z-index: 9999999;
+        }
+
+        .ahs-text {
+            position: absolute;
+            bottom: 30px; /* Adjust this value to position it higher/lower */
+            left: 50%;
+            transform: translateX(-50%);
+            color: #00fff2;
+            font-size: 18px;
+            font-weight: bold;
+            text-shadow: 0 0 8px rgba(0, 255, 242, 0.8);
+            letter-spacing: px;
+            font-family: 'Orbitron', sans-serif;
+            z-index: 10;
+        }
+
+        .center-cap {
+            width: 18px;
+            height: 18px;
+            background: radial-gradient(circle, #222 0%, #000 80%);
+            border-radius: 50%;
+            border: 2px solid #555;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 12;
+            box-shadow: 0 0 15px rgba(255,7,58,0.4);
+        }
+
+        .glow-ring {
+            position: absolute;
+            inset: -15px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 7, 58, 0.3) 0%, transparent 70%);
+            z-index: -1;
+            opacity: 0; /* CHANGED: Start with zero opacity */
+            transition: opacity 0.5s ease;
+        }
+
+        .time-display {
+            position: absolute;
+            bottom: -70px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-size: 24px;
+            font-weight: 700;
+            text-shadow: 0 0 15px rgba(255, 7, 58, 0.8);
+            letter-spacing: 2px;
+            opacity: 0;
+            transition: opacity 1.5s ease;
+            text-align: center;
+            width: 100%;
+            font-family: 'Orbitron', monospace;
+        }
+
+        /* Main Website Styles */
+        :root {
+            --neon-primary: #ff073a;  /* Bright red */
+            --neon-secondary: #ff4d00; /* Orange-red */
+            --neon-accent: #ff0022;   /* Bright red accent */
+            --dark: #1a1a1a;          /* Dark grey background */
+            --darker: #0d0d0d;        /* Darker elements */
+            --light: #f8f9fa;         /* Brighter light text for better contrast */
+            --gray: #666666;          /* Secondary text */
+            --light-gray: #cccccc;     /* Lighter text */
+            --border-gray: #666666;   /* Gray for borders */
+            
+            --transition: all 0.3s ease;
+            --shadow: 0 0 8px rgba(255, 7, 58, 0.2);
+            --shadow-lg: 0 0 15px rgba(255, 7, 58, 0.3);
+            --text-glow: 0 0 10px rgba(255, 7, 58, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Skeleton Loading Styles */
+        .skeleton {
+            background: linear-gradient(90deg, #2a2a2a 25%, #333 50%, #2a2a2a 75%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite;
+            border-radius: 4px;
+        }
+
+        @keyframes skeleton-loading {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        .skeleton-logo {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+        }
+
+        .skeleton-title {
+            height: 2.5rem;
+            width: 400px;
+            max-width: 80%;
+            margin: 0 auto 1rem;
+        }
+
+        .skeleton-subtitle {
+            height: 1.8rem;
+            width: 300px;
+            max-width: 60%;
+            margin: 0 auto 1.5rem;
+        }
+
+        .skeleton-tagline {
+            height: 1.2rem;
+            width: 500px;
+            max-width: 70%;
+            margin: 0 auto 2rem;
+        }
+
+        .skeleton-btn {
+            height: 3rem;
+            width: 150px;
+            border-radius: 30px;
+            margin: 0 auto;
+        }
+
+        .skeleton-news-item {
+            height: 350px;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .skeleton-sponsor {
+            height: 4rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .skeleton-card {
+            height: 400px;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .skeleton-contact {
+            height: 500px;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        /* Reduced motion styles */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            
+            .sign-flicker,
+            .flicker-e,
+            .shooting-star,
+            .gradient-orb,
+            .logo-spin {
+                animation: none !important;
+            }
+            
+            .service-card:hover,
+            .portfolio-item:hover .portfolio-image,
+            .pricing-card:hover,
+            .contact-form:hover {
+                transform: none !important;
+            }
+            
+            .matrix-letter {
+                animation: none !important;
+                opacity: 1 !important;
+            }
+            
+            .flicker-letter {
+                animation: none !important;
+            }
+            
+            .logo-glow {
+                animation: none !important;
+            }
+            
+            .skeleton {
+                animation: none !important;
+            }
+        }
+
+        /* Shooting stars with parallax effect */
+        .shooting-star-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .shooting-star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            z-index: -1;
+            animation: shooting linear;
+            transform-origin: left center;
+            will-change: transform, opacity;
+        }
+
+        @keyframes shooting {
+            0% {
+                transform: translateX(0) translateY(0) rotate(var(--angle));
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(var(--distance)) translateY(calc(var(--distance) * 0.5)) rotate(var(--angle));
+                opacity: 0;
+            }
+        }
+
+        /* Parallax layers */
+        .star-layer-1 {
+            animation-duration: 1.5s;
+            transform: translateZ(-100px);
+        }
+
+        .star-layer-2 {
+            animation-duration: 3s;
+            transform: translateZ(-200px);
+        }
+
+        .star-layer-3 {
+            animation-duration: 4.5s;
+            transform: translateZ(-300px);
+        }
+
+        .page-container {
+            position: relative;
+            min-height: 100vh;
+            padding-bottom: 80px;
+            overflow: hidden;
+        }
+
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+            overflow-y: auto;
+            height: calc(100vh);
+            padding-bottom: 100px;
+        }
+
+        .page.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            height: 90vh;
+            padding-bottom: 50px;
+        }
+
+        .hero-content {
+            margin-top: -60px; /* Changed from -80px */
+        }
+
+        .logo-container {
+            position: relative;
+            width: 220px;  /* Increased from 180px */
+            height: 220px; /* Increased from 180px */
+            margin: 0 auto 1rem;
+        }
+
+        .logo-spin {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            animation: spin 15s linear infinite, fadeIn 1s ease-out forwards;/* Changed from 10s to 15s */
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            animation-delay: 7s;
+        }
+
+        /* Logo glow and flicker effect */
+        .logo-glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: transparent;
+            box-shadow: 
+                0 0 20px rgba(255, 7, 58, 0.6),
+                0 0 40px rgba(255, 7, 58, 0.4),
+                0 0 60px rgba(255, 7, 58, 0.2);
+            animation: logoFlicker 8s infinite alternate, fadeIn 1s ease-out forwards;
+            animation-delay: 7s;
+            z-index: 1;
+            opacity: 0; /* Add this line */
+        }
+
+        @keyframes logoFlicker {
+            0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 72%, 100% {
+                opacity: 1;
+                box-shadow: 
+                    0 0 20px rgba(255, 7, 58, 0.6),
+                    0 0 40px rgba(255, 7, 58, 0.4),
+                    0 0 60px rgba(255, 7, 58, 0.2);
+            }
+            20%, 21.999%, 63%, 63.999%, 65%, 71.999% {        
+                opacity: 0.7;
+                box-shadow: 
+                    0 0 10px rgba(255, 7, 58, 0.4),
+                    0 0 20px rgba(255, 7, 58, 0.3),
+                    0 0 30px rgba(255, 7, 58, 0.2);
+            }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .logo-placeholder {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--neon-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            animation: spin 15s linear infinite, logoPulse 2s ease-in-out infinite alternate; /* Changed from 10s to 15s */
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--light);
+            font-weight: 500;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            font-family: 'Poppins', sans-serif;
+            margin-left: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title-part {
+            display: flex;
+            justify-content: center;
+            line-height: 1.2;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: titleRise 3s ease-out forwards;
+        }
+
+        @keyframes titleRise {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #after-hours-title {
+            animation-delay: 0.5s;
+        }
+
+        #society-title {
+            animation-delay: 4s;
+        }
+
+        .matrix-letter {
+            opacity: 0;
+            animation: matrixReveal 20s forwards;
+            display: inline-block;
+            min-width: 25px;
+            text-align: center;
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 20px var(--neon-primary),
+                0 0 30px var(--neon-primary),
+                0 0 40px var(--neon-primary);
+        }
+
+        @keyframes matrixReveal {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Flicker effect for specific letters */
+        .flicker-letter {
+            display: inline-block;
+            animation: signFlicker 2.5s infinite alternate;
+        }
+
+        @keyframes signFlicker {
+            0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 72%, 100% {
+                opacity: 1;
+                text-shadow: 
+                    0 0 5px #fff,
+                    0 0 10px #fff,
+                    0 0 20px var(--neon-primary),
+                    0 0 30px var(--neon-primary),
+                    0 0 40px var(--neon-primary);
+            }
+            20%, 21.999%, 63%, 63.999%, 65%, 71.999% {        
+                opacity: 0.7;
+                text-shadow: 
+                    0 0 2px #fff,
+                    0 0 5px #fff,
+                    0 0 10px var(--neon-primary),
+                    0 0 15px var(--neon-primary);
+            }
+        }
+
+        .hero-content h2, h3 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 1px;
+            text-shadow: 
+                0 0 5px rgba(255, 255, 255, 0.594),
+                0 0 10px rgba(255, 255, 255, 0.3);
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 7s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: var(--light-gray);
+            font-family: 'Segoe UI', sans-serif;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 8s;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background-color: var(--neon-primary);
+            color: var(--darker);
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            font-family: 'Poppins', sans-serif;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 2.1s;
+        }
+
+        .portfolio-overlay .btn {
+            background: rgba(255, 7, 58, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            border: 1px solid var(--neon-primary);
+        }
+
+        .portfolio-overlay .btn:hover {
+            background: rgba(255, 7, 58, 0.4);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 7, 58, 0.5);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-lg);
+            background-color: white;
+            color: var(--darker);
+        }
+
+        .btn.loading {
+            position: relative;
+            pointer-events: none;
+            color: transparent;
+        }
+        
+        .btn.loading::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 16px;
+            height: 16px;
+            margin: -8px 0 0 -8px;
+            border: 2px solid transparent;
+            border-top-color: var(--darker);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        /* Animated gradient background element */
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .gradient-orb {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, 
+                rgba(255, 7, 58, 0.15) 0%, 
+                rgba(255, 77, 0, 0.1) 50%, 
+                rgba(0, 0, 0, 0) 70%);
+            filter: blur(60px);
+            animation: orbFloat 15s infinite alternate ease-in-out;
+        }
+
+        @keyframes orbFloat {
+            0% { transform: translateY(0) translateX(0); }
+            100% { transform: translateY(-20px) translateX(20px); }
+        }
+
+        .gradient-orb:nth-child(1) {
+            top: -100px;
+            left: -100px;
+        }
+
+        .gradient-orb:nth-child(2) {
+            bottom: -100px;
+            right: -100px;
+            animation-delay: 2s;
+        }
+
+        .services {
+            max-width: 1200px;
+            margin: 3rem auto;
+            text-align: center;
+            padding-top: 60px ;
+        }
+
+        .services h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            color: var(--light);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: rgba(26, 26, 26, 0.8);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: var(--transition);
+            border: 1px solid var(--neon-primary);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(255, 7, 58, 0.3);
+            border-color: var(--neon-secondary);
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--neon-primary);
+            transition: var(--transition);
+        }
+
+        .service-card:hover i {
+            transform: scale(1.2);
+            color: var(--neon-secondary);
+        }
+
+        .service-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--light);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+        }
+
+        .portfolio-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .portfolio-section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 20px var(--neon-primary),
+                0 0 30px var(--neon-primary),
+                0 0 40px var(--neon-primary);
+            letter-spacing: 1px;
+            word-break: keep-all;
+            white-space: nowrap;
+        }
+
+        /* Flicker effect for the 'e' in Projects */
+        .flicker-e {
+            display: inline-block;
+            animation: flickerE 3s infinite alternate;
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 20px var(--neon-primary),
+                0 0 30px var(--neon-primary),
+                0 0 40px var(--neon-primary);
+        }
+
+        @keyframes flickerE {
+            0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 72%, 100% {
+                opacity: 1;
+            }
+            20%, 21.999%, 63%, 63.999%, 65%, 71.999% {        
+                opacity: 0.7;
+            }
+        }
+
+        /* Updated sponsor grid styles (removed boxes) */
+        .sponsors-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .sponsor-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 0;
+            transition: var(--transition);
+        }
+
+        .sponsor-item:hover {
+            transform: translateX(10px);
+        }
+
+        .sponsor-name {
+            font-size: 1.5rem;
+            color: var(--light);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+        }
+
+        .instagram-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 7, 58, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            border: 1px solid var(--neon-primary);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.5rem;
+        }
+
+        .instagram-btn:hover {
+            background: rgba(255, 7, 58, 0.4);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 7, 58, 0.5);
+        }
+
+        .pricing-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .pricing-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--neon-primary);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--neon-secondary);
+            color: var(--darker);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .subtitle {
+            color: var(--light-gray);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            text-align: center;
+
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .pricing-card {
+            background: rgba(26, 26, 26, 0.8);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid var(--neon-primary);
+            text-align: left;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 7, 58, 0.3);
+        }
+
+        .pricing-card.featured {
+            transform: scale(1.05);
+            background: rgba(26, 26, 26, 0.9);
+            border: 1px solid var(--neon-secondary);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.08);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--light);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: var(--neon-primary);
+            text-align: center;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-card ul li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--light-gray);
+        }
+
+        .pricing-card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--neon-accent);
+        }
+
+        .contact-section {
+            margin-top: 0px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: rem 3rem;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--neon-primary);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+        }
+
+        .contact-info p {
+            margin-bottom: 2rem;
+            color: var(--light-gray);
+        }
+
+        .contact-methods {
+            width: 100%;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-method i {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: var(--neon-primary);
+            transition: var(--transition);
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .contact-method:hover i {
+            transform: scale(1.2);
+            color: var(--neon-secondary);
+        }
+
+        .contact-method h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            color: var(--light);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+        }
+
+        .contact-method a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-method a:hover {
+            color: var(--neon-primary);
+            text-decoration: underline;
+        }
+
+        .contact-form {
+            background: rgba(26, 26, 26, 0.8);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--border-gray);
+            transition: var(--transition);
+        }
+
+        .contact-form:hover {
+            border-color: var(--neon-primary);
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-gray);
+            border-radius: 8px;
+            color: var(--light);
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--neon-secondary);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 10px rgba(255, 77, 0, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Error message styles */
+        .error-message {
+            color: #ff6b6b;
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+            display: none;
+        }
+
+        .form-group.error .error-message {
+            display: block;
+        }
+
+        .form-group.error input,
+        .form-group.error textarea {
+            border-color: #ff6b6b;
+        }
+
+        /* Success message styles */
+        .success-message {
+            display: none;
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid #00ff00;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            color: #00ff00;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 8px rgba(0, 255, 0, 0.5);
+        }
+
+        /* Scroll indicator arrow */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(white);
+            font-size: 2rem;
+            animation: bounce cubic-bezier(0.6, -0.28, 0.735, 0.045) infinite;
+            z-index: 10;
+            opacity: 0.7;
+            cursor: pointer;
+            transition: all .3s ease;
+            display: none;
+            text-shadow: 
+                0 0 0px var(--neon-primary),
+                0 0 5px var(--neon-primary),
+                0 0 8px var(--neon-primary);
+            filter: drop-shadow(0 0 2px var(--neon-primary));
+        }
+
+        .scroll-indicator.visible {
+            display: block;
+            animation: 
+                bounce 5s infinite,
+                glow-pulse 1.5s infinite alternate;
+        }
+
+        @keyframes glow-pulse {
+            0% {
+                opacity: 0.7;
+                text-shadow: 
+                    0 0 0px var(--neon-primary),
+                    0 0 8px var(--neon-primary);
+            }
+            100% {
+                opacity: .8;
+                text-shadow: 
+                    0 0 00px var(--neon-primary),
+                    0 0 20px var(--neon-primary),
+                    0 0 8px var(--neon-primary);
+            }
+        }
+
+        /* Keep your existing bounce animation */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-5px) translateX(-50%);
+            }
+        }
+
+        /* News Updates Section */
+        .news-updates {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 2rem 1rem;
+        }
+
+        .news-updates h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 20px var(--neon-primary),
+                0 0 30px var(--neon-primary),
+                0 0 40px var(--neon-primary);
+            letter-spacing: 1px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .news-item {
+            background: rgba(26, 26, 26, 0.8);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid var(--neon-primary);
+            transition: var(--transition);
+            padding: 1.5rem;
+        }
+
+        .news-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 7, 58, 0.3);
+        }
+
+        .news-content {
+            padding: 0;
+        }
+
+        .news-date {
+            color: var(--neon-primary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--light);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .news-excerpt {
+            color: var(--light-gray);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Mobile adjustments */
+           .scroll-indicator {
+                bottom: 20vh !important;
+                font-size: 1.8rem;
+                text-shadow: 
+                    0 0 0px var(--neon-primary),
+                    0 0 8px var(--neon-primary),
+                    0 0 8px var(--neon-primary);
+            }
+            
+            .sponsor-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+                padding: 1rem 0;
+            }
+            
+            .skeleton-logo {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .skeleton-title {
+                width: 300px;
+                height: 2rem;
+            }
+            
+            .skeleton-subtitle {
+                width: 250px;
+                height: 1.5rem;
+            }
+            
+            .skeleton-tagline {
+                width: 350px;
+                height: 1rem;
+            }
+
+        @media (max-width: 480px) {
+            .logo-container {
+                width: 150px;  /* Adjusted for small mobile */
+                height: 150px; /* Adjusted for small mobile */
+            }
+            
+            .scroll-indicator {
+                bottom: 20vh !important;
+                font-size: 1.5rem;
+                text-shadow: 
+                    0 0 0px var(--neon-primary),
+                    0 0 6px var(--neon-primary),
+                    0 0 8px var(--neon-primary);
+            }
+            
+            .sponsor-item {
+                padding: 1rem 0;
+            }
+            
+            .sponsor-name {
+                font-size: 1.2rem;
+            }
+            
+            .skeleton-logo {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .skeleton-title {
+                width: 250px;
+                height: 1.8rem;
+            }
+            
+            .skeleton-subtitle {
+                width: 200px;
+                height: 1.3rem;
+            }
+            
+            .skeleton-tagline {
+                width: 280px;
+                height: 0.9rem;
+            }
+        }
+
+        /* Bottom navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(13, 13, 13, 0.7);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-around;
+            padding: 15px;
+            z-index: 100;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--gray);
+            font-size: 0.8rem;
+            position: relative;
+            z-index: 1;
+            padding: 0.5rem 1rem;
+            transition: var(--transition);
+            flex: 1;
+            text-align: center;
+            margin-bottom: -10px;
+        }
+
+        .nav-link i {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            transition: var(--transition);
+            color: var(--gray);
+        }
+
+        .nav-link:hover i {
+            transform: scale(1.2);
+        }
+
+        .nav-link.active {
+            color: var(--neon-primary);
+            transform: translateY(-5px);
+        }
+
+        .nav-link.active i {
+            transform: scale(1.3);
+            color: var(--neon-primary);
+        }
+
+        .nav-link span {
+            display: block;
+            font-size: 0.7rem;
+            margin-top: 5px;
+        }
+
+        .nav-indicator {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--neon-primary);
+            border-radius: 5px;
+            transition: var(--transition);
+            transform: translateX(0);
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+                letter-spacing: 4px;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.5rem;
+            }
+            
+            .services-grid, .pricing-cards, .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+            
+            .pricing-card.featured:hover {
+                transform: scale(1.03);
+            }
+            
+            .sponsors-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .portfolio-section h2 {
+                white-space: normal;
+                word-break: normal;
+                font-size: 2rem;
+            }
+            
+            .nav-link i {
+                font-size: 1.5rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .nav-link span {
+                font-size: 0.6rem;
+            }
+
+            .nav-indicator {
+                width: 40px;
+            }
+
+            .gradient-orb {
+                width: 400px;
+                height: 400px;
+            }
+
+            .contact-method {
+                flex-direction: row;
+                text-align: left;
+            }
+
+            .contact-method i {
+                margin-right: 1rem;
+                margin-bottom: 0;
+            }
+            
+            #cookie-consent {
+                bottom: 60px;
+            }
+            
+            .scroll-indicator {
+                bottom: 60px;
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 2rem 1rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
+                letter-spacing: 3px;
+            }
+            
+            .page {
+                padding: rem;
+            }
+            
+            .gradient-orb {
+                width: 300px;
+                height: 300px;
+                filter: blur(40px);
+            }
+
+            .contact-method {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contact-method i {
+                margin-right: 0;
+                margin-bottom: 3rem;
+            }
+            
+            .scroll-indicator {
+                bottom: 80px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="speedometer">
+            <div class="glow-ring" id="glowRing"></div>
+            <div class="reflection"></div>
+            <div class="ticks" id="ticks"></div>
+            <div class="numbers" id="numbers"></div>
+            <div class="needle" id="needle"></div>
+            <div class="center-cap"></div>
+            <div class="time-display" id="timeDisplay">11:59pm</div>
+            <div class="ahs-text">Loading...</div>
+        </div>
+    </div>
+
+    <!-- Main Website Content -->
+    <div class="website-content" style="display: none;">
+        <!-- Shooting stars container -->
+        <div class="shooting-star-container" id="starContainer"></div>
+
+        <!-- Animated background element -->
+        <div class="hero-background">
+            <div class="gradient-orb"></div>
+            <div class="gradient-orb"></div>
+        </div>
+
+        <div class="page-container">
+            <!-- Home Page (default visible) -->
+            <div class="page active" id="home">
+                <header class="hero">
+                    <div class="hero-content">
+                        <div class="logo-container">
+                            <!-- Logo with glow effect -->
+                            <div class="logo-glow"></div>
+                            <!-- Replace with your logo image -->
+                            <img id="club-logo" class="logo-spin" src="./ahs.jpg" alt="After Hours Society Logo" loading="lazy">
+                        </div>
+                        <div class="hero-title">
+                            <div class="title-part" id="after-hours-title">AFTER H<span class="flicker-letter">O</span><span class="flicker-letter">U</span>R<span class="flicker-letter">S</span></div>
+                            <div class="title-part" id="society-title"><span class="flicker-letter">S</span><span class="flicker-letter">O</span><span class="flicker-letter">C</span>I<span class="flicker-letter">E</span>T<span class="flicker-letter">Y</span></div>
+                        </div>
+                        <h2 style="font-size: 20px;">EST. 2025</h2>
+                        <p class="tagline"></p>
+                    </div>
+                    <div class="scroll-indicator" id="scrollIndicator" aria-hidden="true">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </header>
+
+                <section class="news-updates" id="news">
+                    <h2>Club News & Updates</h2>
+                    <div class="news-grid">
+                        <div class="news-item">
+                            <div class="news-content">
+                                <div class="news-date">10/17/2025</div>
+                                <h3 class="news-title">Torta Hunt This Saturday</h3>
+                                <p class="news-excerpt">This Saturday, we embark not for a meal, but for a meeting with conquest.
+                                Join our fearless leader, Michael_199413, on this noble journey to search for the mightiest torta in town!  </p>
+                            </div>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-content">
+                                <div class="news-date">10/11/2025</div>
+                                <h3 class="news-title">Annual Car Show Announced</h3>
+                                <p class="news-excerpt">Mark your calendars for our annual car show. Trophies, food trucks, and live music! This is our biggest event of the year with categories for imports, domestics, classics, and modified vehicles.</p>
+                            </div>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-content">
+                                <div class="news-date">10/5/2025</div>
+                                <h3 class="news-title">New Club Merchandise Available</h3>
+                                <p class="news-excerpt">Check out our new line of club merchandise including t-shirts, hats, and stickers. Available at our next meetup or through our online store. Show your support for After Hours Society wherever you go!</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Portfolio Page (Now Sponsors Page) -->
+            <div class="page" id="portfolio" tabindex="-1">
+                <section class="portfolio-section">
+                    <h2>Our <br><span class="flicker-e">Spon</span>sors</h2>
+                    <div class="sponsors-grid">
+                        <div class="sponsor-item">
+                            <div class="sponsor-name">Esc8pe Reality Designs</div>
+                            <a href="https://www.instagram.com/esc8perealitydesigns/" target="_blank" class="instagram-btn">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                        <div class="sponsor-item">
+                            <div class="sponsor-name">208_detailz</div>
+                            <a href="https://www.instagram.com/208_detailz/" target="_blank" class="instagram-btn">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                        <div class="sponsor-item">
+                            <div class="sponsor-name">Shave Shoppe Customs</div>
+                            <a href="https://www.instagram.com/shaveshoppe/" target="_blank" class="instagram-btn">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                         <div class="sponsor-item">
+                            <div class="sponsor-name">Dubby</div>
+                            <a href="https://www.instagram.com/dubby.gg/" target="_blank" class="instagram-btn">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Pricing Page (Now About Page) -->
+            <div class="page" id="pricing" tabindex="-1">
+                <section class="portfolio-section">
+            <h2>About <br> After H<span class="flicker-e">our</span>s<span class="flicker-e">Society</span></h2>
+                    <p class="subtitle">Established in 2025, we’re all about rides, real connections, and hanging out with a crew that feels like family.
+                         Cars brought us together, but the friendships keep us here. No drama, just good cars, good times, and people who get it.</p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Contact Page -->
+            <div class="page" id="contact" tabindex="-1">
+                <section class="contact-section">
+                    <div class="contact-container">
+                        <div class="contact-info">
+                            <h2>Get In Touch</h2>
+                            <p>Interested in joining our club, becoming a sponsor, or just want to say hello? We'd love to hear from you.</p>
+                            <div class="contact-methods">
+                                <div class="contact-method">
+                                    <i class="fas fa-envelope"></i>
+                                    <div>
+                                        <h4>Email</h4>
+                                        <p><a href="mailto:info@afterhourssociety.com">info@afterhourssociety.com</a></p>
+                                    </div>
+                                </div>
+                                <div class="contact-method">
+                                    <i class="fab fa-instagram"></i>
+                                    <div>
+                                        <h4>Instagram</h4>
+                                        <p><a href="https://instagram.com/afterhourssociety" target="_blank">@afterhourssociety</a></p>
+                                    </div>
+                                </div>
+                                    <div class="contact-method">
+                                    <i class="fab fa-tiktok"></i>
+                                    <div>
+                                        <h4>TikTok</h4>
+                                        <p><a href="https://www.tiktok.com/@after_hours_society" target="_blank">@afterhourssociety</a></p>
+                                    </div>
+                                </div>
+                                <div class="contact-method">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <h4>Location</h4>
+                                        <p>Boise, ID</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form class="contact-form" id="contactForm" action="https://formsubmit.co/2dbe592043c5fbb7c149c062f5e296dc" method="POST">
+                            <h2>Contact Us</h2>
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" placeholder="Your Name" required aria-label="Your Name">
+                                <div class="error-message" id="name-error">Please enter your name</div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="vehicle" name="vehicle" placeholder="Your Vehicle Make/Model" aria-label="Your Vehicle">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder="Your Email" required aria-label="Your Email">
+                                <div class="error-message" id="email-error">Please enter a valid email</div>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" aria-label="Your Phone Number">
+                                <div class="error-message" id="phone-error">Please enter a valid phone number</div>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" name="message" placeholder="Your Message" rows="5" required aria-label="Your Message"></textarea>
+                                <div class="error-message" id="message-error">Please enter your message</div>
+                            </div>
+                            <div id="successMessage" class="success-message">
+                                Thank you for your message! We will get back to you soon.
+                            </div>
+                            <!-- FormSubmit hidden fields -->
+                            <input type="hidden" name="_next" value="#contact">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_template" value="table">
+                            <button type="submit" class="btn" id="submitBtn">Send Message</button>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav" aria-label="Main navigation">
+            <div class="nav-indicator"></div>
+            <a href="#home" class="nav-link active" data-target="home" aria-label="Home">
+                <i class="fas fa-home"></i>
+                <span>News</span>
+            </a>
+            <a href="#portfolio" class="nav-link" data-target="portfolio" aria-label="Sponsors">
+                <i class="fas fa-handshake"></i>
+                <span>Sponsors</span>
+            </a>
+            <a href="#pricing" class="nav-link" data-target="pricing" aria-label="About">
+                <i class="fas fa-info-circle"></i>
+                <span>About</span>
+            </a>
+            <a href="#contact" class="nav-link" data-target="contact" aria-label="Contact">
+                <i class="fas fa-envelope"></i>
+                <span>Contact</span>
+            </a>
+        </nav>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize loading screen
+            initLoadingScreen();
+            
+            function initLoadingScreen() {
+                const size = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--size')) || 360;
+                const cx = size / 2;
+                const cy = size / 2;
+                const radius = size * 0.35;
+                const tickRadius = size * 0.48;
+                const numbersEl = document.getElementById('numbers');
+                const ticksEl = document.getElementById('ticks');
+                const glowRing = document.getElementById('glowRing');
+                const timeDisplay = document.getElementById('timeDisplay');
+                const root = document.documentElement;
+
+                function valueToAngle(value) {
+                    return 225 - (value / 180) * 270;
+                }
+
+                // Update glow intensity
+                function updateGlow(intensity) {
+                    root.style.setProperty('--glow-intensity', intensity);
+                    // CHANGED: Only show glow ring when intensity is above 0.1
+                    glowRing.style.opacity = intensity > 0.1 ? (intensity - 0.1) * 3 : 0;
+                }
+
+                // Initialize with zero glow
+                updateGlow(0);
+
+                // ---- Numbers ----
+                for (let v = 0; v <= 180; v += 20) {
+                    const angleDeg = valueToAngle(v);
+                    const rad = angleDeg * Math.PI / 180;
+                    const x = cx + radius * Math.cos(rad);
+                    const y = cy - radius * Math.sin(rad);
+
+                    const num = document.createElement('div');
+                    num.className = 'number';
+                    num.style.left = `${x}px`;
+                    num.style.top = `${y}px`;
+                    num.textContent = v;
+                    numbersEl.appendChild(num);
+                }
+
+                // ---- Ticks ----
+                const majorValues = [];
+                for (let v = 60; v <= 240; v += 20) majorValues.push(v);
+
+                for (let v = 60; v <= 240; v += 5) {
+                    const angleDeg = valueToAngle(v);
+                    const tick = document.createElement('div');
+                    tick.className = 'tick';
+                    const isMajor = majorValues.includes(v);
+                    const length = isMajor ? size * 0.06 : size * 0.03;
+
+                    tick.style.height = `${length}px`;
+                    tick.style.background = isMajor ? 'rgba(255,7,58,0.95)' : 'rgba(255,255,255,0.05)';
+                    tick.style.boxShadow = isMajor ? '0 0 8px rgba(255,7,58,0.8)' : '';
+                    tick.style.left = '50%';
+                    tick.style.top = '50%';
+                    tick.style.transformOrigin = '50% 0%';
+                    tick.style.transform = `rotate(${angleDeg}deg) translateY(-${tickRadius}px)`;
+                    ticksEl.appendChild(tick);
+                }
+
+                // ---- Needle Animation ----
+                const needle = document.getElementById('needle');
+                const needleHeight = size * 0.44;
+
+                needle.style.height = needleHeight + 'px';
+                needle.style.left = '49%';
+                needle.style.top = '50%';
+                needle.style.transformOrigin = '50% 100%';
+                needle.style.marginTop = `-${needleHeight}px`;
+
+                const startAngle = valueToAngle(0);
+                needle.style.transform = `rotate(${startAngle}deg)`;
+
+                const duration = 4000;
+
+                function easeOutCubic(t) { return 15 + Math.pow(1 - t, 3); }
+
+                function startAnimation() {
+                    // Show initial time immediately
+                    timeDisplay.style.opacity = '1';
+                    
+                    const startTime = performance.now();
+                    const endValue = 180;
+
+                    function step(now) {
+                        const elapsed = now - startTime;
+                        const t = Math.min(1, elapsed / duration);
+                        const eased = easeOutCubic(t);
+                        const currentValue = Math.round(eased * endValue);
+                        const angle = valueToAngle(currentValue);
+
+                        needle.style.transform = `rotate(${angle}deg)`;
+
+                        // Update glow intensity based on progress - starting from 0
+                        const glowIntensity = t * 0.65; // CHANGED: From 0 to 0.65
+                        updateGlow(glowIntensity);
+
+                        // Update time display when animation is almost complete
+                        if (t > 0.95) {
+                            timeDisplay.textContent = "12:00am";
+                        }
+
+                        if (elapsed < duration) {
+                            requestAnimationFrame(step);
+                        } else {
+                            // Animation complete - ensure final time is displayed
+                            timeDisplay.textContent = "12:00am";
+                            
+                            // Fade out loading screen and show main content
+                            setTimeout(() => {
+                                const loadingScreen = document.getElementById('loadingScreen');
+                                loadingScreen.classList.add('fade-out');
+                                
+                                setTimeout(() => {
+                                    loadingScreen.style.display = 'none';
+                                    document.querySelector('.website-content').style.display = 'block';
+                                    
+                                    // Initialize main website content
+                                    initMainContent();
+                                }, 1500);
+                            }, 500);
+                        }
+                    }
+
+                    requestAnimationFrame(step);
+                }
+
+                setTimeout(startAnimation, 500);
+            }
+
+            function initMainContent() {
+                // Matrix-style title animation with flicker only on specific letters
+                const afterHoursTitle = document.getElementById('after-hours-title');
+                const societyTitle = document.getElementById('society-title');
+                const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+                // Clear existing content
+                afterHoursTitle.innerHTML = '';
+                societyTitle.innerHTML = '';
+
+                // Animate "AFTER HOURS" part with flicker on O, U, R in "HOURS"
+                const afterHoursText = "AFTER HOURS";
+                for (let i = 0; i < afterHoursText.length; i++) {
+                    const charSpan = document.createElement('span');
+                    
+                    // Add flicker class for O, U, R but ONLY in the "HOURS" part
+                    // The "R" in "AFTER" should NOT flicker, only the "R" in "HOURS"
+                    const isInHoursPart = i >= 6; // "HOURS" starts at position 6
+                    const shouldFlicker = (afterHoursText[i] === 'O' || afterHoursText[i] === 'U' || afterHoursText[i] === 'R') && isInHoursPart;
+                    
+                    if (shouldFlicker) {
+                        charSpan.className = 'matrix-letter flicker-letter';
+                    } else {
+                        charSpan.className = 'matrix-letter';
+                    }
+                    
+                    charSpan.textContent = afterHoursText[i] === ' ' ? '\u00A0' : chars[Math.floor(Math.random() * chars.length)];
+                    afterHoursTitle.appendChild(charSpan);
+                    
+                    setTimeout(() => {
+                        animateLetter(charSpan, afterHoursText[i], i);
+                    }, i * 100);
+                }
+
+                // Animate "SOCIETY" part with flicker ONLY on C, I, T, Y
+                const societyText = "SOCIETY";
+                for (let i = 0; i < societyText.length; i++) {
+                    const charSpan = document.createElement('span');
+                    
+                    // Add flicker class ONLY for C, I, T, Y
+                    if (['C', 'I', 'T', 'Y'].includes(societyText[i])) {
+                        charSpan.className = 'matrix-letter flicker-letter';
+                    } else {
+                        charSpan.className = 'matrix-letter';
+                    }
+                    
+                    charSpan.textContent = societyText[i] === ' ' ? '\u00A0' : chars[Math.floor(Math.random() * chars.length)];
+                    societyTitle.appendChild(charSpan);
+                    
+                    setTimeout(() => {
+                        animateLetter(charSpan, societyText[i], i);
+                    }, (afterHoursText.length * 100) + (i * 100));
+                }
+
+                function animateLetter(element, finalChar, index) {
+                    let iterations = 0;
+                    const interval = setInterval(() => {
+                        element.textContent = chars[Math.floor(Math.random() * chars.length)];
+                        
+                        iterations++;
+                        if (iterations >= 10 + Math.random() * 100) {
+                            clearInterval(interval);
+                            element.textContent = finalChar === ' ' ? '\u00A0' : finalChar;
+                        }
+                    }, 50 + Math.random() * 80);
+                }
+
+                // Function to handle logo upload
+                function setupLogoUpload() {
+                    const logoInput = document.createElement('input');
+                    logoInput.type = 'file';
+                    logoInput.accept = 'image/*';
+                    logoInput.style.display = 'none';
+                    document.body.appendChild(logoInput);
+                    
+                    const logoContainer = document.querySelector('.logo-container');
+                    const clubLogo = document.getElementById('club-logo');
+                    
+                    logoContainer.addEventListener('click', function() {
+                        logoInput.click();
+                    });
+                    
+                    logoInput.addEventListener('change', function(e) {
+                        const file = e.target.files[0];
+                        if (file) {
+                            const reader = new FileReader();
+                            reader.onload = function(event) {
+                                clubLogo.src = event.target.result;
+                                // Store in localStorage for persistence
+                                localStorage.setItem('clubLogo', event.target.result);
+                            };
+                            reader.readAsDataURL(file);
+                        }
+                    });
+                    
+                    // Check if logo exists in localStorage
+                    const savedLogo = localStorage.getItem('clubLogo');
+                    if (savedLogo) {
+                        clubLogo.src = savedLogo;
+                    }
+                }
+                
+                // Initialize logo upload functionality
+                setupLogoUpload();
+
+                // Scroll indicator functionality
+                const scrollIndicator = document.getElementById('scrollIndicator');
+                const newsSection = document.getElementById('news');
+                
+                if (scrollIndicator && newsSection) {
+                    // Make arrow clickable to scroll to news
+                    scrollIndicator.addEventListener('click', () => {
+                        newsSection.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    });
+                    
+                    // Show/hide arrow based on scroll position
+                    function checkScrollPosition() {
+                        {
+                            scrollIndicator.classList.add('visible');
+                        }
+                    }
+                    
+                    // Initial check
+                    checkScrollPosition();
+                    
+                    // Add scroll event listener
+                    window.addEventListener('scroll', checkScrollPosition);
+                }
+
+                // Create subtle shooting stars with parallax effect
+                const starContainer = document.getElementById('starContainer');
+                const starCount = 15;
+                
+                function createShootingStars() {
+                    starContainer.innerHTML = '';
+                    
+                    for (let i = 0; i < starCount; i++) {
+                        const star = document.createElement('div');
+                        star.className = 'shooting-star';
+                        
+                        const layer = Math.floor(Math.random() * 3) + 1;
+                        star.classList.add(`star-layer-${layer}`);
+                        
+                        const startX = Math.random() * window.innerWidth;
+                        const startY = Math.random() * window.innerHeight;
+                        
+                        const angle = 30 + Math.random() * 30;
+                        
+                        const distance = 500 + (layer * 300);
+                        
+                        const delay = Math.random() * 10;
+                        
+                        star.style.setProperty('--angle', `${angle}deg`);
+                        star.style.setProperty('--distance', `${distance}px`);
+                        star.style.left = `${startX}px`;
+                        star.style.top = `${startY}px`;
+                        star.style.animationDelay = `${delay}s`;
+                        
+                        const size = 1 + Math.random() * 2;
+                        star.style.width = `${size}px`;
+                        star.style.height = `${size}px`;
+                        
+                        const opacity = 0.5 + Math.random() * 0.5;
+                        star.style.opacity = opacity;
+                        
+                        starContainer.appendChild(star);
+                    }
+                }
+                
+                createShootingStars();
+                setInterval(createShootingStars, 15000);
+
+                // Page navigation
+                const navLinks = document.querySelectorAll('.nav-link');
+                const pages = document.querySelectorAll('.page');
+                const navIndicator = document.querySelector('.nav-indicator');
+                
+                const scrollPositions = {};
+                
+                let activePage = document.querySelector('.page.active');
+                let activeNavLink = document.querySelector('.nav-link.active');
+                
+                function updateIndicatorPosition(link) {
+                    const linkRect = link.getBoundingClientRect();
+                    const navRect = document.querySelector('.bottom-nav').getBoundingClientRect();
+                    const indicatorWidth = 60;
+                    const indicatorLeft = linkRect.left - navRect.left + (linkRect.width - indicatorWidth) / 2;
+                    
+                    navIndicator.style.width = `${indicatorWidth}px`;
+                    navIndicator.style.transform = `translateX(${indicatorLeft}px)`;
+                    
+                    if (window.innerWidth <= 768) {
+                        const mobileIndicatorWidth = 40;
+                        const mobileIndicatorLeft = linkRect.left - navRect.left + (linkRect.width - mobileIndicatorWidth) / 2;
+                        navIndicator.style.width = `${mobileIndicatorWidth}px`;
+                        navIndicator.style.transform = `translateX(${mobileIndicatorLeft}px)`;
+                    }
+                }
+                
+                updateIndicatorPosition(activeNavLink);
+                
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        const targetId = this.getAttribute('data-target');
+                        const targetPage = document.getElementById(targetId);
+                        
+                        if (targetPage && targetPage !== activePage) {
+                            scrollPositions[activePage.id] = window.scrollY || activePage.scrollTop;
+                            
+                            activePage.classList.remove('active');
+                            activeNavLink.classList.remove('active');
+                            
+                            targetPage.classList.add('active');
+                            this.classList.add('active');
+                            
+                            activePage = targetPage;
+                            activeNavLink = this;
+                            
+                            updateIndicatorPosition(this);
+                            
+                            if (scrollPositions[targetPage.id]) {
+                                window.scrollTo(0, scrollPositions[targetPage.id]);
+                            } else {
+                                window.scrollTo(0, 0);
+                            }
+                            
+                            // Focus the page for keyboard navigation
+                            targetPage.focus();
+                        }
+                    });
+                });
+                
+                if (window.location.hash) {
+                    const hash = window.location.hash.substring(1);
+                    const targetLink = document.querySelector(`.nav-link[data-target="${hash}"]`);
+                    
+                    if (targetLink) {
+                        targetLink.click();
+                    }
+                }
+                
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function(e) {
+                        if (this.classList.contains('nav-link')) return;
+                        
+                        e.preventDefault();
+                        
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 20,
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
+
+                window.addEventListener('resize', function() {
+                    updateIndicatorPosition(document.querySelector('.nav-link.active'));
+                });
+
+                // Form submission handling with enhanced validation
+                const contactForm = document.getElementById('contactForm');
+                const submitBtn = document.getElementById('submitBtn');
+                const successMessage = document.getElementById('successMessage');
+                
+                if (contactForm) {
+                    contactForm.addEventListener('submit', async function(e) {
+                        e.preventDefault();
+                        
+                        // Validate form
+                        let isValid = true;
+                        const name = document.getElementById('name');
+                        const email = document.getElementById('email');
+                        const phone = document.getElementById('phone');
+                        const message = document.getElementById('message');
+                        
+                        // Reset error states
+                        document.querySelectorAll('.form-group').forEach(group => {
+                            group.classList.remove('error');
+                        });
+                        
+                        // Name validation
+                        if (!name.value.trim()) {
+                            document.getElementById('name-error').textContent = 'Please enter your name';
+                            name.closest('.form-group').classList.add('error');
+                            isValid = false;
+                        }
+                        
+                        // Email validation
+                        if (!email.value.trim()) {
+                            document.getElementById('email-error').textContent = 'Please enter your email';
+                            email.closest('.form-group').classList.add('error');
+                            isValid = false;
+                        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+                            document.getElementById('email-error').textContent = 'Please enter a valid email';
+                            email.closest('.form-group').classList.add('error');
+                            isValid = false;
+                        }
+                        
+                        // Phone validation (optional but if provided, validate)
+                        if (phone.value.trim() && !/^[\d\s\-()+]{10,}$/.test(phone.value)) {
+                            document.getElementById('phone-error').textContent = 'Please enter a valid phone number';
+                            phone.closest('.form-group').classList.add('error');
+                            isValid = false;
+                        }
+                        
+                        // Message validation
+                        if (!message.value.trim()) {
+                            document.getElementById('message-error').textContent = 'Please enter your message';
+                            message.closest('.form-group').classList.add('error');
+                            isValid = false;
+                        }
+                        
+                        if (!isValid) return;
+                        
+                        // Show loading state
+                        submitBtn.classList.add('loading');
+                        submitBtn.disabled = true;
+                        
+                        try {
+                            // Submit the form using FormSubmit
+                            const formData = new FormData(contactForm);
+                            
+                            const response = await fetch(contactForm.action, {
+                                method: 'POST',
+                                body: formData,
+                                headers: {
+                                    'Accept': 'application/json'
+                                }
+                            });
+                            
+                            if (response.ok) {
+                                // Show success message
+                                successMessage.style.display = 'block';
+                                contactForm.reset();
+                                
+                                // Hide message after 10 seconds
+                                setTimeout(() => {
+                                    successMessage.style.display = 'none';
+                                }, 10000);
+                            } else {
+                                throw new Error('Form submission failed');
+                            }
+                        } catch (error) {
+                            console.error("Error submitting form:", error);
+                            alert("Error sending message. Please try again later.");
+                        } finally {
+                            submitBtn.classList.remove('loading');
+                            submitBtn.disabled = false;
+                        }
+                    });
+                    
+                    // Real-time validation
+                    document.getElementById('email').addEventListener('input', function() {
+                        if (this.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.value)) {
+                            document.getElementById('email-error').textContent = 'Please enter a valid email';
+                            this.closest('.form-group').classList.add('error');
+                        } else {
+                            this.closest('.form-group').classList.remove('error');
+                        }
+                    });
+                    
+                    document.getElementById('phone').addEventListener('input', function() {
+                        if (this.value.trim() && !/^[\d\s\-()+]{10,}$/.test(this.value)) {
+                            document.getElementById('phone-error').textContent = 'Please enter a valid phone number';
+                            this.closest('.form-group').classList.add('error');
+                        } else {
+                            this.closest('.form-group').classList.remove('error');
+                        }
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

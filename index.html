@@ -1918,532 +1918,636 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize loading screen
-            initLoadingScreen();
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize loading screen
+    initLoadingScreen();
+    
+    function initLoadingScreen() {
+        const size = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--size')) || 360;
+        const cx = size / 2;
+        const cy = size / 2;
+        const radius = size * 0.35;
+        const tickRadius = size * 0.48;
+        const numbersEl = document.getElementById('numbers');
+        const ticksEl = document.getElementById('ticks');
+        const glowRing = document.getElementById('glowRing');
+        const timeDisplay = document.getElementById('timeDisplay');
+        const root = document.documentElement;
+
+        function valueToAngle(value) {
+            return 225 - (value / 180) * 270;
+        }
+
+        // Update glow intensity
+        function updateGlow(intensity) {
+            root.style.setProperty('--glow-intensity', intensity);
+            // CHANGED: Only show glow ring when intensity is above 0.1
+            glowRing.style.opacity = intensity > 0.1 ? (intensity - 0.1) * 3 : 0;
+        }
+
+        // Initialize with zero glow
+        updateGlow(0);
+
+        // ---- Numbers ----
+        for (let v = 0; v <= 180; v += 20) {
+            const angleDeg = valueToAngle(v);
+            const rad = angleDeg * Math.PI / 180;
+            const x = cx + radius * Math.cos(rad);
+            const y = cy - radius * Math.sin(rad);
+
+            const num = document.createElement('div');
+            num.className = 'number';
+            num.style.left = `${x}px`;
+            num.style.top = `${y}px`;
+            num.textContent = v;
+            numbersEl.appendChild(num);
+        }
+
+        // ---- Ticks ----
+        const majorValues = [];
+        for (let v = 60; v <= 240; v += 20) majorValues.push(v);
+
+        for (let v = 60; v <= 240; v += 5) {
+            const angleDeg = valueToAngle(v);
+            const tick = document.createElement('div');
+            tick.className = 'tick';
+            const isMajor = majorValues.includes(v);
+            const length = isMajor ? size * 0.06 : size * 0.03;
+
+            tick.style.height = `${length}px`;
+            tick.style.background = isMajor ? 'rgba(255,7,58,0.95)' : 'rgba(255,255,255,0.05)';
+            tick.style.boxShadow = isMajor ? '0 0 8px rgba(255,7,58,0.8)' : '';
+            tick.style.left = '50%';
+            tick.style.top = '50%';
+            tick.style.transformOrigin = '50% 0%';
+            tick.style.transform = `rotate(${angleDeg}deg) translateY(-${tickRadius}px)`;
+            ticksEl.appendChild(tick);
+        }
+
+        // ---- Needle Animation ----
+        const needle = document.getElementById('needle');
+        const needleHeight = size * 0.44;
+
+        needle.style.height = needleHeight + 'px';
+        needle.style.left = '49%';
+        needle.style.top = '50%';
+        needle.style.transformOrigin = '50% 100%';
+        needle.style.marginTop = `-${needleHeight}px`;
+
+        const startAngle = valueToAngle(0);
+        needle.style.transform = `rotate(${startAngle}deg)`;
+
+        const duration = 4000;
+
+        function easeOutCubic(t) { return 15 + Math.pow(1 - t, 3); }
+
+        function startAnimation() {
+            // Show initial time immediately
+            timeDisplay.style.opacity = '1';
             
-            function initLoadingScreen() {
-                const size = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--size')) || 360;
-                const cx = size / 2;
-                const cy = size / 2;
-                const radius = size * 0.35;
-                const tickRadius = size * 0.48;
-                const numbersEl = document.getElementById('numbers');
-                const ticksEl = document.getElementById('ticks');
-                const glowRing = document.getElementById('glowRing');
-                const timeDisplay = document.getElementById('timeDisplay');
-                const root = document.documentElement;
+            const startTime = performance.now();
+            const endValue = 180;
 
-                function valueToAngle(value) {
-                    return 225 - (value / 180) * 270;
+            function step(now) {
+                const elapsed = now - startTime;
+                const t = Math.min(1, elapsed / duration);
+                const eased = easeOutCubic(t);
+                const currentValue = Math.round(eased * endValue);
+                const angle = valueToAngle(currentValue);
+
+                needle.style.transform = `rotate(${angle}deg)`;
+
+                // Update glow intensity based on progress - starting from 0
+                const glowIntensity = t * 0.65; // CHANGED: From 0 to 0.65
+                updateGlow(glowIntensity);
+
+                // Update time display when animation is almost complete
+                if (t > 0.95) {
+                    timeDisplay.textContent = "12:00am";
                 }
 
-                // Update glow intensity
-                function updateGlow(intensity) {
-                    root.style.setProperty('--glow-intensity', intensity);
-                    // CHANGED: Only show glow ring when intensity is above 0.1
-                    glowRing.style.opacity = intensity > 0.1 ? (intensity - 0.1) * 3 : 0;
-                }
-
-                // Initialize with zero glow
-                updateGlow(0);
-
-                // ---- Numbers ----
-                for (let v = 0; v <= 180; v += 20) {
-                    const angleDeg = valueToAngle(v);
-                    const rad = angleDeg * Math.PI / 180;
-                    const x = cx + radius * Math.cos(rad);
-                    const y = cy - radius * Math.sin(rad);
-
-                    const num = document.createElement('div');
-                    num.className = 'number';
-                    num.style.left = `${x}px`;
-                    num.style.top = `${y}px`;
-                    num.textContent = v;
-                    numbersEl.appendChild(num);
-                }
-
-                // ---- Ticks ----
-                const majorValues = [];
-                for (let v = 60; v <= 240; v += 20) majorValues.push(v);
-
-                for (let v = 60; v <= 240; v += 5) {
-                    const angleDeg = valueToAngle(v);
-                    const tick = document.createElement('div');
-                    tick.className = 'tick';
-                    const isMajor = majorValues.includes(v);
-                    const length = isMajor ? size * 0.06 : size * 0.03;
-
-                    tick.style.height = `${length}px`;
-                    tick.style.background = isMajor ? 'rgba(255,7,58,0.95)' : 'rgba(255,255,255,0.05)';
-                    tick.style.boxShadow = isMajor ? '0 0 8px rgba(255,7,58,0.8)' : '';
-                    tick.style.left = '50%';
-                    tick.style.top = '50%';
-                    tick.style.transformOrigin = '50% 0%';
-                    tick.style.transform = `rotate(${angleDeg}deg) translateY(-${tickRadius}px)`;
-                    ticksEl.appendChild(tick);
-                }
-
-                // ---- Needle Animation ----
-                const needle = document.getElementById('needle');
-                const needleHeight = size * 0.44;
-
-                needle.style.height = needleHeight + 'px';
-                needle.style.left = '49%';
-                needle.style.top = '50%';
-                needle.style.transformOrigin = '50% 100%';
-                needle.style.marginTop = `-${needleHeight}px`;
-
-                const startAngle = valueToAngle(0);
-                needle.style.transform = `rotate(${startAngle}deg)`;
-
-                const duration = 4000;
-
-                function easeOutCubic(t) { return 15 + Math.pow(1 - t, 3); }
-
-                function startAnimation() {
-                    // Show initial time immediately
-                    timeDisplay.style.opacity = '1';
-                    
-                    const startTime = performance.now();
-                    const endValue = 180;
-
-                    function step(now) {
-                        const elapsed = now - startTime;
-                        const t = Math.min(1, elapsed / duration);
-                        const eased = easeOutCubic(t);
-                        const currentValue = Math.round(eased * endValue);
-                        const angle = valueToAngle(currentValue);
-
-                        needle.style.transform = `rotate(${angle}deg)`;
-
-                        // Update glow intensity based on progress - starting from 0
-                        const glowIntensity = t * 0.65; // CHANGED: From 0 to 0.65
-                        updateGlow(glowIntensity);
-
-                        // Update time display when animation is almost complete
-                        if (t > 0.95) {
-                            timeDisplay.textContent = "12:00am";
-                        }
-
-                        if (elapsed < duration) {
-                            requestAnimationFrame(step);
-                        } else {
-                            // Animation complete - ensure final time is displayed
-                            timeDisplay.textContent = "12:00am";
-                            
-                            // Fade out loading screen and show main content
-                            setTimeout(() => {
-                                const loadingScreen = document.getElementById('loadingScreen');
-                                loadingScreen.classList.add('fade-out');
-                                
-                                setTimeout(() => {
-                                    loadingScreen.style.display = 'none';
-                                    document.querySelector('.website-content').style.display = 'block';
-                                    
-                                    // Initialize main website content
-                                    initMainContent();
-                                }, 1500);
-                            }, 500);
-                        }
-                    }
-
+                if (elapsed < duration) {
                     requestAnimationFrame(step);
+                } else {
+                    // Animation complete - ensure final time is displayed
+                    timeDisplay.textContent = "12:00am";
+                    
+                    // Fade out loading screen and show main content
+                    setTimeout(() => {
+                        const loadingScreen = document.getElementById('loadingScreen');
+                        loadingScreen.classList.add('fade-out');
+                        
+                        setTimeout(() => {
+                            loadingScreen.style.display = 'none';
+                            document.querySelector('.website-content').style.display = 'block';
+                            
+                            // Initialize main website content
+                            initMainContent();
+                        }, 1500);
+                    }, 500);
                 }
-
-                setTimeout(startAnimation, 500);
             }
 
-            function initMainContent() {
-                // Make news items visible immediately
-                const newsTitles = document.querySelectorAll('.news-title');
-                const newsExcerpts = document.querySelectorAll('.news-excerpt');
+            requestAnimationFrame(step);
+        }
+
+        setTimeout(startAnimation, 500);
+    }
+
+    function initMainContent() {
+        // Make news items visible immediately
+        const newsTitles = document.querySelectorAll('.news-title');
+        const newsExcerpts = document.querySelectorAll('.news-excerpt');
+        
+        // Set opacity to 1 for all news titles and excerpts
+        newsTitles.forEach(title => {
+            title.style.opacity = '1';
+        });
+        
+        newsExcerpts.forEach(excerpt => {
+            excerpt.style.opacity = '1';
+        });
+
+        // Matrix-style title animation with flicker only on specific letters
+        const afterHoursTitle = document.getElementById('after-hours-title');
+        const societyTitle = document.getElementById('society-title');
+        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+        // Clear existing content
+        afterHoursTitle.innerHTML = '';
+        societyTitle.innerHTML = '';
+
+        // Animate "AFTER HOURS" part with flicker on O, U, R in "HOURS"
+        const afterHoursText = "AFTER HOURS";
+        for (let i = 0; i < afterHoursText.length; i++) {
+            const charSpan = document.createElement('span');
+            
+            // Add flicker class for O, U, R but ONLY in the "HOURS" part
+            // The "R" in "AFTER" should NOT flicker, only the "R" in "HOURS"
+            const isInHoursPart = i >= 6; // "HOURS" starts at position 6
+            const shouldFlicker = (afterHoursText[i] === 'O' || afterHoursText[i] === 'U' || afterHoursText[i] === 'R') && isInHoursPart;
+            
+            if (shouldFlicker) {
+                charSpan.className = 'matrix-letter flicker-letter';
+            } else {
+                charSpan.className = 'matrix-letter';
+            }
+            
+            charSpan.textContent = afterHoursText[i] === ' ' ? '\u00A0' : chars[Math.floor(Math.random() * chars.length)];
+            afterHoursTitle.appendChild(charSpan);
+            
+            setTimeout(() => {
+                animateLetter(charSpan, afterHoursText[i], i);
+            }, i * 100);
+        }
+
+        // Animate "SOCIETY" part with flicker ONLY on C, I, T, Y
+        const societyText = "SOCIETY";
+        for (let i = 0; i < societyText.length; i++) {
+            const charSpan = document.createElement('span');
+            
+            // Add flicker class ONLY for C, I, T, Y
+            if (['C', 'I', 'T', 'Y'].includes(societyText[i])) {
+                charSpan.className = 'matrix-letter flicker-letter';
+            } else {
+                charSpan.className = 'matrix-letter';
+            }
+            
+            charSpan.textContent = societyText[i] === ' ' ? '\u00A0' : chars[Math.floor(Math.random() * chars.length)];
+            societyTitle.appendChild(charSpan);
+            
+            setTimeout(() => {
+                animateLetter(charSpan, societyText[i], i);
+            }, (afterHoursText.length * 100) + (i * 100));
+        }
+
+        function animateLetter(element, finalChar, index) {
+            let iterations = 0;
+            const interval = setInterval(() => {
+                element.textContent = chars[Math.floor(Math.random() * chars.length)];
                 
-                // Set opacity to 1 for all news titles and excerpts
-                newsTitles.forEach(title => {
-                    title.style.opacity = '1';
+                iterations++;
+                if (iterations >= 10 + Math.random() * 100) {
+                    clearInterval(interval);
+                    element.textContent = finalChar === ' ' ? '\u00A0' : finalChar;
+                }
+            }, 50 + Math.random() * 80);
+        }
+
+        // Function to handle logo upload
+        function setupLogoUpload() {
+            const logoInput = document.createElement('input');
+            logoInput.type = 'file';
+            logoInput.accept = 'image/*';
+            logoInput.style.display = 'none';
+            document.body.appendChild(logoInput);
+            
+            const logoContainer = document.querySelector('.logo-container');
+            const clubLogo = document.getElementById('club-logo');
+            
+            logoInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        clubLogo.src = event.target.result;
+                        // Store in localStorage for persistence
+                        localStorage.setItem('clubLogo', event.target.result);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+            
+            // Check if logo exists in localStorage
+            const savedLogo = localStorage.getItem('clubLogo');
+            if (savedLogo) {
+                clubLogo.src = savedLogo;
+            }
+        }
+        
+        // Initialize logo upload functionality
+        setupLogoUpload();
+
+        // Scroll indicator functionality
+        const scrollIndicator = document.getElementById('scrollIndicator');
+        const newsSection = document.getElementById('news');
+        
+        if (scrollIndicator && newsSection) {
+            // Make arrow clickable to scroll to news
+            scrollIndicator.addEventListener('click', () => {
+                newsSection.scrollIntoView({
+                    behavior: 'smooth'
                 });
+            });
+            
+            // Show/hide arrow based on scroll position
+            function checkScrollPosition() {
+                {
+                    scrollIndicator.classList.add('visible');
+                }
+            }
+            
+            // Initial check
+            checkScrollPosition();
+            
+            // Add scroll event listener
+            window.addEventListener('scroll', checkScrollPosition);
+        }
+
+        // Create subtle shooting stars with parallax effect
+        const starContainer = document.getElementById('starContainer');
+        const starCount = 15;
+        
+        function createShootingStars() {
+            starContainer.innerHTML = '';
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'shooting-star';
                 
-                newsExcerpts.forEach(excerpt => {
-                    excerpt.style.opacity = '1';
-                });
+                const layer = Math.floor(Math.random() * 3) + 1;
+                star.classList.add(`star-layer-${layer}`);
+                
+                const startX = Math.random() * window.innerWidth;
+                const startY = Math.random() * window.innerHeight;
+                
+                const angle = 30 + Math.random() * 30;
+                
+                const distance = 500 + (layer * 300);
+                
+                const delay = Math.random() * 10;
+                
+                star.style.setProperty('--angle', `${angle}deg`);
+                star.style.setProperty('--distance', `${distance}px`);
+                star.style.left = `${startX}px`;
+                star.style.top = `${startY}px`;
+                star.style.animationDelay = `${delay}s`;
+                
+                const size = 1 + Math.random() * 2;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                const opacity = 0.5 + Math.random() * 0.5;
+                star.style.opacity = opacity;
+                
+                starContainer.appendChild(star);
+            }
+        }
+        
+        createShootingStars();
+        setInterval(createShootingStars, 15000);
 
-                // Matrix-style title animation with flicker only on specific letters
-                const afterHoursTitle = document.getElementById('after-hours-title');
-                const societyTitle = document.getElementById('society-title');
-                const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        // Initialize photography gallery
+        initPhotographyGallery();
 
-                // Clear existing content
-                afterHoursTitle.innerHTML = '';
-                societyTitle.innerHTML = '';
-
-                // Animate "AFTER HOURS" part with flicker on O, U, R in "HOURS"
-                const afterHoursText = "AFTER HOURS";
-                for (let i = 0; i < afterHoursText.length; i++) {
-                    const charSpan = document.createElement('span');
+        // Page navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page');
+        const navIndicator = document.querySelector('.nav-indicator');
+        
+        const scrollPositions = {};
+        
+        let activePage = document.querySelector('.page.active');
+        let activeNavLink = document.querySelector('.nav-link.active');
+        
+        function updateIndicatorPosition(link) {
+            const linkRect = link.getBoundingClientRect();
+            const navRect = document.querySelector('.bottom-nav').getBoundingClientRect();
+            const indicatorWidth = 60;
+            const indicatorLeft = linkRect.left - navRect.left + (linkRect.width - indicatorWidth) / 2;
+            
+            navIndicator.style.width = `${indicatorWidth}px`;
+            navIndicator.style.transform = `translateX(${indicatorLeft}px)`;
+            
+            if (window.innerWidth <= 768) {
+                const mobileIndicatorWidth = 40;
+                const mobileIndicatorLeft = linkRect.left - navRect.left + (linkRect.width - mobileIndicatorWidth) / 2;
+                navIndicator.style.width = `${mobileIndicatorWidth}px`;
+                navIndicator.style.transform = `translateX(${mobileIndicatorLeft}px)`;
+            }
+        }
+        
+        updateIndicatorPosition(activeNavLink);
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('data-target');
+                const targetPage = document.getElementById(targetId);
+                
+                if (targetPage && targetPage !== activePage) {
+                    scrollPositions[activePage.id] = window.scrollY || activePage.scrollTop;
                     
-                    // Add flicker class for O, U, R but ONLY in the "HOURS" part
-                    // The "R" in "AFTER" should NOT flicker, only the "R" in "HOURS"
-                    const isInHoursPart = i >= 6; // "HOURS" starts at position 6
-                    const shouldFlicker = (afterHoursText[i] === 'O' || afterHoursText[i] === 'U' || afterHoursText[i] === 'R') && isInHoursPart;
+                    activePage.classList.remove('active');
+                    activeNavLink.classList.remove('active');
                     
-                    if (shouldFlicker) {
-                        charSpan.className = 'matrix-letter flicker-letter';
+                    targetPage.classList.add('active');
+                    this.classList.add('active');
+                    
+                    activePage = targetPage;
+                    activeNavLink = this;
+                    
+                    updateIndicatorPosition(this);
+                    
+                    if (scrollPositions[targetPage.id]) {
+                        window.scrollTo(0, scrollPositions[targetPage.id]);
                     } else {
-                        charSpan.className = 'matrix-letter';
+                        window.scrollTo(0, 0);
                     }
                     
-                    charSpan.textContent = afterHoursText[i] === ' ' ? '\u00A0' : chars[Math.floor(Math.random() * chars.length)];
-                    afterHoursTitle.appendChild(charSpan);
-                    
-                    setTimeout(() => {
-                        animateLetter(charSpan, afterHoursText[i], i);
-                    }, i * 100);
+                    // Focus the page for keyboard navigation
+                    targetPage.focus();
                 }
+            });
+        });
+        
+        if (window.location.hash) {
+            const hash = window.location.hash.substring(1);
+            const targetLink = document.querySelector(`.nav-link[data-target="${hash}"]`);
+            
+            if (targetLink) {
+                targetLink.click();
+            }
+        }
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.classList.contains('nav-link')) return;
+                
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
 
-                // Animate "SOCIETY" part with flicker ONLY on C, I, T, Y
-                const societyText = "SOCIETY";
-                for (let i = 0; i < societyText.length; i++) {
-                    const charSpan = document.createElement('span');
+        window.addEventListener('resize', function() {
+            updateIndicatorPosition(document.querySelector('.nav-link.active'));
+        });
+
+        // Form submission handling with enhanced validation
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successMessage = document.getElementById('successMessage');
+        
+        if (contactForm) {
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Validate form
+                let isValid = true;
+                const name = document.getElementById('name');
+                const email = document.getElementById('email');
+                const phone = document.getElementById('phone');
+                const message = document.getElementById('message');
+                
+                // Reset error states
+                document.querySelectorAll('.form-group').forEach(group => {
+                    group.classList.remove('error');
+                });
+                
+                // Name validation
+                if (!name.value.trim()) {
+                    document.getElementById('name-error').textContent = 'Please enter your name';
+                    name.closest('.form-group').classList.add('error');
+                    isValid = false;
+                }
+                
+                // Email validation
+                if (!email.value.trim()) {
+                    document.getElementById('email-error').textContent = 'Please enter your email';
+                    email.closest('.form-group').classList.add('error');
+                    isValid = false;
+                } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+                    document.getElementById('email-error').textContent = 'Please enter a valid email';
+                    email.closest('.form-group').classList.add('error');
+                    isValid = false;
+                }
+                
+                // Phone validation (optional but if provided, validate)
+                if (phone.value.trim() && !/^[\d\s\-()+]{10,}$/.test(phone.value)) {
+                    document.getElementById('phone-error').textContent = 'Please enter a valid phone number';
+                    phone.closest('.form-group').classList.add('error');
+                    isValid = false;
+                }
+                
+                // Message validation
+                if (!message.value.trim()) {
+                    document.getElementById('message-error').textContent = 'Please enter your message';
+                    message.closest('.form-group').classList.add('error');
+                    isValid = false;
+                }
+                
+                if (!isValid) return;
+                
+                // Show loading state
+                submitBtn.classList.add('loading');
+                submitBtn.disabled = true;
+                
+                try {
+                    // Submit the form using FormSubmit
+                    const formData = new FormData(contactForm);
                     
-                    // Add flicker class ONLY for C, I, T, Y
-                    if (['C', 'I', 'T', 'Y'].includes(societyText[i])) {
-                        charSpan.className = 'matrix-letter flicker-letter';
+                    const response = await fetch(contactForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        // Show success message
+                        successMessage.style.display = 'block';
+                        contactForm.reset();
+                        
+                        // Hide message after 10 seconds
+                        setTimeout(() => {
+                            successMessage.style.display = 'none';
+                        }, 10000);
                     } else {
-                        charSpan.className = 'matrix-letter';
+                        throw new Error('Form submission failed');
                     }
-                    
-                    charSpan.textContent = societyText[i] === ' ' ? '\u00A0' : chars[Math.floor(Math.random() * chars.length)];
-                    societyTitle.appendChild(charSpan);
-                    
-                    setTimeout(() => {
-                        animateLetter(charSpan, societyText[i], i);
-                    }, (afterHoursText.length * 100) + (i * 100));
+                } catch (error) {
+                    console.error("Error submitting form:", error);
+                    alert("Error sending message. Please try again later.");
+                } finally {
+                    submitBtn.classList.remove('loading');
+                    submitBtn.disabled = false;
                 }
+            });
+            
+            // Real-time validation
+            document.getElementById('email').addEventListener('input', function() {
+                if (this.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.value)) {
+                    document.getElementById('email-error').textContent = 'Please enter a valid email';
+                    this.closest('.form-group').classList.add('error');
+                } else {
+                    this.closest('.form-group').classList.remove('error');
+                }
+            });
+            
+            document.getElementById('phone').addEventListener('input', function() {
+                if (this.value.trim() && !/^[\d\s\-()+]{10,}$/.test(this.value)) {
+                    document.getElementById('phone-error').textContent = 'Please enter a valid phone number';
+                    this.closest('.form-group').classList.add('error');
+                } else {
+                    this.closest('.form-group').classList.remove('error');
+                }
+            });
+        }
+    }
 
-                function animateLetter(element, finalChar, index) {
-                    let iterations = 0;
-                    const interval = setInterval(() => {
-                        element.textContent = chars[Math.floor(Math.random() * chars.length)];
-                        
-                        iterations++;
-                        if (iterations >= 10 + Math.random() * 100) {
-                            clearInterval(interval);
-                            element.textContent = finalChar === ' ' ? '\u00A0' : finalChar;
-                        }
-                    }, 50 + Math.random() * 80);
-                }
-
-                // Function to handle logo upload
-                function setupLogoUpload() {
-                    const logoInput = document.createElement('input');
-                    logoInput.type = 'file';
-                    logoInput.accept = 'image/*';
-                    logoInput.style.display = 'none';
-                    document.body.appendChild(logoInput);
-                    
-                    const logoContainer = document.querySelector('.logo-container');
-                    const clubLogo = document.getElementById('club-logo');
-                    
-                    logoInput.addEventListener('change', function(e) {
-                        const file = e.target.files[0];
-                        if (file) {
-                            const reader = new FileReader();
-                            reader.onload = function(event) {
-                                clubLogo.src = event.target.result;
-                                // Store in localStorage for persistence
-                                localStorage.setItem('clubLogo', event.target.result);
-                            };
-                            reader.readAsDataURL(file);
-                        }
-                    });
-                    
-                    // Check if logo exists in localStorage
-                    const savedLogo = localStorage.getItem('clubLogo');
-                    if (savedLogo) {
-                        clubLogo.src = savedLogo;
-                    }
-                }
-                
-                // Initialize logo upload functionality
-                setupLogoUpload();
-
-                // Scroll indicator functionality
-                const scrollIndicator = document.getElementById('scrollIndicator');
-                const newsSection = document.getElementById('news');
-                
-                if (scrollIndicator && newsSection) {
-                    // Make arrow clickable to scroll to news
-                    scrollIndicator.addEventListener('click', () => {
-                        newsSection.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    });
-                    
-                    // Show/hide arrow based on scroll position
-                    function checkScrollPosition() {
-                        {
-                            scrollIndicator.classList.add('visible');
-                        }
-                    }
-                    
-                    // Initial check
-                    checkScrollPosition();
-                    
-                    // Add scroll event listener
-                    window.addEventListener('scroll', checkScrollPosition);
-                }
-
-                // Create subtle shooting stars with parallax effect
-                const starContainer = document.getElementById('starContainer');
-                const starCount = 15;
-                
-                function createShootingStars() {
-                    starContainer.innerHTML = '';
-                    
-                    for (let i = 0; i < starCount; i++) {
-                        const star = document.createElement('div');
-                        star.className = 'shooting-star';
-                        
-                        const layer = Math.floor(Math.random() * 3) + 1;
-                        star.classList.add(`star-layer-${layer}`);
-                        
-                        const startX = Math.random() * window.innerWidth;
-                        const startY = Math.random() * window.innerHeight;
-                        
-                        const angle = 30 + Math.random() * 30;
-                        
-                        const distance = 500 + (layer * 300);
-                        
-                        const delay = Math.random() * 10;
-                        
-                        star.style.setProperty('--angle', `${angle}deg`);
-                        star.style.setProperty('--distance', `${distance}px`);
-                        star.style.left = `${startX}px`;
-                        star.style.top = `${startY}px`;
-                        star.style.animationDelay = `${delay}s`;
-                        
-                        const size = 1 + Math.random() * 2;
-                        star.style.width = `${size}px`;
-                        star.style.height = `${size}px`;
-                        
-                        const opacity = 0.5 + Math.random() * 0.5;
-                        star.style.opacity = opacity;
-                        
-                        starContainer.appendChild(star);
-                    }
-                }
-                
-                createShootingStars();
-                setInterval(createShootingStars, 15000);
-
-                // Page navigation
-                const navLinks = document.querySelectorAll('.nav-link');
-                const pages = document.querySelectorAll('.page');
-                const navIndicator = document.querySelector('.nav-indicator');
-                
-                const scrollPositions = {};
-                
-                let activePage = document.querySelector('.page.active');
-                let activeNavLink = document.querySelector('.nav-link.active');
-                
-                function updateIndicatorPosition(link) {
-                    const linkRect = link.getBoundingClientRect();
-                    const navRect = document.querySelector('.bottom-nav').getBoundingClientRect();
-                    const indicatorWidth = 60;
-                    const indicatorLeft = linkRect.left - navRect.left + (linkRect.width - indicatorWidth) / 2;
-                    
-                    navIndicator.style.width = `${indicatorWidth}px`;
-                    navIndicator.style.transform = `translateX(${indicatorLeft}px)`;
-                    
-                    if (window.innerWidth <= 768) {
-                        const mobileIndicatorWidth = 40;
-                        const mobileIndicatorLeft = linkRect.left - navRect.left + (linkRect.width - mobileIndicatorWidth) / 2;
-                        navIndicator.style.width = `${mobileIndicatorWidth}px`;
-                        navIndicator.style.transform = `translateX(${mobileIndicatorLeft}px)`;
-                    }
-                }
-                
-                updateIndicatorPosition(activeNavLink);
-                
-                navLinks.forEach(link => {
-                    link.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        
-                        const targetId = this.getAttribute('data-target');
-                        const targetPage = document.getElementById(targetId);
-                        
-                        if (targetPage && targetPage !== activePage) {
-                            scrollPositions[activePage.id] = window.scrollY || activePage.scrollTop;
-                            
-                            activePage.classList.remove('active');
-                            activeNavLink.classList.remove('active');
-                            
-                            targetPage.classList.add('active');
-                            this.classList.add('active');
-                            
-                            activePage = targetPage;
-                            activeNavLink = this;
-                            
-                            updateIndicatorPosition(this);
-                            
-                            if (scrollPositions[targetPage.id]) {
-                                window.scrollTo(0, scrollPositions[targetPage.id]);
-                            } else {
-                                window.scrollTo(0, 0);
-                            }
-                            
-                            // Focus the page for keyboard navigation
-                            targetPage.focus();
-                        }
-                    });
-                });
-                
-                if (window.location.hash) {
-                    const hash = window.location.hash.substring(1);
-                    const targetLink = document.querySelector(`.nav-link[data-target="${hash}"]`);
-                    
-                    if (targetLink) {
-                        targetLink.click();
-                    }
-                }
-                
-                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                    anchor.addEventListener('click', function(e) {
-                        if (this.classList.contains('nav-link')) return;
-                        
-                        e.preventDefault();
-                        
-                        const targetId = this.getAttribute('href');
-                        const targetElement = document.querySelector(targetId);
-                        
-                        if (targetElement) {
-                            window.scrollTo({
-                                top: targetElement.offsetTop - 20,
-                                behavior: 'smooth'
-                            });
-                        }
-                    });
-                });
-
-                window.addEventListener('resize', function() {
-                    updateIndicatorPosition(document.querySelector('.nav-link.active'));
-                });
-
-                // Form submission handling with enhanced validation
-                const contactForm = document.getElementById('contactForm');
-                const submitBtn = document.getElementById('submitBtn');
-                const successMessage = document.getElementById('successMessage');
-                
-                if (contactForm) {
-                    contactForm.addEventListener('submit', async function(e) {
-                        e.preventDefault();
-                        
-                        // Validate form
-                        let isValid = true;
-                        const name = document.getElementById('name');
-                        const email = document.getElementById('email');
-                        const phone = document.getElementById('phone');
-                        const message = document.getElementById('message');
-                        
-                        // Reset error states
-                        document.querySelectorAll('.form-group').forEach(group => {
-                            group.classList.remove('error');
-                        });
-                        
-                        // Name validation
-                        if (!name.value.trim()) {
-                            document.getElementById('name-error').textContent = 'Please enter your name';
-                            name.closest('.form-group').classList.add('error');
-                            isValid = false;
-                        }
-                        
-                        // Email validation
-                        if (!email.value.trim()) {
-                            document.getElementById('email-error').textContent = 'Please enter your email';
-                            email.closest('.form-group').classList.add('error');
-                            isValid = false;
-                        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
-                            document.getElementById('email-error').textContent = 'Please enter a valid email';
-                            email.closest('.form-group').classList.add('error');
-                            isValid = false;
-                        }
-                        
-                        // Phone validation (optional but if provided, validate)
-                        if (phone.value.trim() && !/^[\d\s\-()+]{10,}$/.test(phone.value)) {
-                            document.getElementById('phone-error').textContent = 'Please enter a valid phone number';
-                            phone.closest('.form-group').classList.add('error');
-                            isValid = false;
-                        }
-                        
-                        // Message validation
-                        if (!message.value.trim()) {
-                            document.getElementById('message-error').textContent = 'Please enter your message';
-                            message.closest('.form-group').classList.add('error');
-                            isValid = false;
-                        }
-                        
-                        if (!isValid) return;
-                        
-                        // Show loading state
-                        submitBtn.classList.add('loading');
-                        submitBtn.disabled = true;
-                        
-                        try {
-                            // Submit the form using FormSubmit
-                            const formData = new FormData(contactForm);
-                            
-                            const response = await fetch(contactForm.action, {
-                                method: 'POST',
-                                body: formData,
-                                headers: {
-                                    'Accept': 'application/json'
-                                }
-                            });
-                            
-                            if (response.ok) {
-                                // Show success message
-                                successMessage.style.display = 'block';
-                                contactForm.reset();
-                                
-                                // Hide message after 10 seconds
-                                setTimeout(() => {
-                                    successMessage.style.display = 'none';
-                                }, 10000);
-                            } else {
-                                throw new Error('Form submission failed');
-                            }
-                        } catch (error) {
-                            console.error("Error submitting form:", error);
-                            alert("Error sending message. Please try again later.");
-                        } finally {
-                            submitBtn.classList.remove('loading');
-                            submitBtn.disabled = false;
-                        }
-                    });
-                    
-                    // Real-time validation
-                    document.getElementById('email').addEventListener('input', function() {
-                        if (this.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.value)) {
-                            document.getElementById('email-error').textContent = 'Please enter a valid email';
-                            this.closest('.form-group').classList.add('error');
-                        } else {
-                            this.closest('.form-group').classList.remove('error');
-                        }
-                    });
-                    
-                    document.getElementById('phone').addEventListener('input', function() {
-                        if (this.value.trim() && !/^[\d\s\-()+]{10,}$/.test(this.value)) {
-                            document.getElementById('phone-error').textContent = 'Please enter a valid phone number';
-                            this.closest('.form-group').classList.add('error');
-                        } else {
-                            this.closest('.form-group').classList.remove('error');
-                        }
-                    });
-                }
+    // Photography Gallery Functionality
+    function initPhotographyGallery() {
+        const photoGrid = document.getElementById('photoGrid');
+        if (!photoGrid) return; // Exit if photo grid doesn't exist
+        
+        const lightbox = document.createElement('div');
+        lightbox.className = 'lightbox';
+        lightbox.innerHTML = `
+            <button class="lightbox-close">&times;</button>
+            <button class="lightbox-nav lightbox-prev">&lt;</button>
+            <button class="lightbox-nav lightbox-next">&gt;</button>
+            <img class="lightbox-content" src="" alt="">
+        `;
+        document.body.appendChild(lightbox);
+        
+        // Sample photos - replace with your actual photos
+        const photos = [
+            './img/torta.jpg', // Using existing image as example
+            './img/torta.jpg',
+            './img/torta.jpg',
+            './img/torta.jpg',
+            './img/torta.jpg',
+            './img/torta.jpg'
+        ];
+        
+        // Clear skeleton loading and add actual photos
+        photoGrid.innerHTML = '';
+        
+        photos.forEach((photoSrc, index) => {
+            const photoItem = document.createElement('div');
+            photoItem.className = 'photo-item';
+            photoItem.innerHTML = `
+                <img src="${photoSrc}" alt="After Hours Society photo ${index + 1}" loading="lazy">
+                <div class="photo-overlay">
+                    <p>After Hours Society Meet</p>
+                </div>
+            `;
+            
+            photoItem.addEventListener('click', () => openLightbox(index));
+            photoGrid.appendChild(photoItem);
+        });
+        
+        let currentPhotoIndex = 0;
+        
+        function openLightbox(index) {
+            currentPhotoIndex = index;
+            updateLightboxImage();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        function updateLightboxImage() {
+            const lightboxImg = lightbox.querySelector('.lightbox-content');
+            lightboxImg.src = photos[currentPhotoIndex];
+        }
+        
+        function nextPhoto() {
+            currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
+            updateLightboxImage();
+        }
+        
+        function prevPhoto() {
+            currentPhotoIndex = (currentPhotoIndex - 1 + photos.length) % photos.length;
+            updateLightboxImage();
+        }
+        
+        // Event listeners
+        lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+        lightbox.querySelector('.lightbox-next').addEventListener('click', nextPhoto);
+        lightbox.querySelector('.lightbox-prev').addEventListener('click', prevPhoto);
+        
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
             }
         });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            
+            switch(e.key) {
+                case 'Escape':
+                    closeLightbox();
+                    break;
+                case 'ArrowRight':
+                    nextPhoto();
+                    break;
+                case 'ArrowLeft':
+                    prevPhoto();
+                    break;
+            }
+        });
+    }
+});
     </script>
 </body>
 </html>
+
 

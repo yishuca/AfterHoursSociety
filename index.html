@@ -10,12 +10,10 @@
 
     <!-- Favicon - Using your logo -->
     <link rel="icon" type="image/x-icon" href="https://afterhourssociety.live/img/ahs.png">
-    <link rel="apple-touch-icon" href="https://afterhourssociety.live/img/ahs.png">
-    <!-- Favicons -->
-    <link rel="icon" type="image/x-icon" href="https://www.afterhourssociety.live/img/ahs.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://www.afterhourssociety.live/img/ahs-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://www.afterhourssociety.live/img/ahs-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://www.afterhourssociety.live/img/ahs-180x180.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://afterhourssociety.live/img/ahs-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://afterhourssociety.live/img/ahs-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://afterhourssociety.live/img/ahs-180x180.png">
+    
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:title" content="After Hours Society | Premier Car Club">
     <meta property="og:description" content="After Hours Society - A car club for enthusiasts based in Boise, Idaho.">
@@ -151,14 +149,14 @@
 
         .ahs-text {
             position: absolute;
-            bottom: 30px; /* Adjust this value to position it higher/lower */
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
             color: #00fff2;
             font-size: 18px;
             font-weight: bold;
             text-shadow: 0 0 8px rgba(0, 255, 242, 0.8);
-            letter-spacing: 1px; /* Fixed missing value */
+            letter-spacing: 1px;
             font-family: 'Orbitron', sans-serif;
             z-index: 10;
         }
@@ -236,7 +234,7 @@
             position: relative;
         }
 
-        /* Skeleton Loading Styles */
+        /* Optimized Skeleton Loading Styles */
         .skeleton {
             background: linear-gradient(90deg, #2a2a2a 25%, #333 50%, #2a2a2a 75%);
             background-size: 200% 100%;
@@ -310,6 +308,14 @@
             height: 500px;
             border-radius: 15px;
             margin-bottom: 2rem;
+        }
+
+        /* Optimized skeleton animations for performance */
+        @media (prefers-reduced-motion: reduce) {
+            .skeleton {
+                animation: none;
+                background: #2a2a2a;
+            }
         }
 
         /* Reduced motion styles */
@@ -453,13 +459,13 @@
         }
 
         .hero-content {
-            margin-top: -60px; /* Changed from -80px */
+            margin-top: -60px;
         }
 
         .logo-container {
             position: relative;
-            width: 220px;  /* Increased from 180px */
-            height: 220px; /* Increased from 180px */
+            width: 220px;
+            height: 220px;
             margin: 0 auto 1rem;
         }
 
@@ -468,7 +474,7 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            animation: spin 15s linear infinite, fadeIn 1s ease-out forwards;/* Changed from 10s to 15s */
+            animation: spin 15s linear infinite, fadeIn 1s ease-out forwards;
             position: relative;
             z-index: 2;
             opacity: 0;
@@ -491,7 +497,7 @@
             animation: logoFlicker 8s infinite alternate, fadeIn 1s ease-out forwards;
             animation-delay: 7s;
             z-index: 1;
-            opacity: 0; /* Add this line */
+            opacity: 0;
         }
 
         @keyframes logoFlicker {
@@ -527,7 +533,7 @@
             color: white;
             font-size: 2rem;
             font-weight: bold;
-            animation: spin 15s linear infinite, logoPulse 2s ease-in-out infinite alternate; /* Changed from 10s to 15s */
+            animation: spin 15s linear infinite, logoPulse 2s ease-in-out infinite alternate;
         }
 
         .hero-title {
@@ -747,7 +753,7 @@
             max-width: 1200px;
             margin: 3rem auto;
             text-align: center;
-            padding-top: 60px ;
+            padding-top: 60px;
         }
 
         .services h3 {
@@ -804,7 +810,7 @@
         .portfolio-section {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem 1rem; /* Fixed missing value */
+            padding: 2rem 1rem;
         }
 
         .portfolio-section h2 {
@@ -933,7 +939,6 @@
             margin-right: auto;
             line-height: 1.6;
             text-align: center;
-
         }
 
         .pricing-cards {
@@ -1008,7 +1013,7 @@
             margin-top: 0px;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem 3rem; /* Fixed missing value */
+            padding: 2rem 3rem;
         }
 
         .contact-container {
@@ -1154,7 +1159,7 @@
             bottom: 60px;
             left: 50%;
             transform: translateX(-50%);
-            color: var(white);
+            color: white;
             font-size: 2rem;
             animation: bounce cubic-bezier(0.6, -0.28, 0.735, 0.045) infinite;
             z-index: 10;
@@ -1263,7 +1268,6 @@
             margin-bottom: 1rem;
             color: var(--light);
             font-family: 'Poppins', sans-serif;
-            /* ADDED: Make titles visible immediately */
             opacity: 1;
         }
 
@@ -1271,7 +1275,6 @@
             color: var(--light-gray);
             margin-bottom: 1rem;
             line-height: 1.6;
-            /* ADDED: Make excerpts visible immediately */
             opacity: 1;
         }
 
@@ -1293,47 +1296,48 @@
         .news-item:hover .news-image img {
             transform: scale(1.05);
         }
+
         /* Mobile adjustments */
-           .scroll-indicator {
-                bottom: 20vh !important;
-                font-size: 1.8rem;
-                text-shadow: 
-                    0 0 0px var(--neon-primary),
-                    0 0 8px var(--neon-primary),
-                    0 0 8px var(--neon-primary);
-            }
-            
-            .sponsor-item {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-                padding: 1rem 0;
-            }
-            
-            .skeleton-logo {
-                width: 180px;
-                height: 180px;
-            }
-            
-            .skeleton-title {
-                width: 300px;
-                height: 2rem;
-            }
-            
-            .skeleton-subtitle {
-                width: 250px;
-                height: 1.5rem;
-            }
-            
-            .skeleton-tagline {
-                width: 350px;
-                height: 1rem;
-            }
+        .scroll-indicator {
+            bottom: 20vh !important;
+            font-size: 1.8rem;
+            text-shadow: 
+                0 0 0px var(--neon-primary),
+                0 0 8px var(--neon-primary),
+                0 0 8px var(--neon-primary);
+        }
+        
+        .sponsor-item {
+            flex-direction: column;
+            text-align: center;
+            gap: 1rem;
+            padding: 1rem 0;
+        }
+        
+        .skeleton-logo {
+            width: 180px;
+            height: 180px;
+        }
+        
+        .skeleton-title {
+            width: 300px;
+            height: 2rem;
+        }
+        
+        .skeleton-subtitle {
+            width: 250px;
+            height: 1.5rem;
+        }
+        
+        .skeleton-tagline {
+            width: 350px;
+            height: 1rem;
+        }
 
         @media (max-width: 480px) {
             .logo-container {
-                width: 150px;  /* Adjusted for small mobile */
-                height: 150px; /* Adjusted for small mobile */
+                width: 150px;
+                height: 150px;
             }
             
             .scroll-indicator {
@@ -1526,7 +1530,7 @@
             }
             
             .page {
-                padding: rem;
+                padding: 1rem;
             }
             
             .gradient-orb {
@@ -2663,6 +2667,3 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
 </body>
 </html>
-
-
-

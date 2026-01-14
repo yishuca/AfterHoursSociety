@@ -1843,24 +1843,6 @@
                             </a>
                         </div>
                         <div class="sponsor-item">
-                            <div class="sponsor-name">208_detailz</div>
-                            <a href="https://www.instagram.com/208_detailz/" target="_blank" class="instagram-btn">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                        <div class="sponsor-item">
-                            <div class="sponsor-name">Shave Shoppe Customs</div>
-                            <a href="https://www.instagram.com/shaveshoppe/" target="_blank" class="instagram-btn">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                         <div class="sponsor-item">
-                            <div class="sponsor-name">Dubby</div>
-                            <a href="https://www.instagram.com/dubby.gg/" target="_blank" class="instagram-btn">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                        <div class="sponsor-item">
                             <div class="sponsor-name">Hit List</div>
                             <a href="https://www.instagram.com/hitlistboise/" target="_blank" class="instagram-btn">
                                 <i class="fab fa-instagram"></i>
@@ -2137,7 +2119,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             
                             // Initialize main website content
                             initMainContent();
-                        }, 1500);
+                        }, 500);
                     }, 500);
                 }
             }
@@ -2192,7 +2174,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             setTimeout(() => {
                 animateLetter(charSpan, afterHoursText[i], i);
-            }, i * 100);
+            }, i * 50);
         }
 
         // Animate "SOCIETY" part with flicker ONLY on C, I, T, Y
@@ -2212,7 +2194,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             setTimeout(() => {
                 animateLetter(charSpan, societyText[i], i);
-            }, (afterHoursText.length * 100) + (i * 100));
+            }, (afterHoursText.length * 50) + (i * 50));
         }
 
         function animateLetter(element, finalChar, index) {
@@ -2221,11 +2203,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 element.textContent = chars[Math.floor(Math.random() * chars.length)];
                 
                 iterations++;
-                if (iterations >= 10 + Math.random() * 100) {
+                if (iterations >= 10 + Math.random() * 50) {
                     clearInterval(interval);
                     element.textContent = finalChar === ' ' ? '\u00A0' : finalChar;
                 }
-            }, 50 + Math.random() * 80);
+            }, 200 + Math.random() * 30);
         }
 
         // Function to handle logo upload

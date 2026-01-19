@@ -2410,23 +2410,119 @@
                         </a>
                     </div>
                     
-                    <!-- Collection Gallery -->
+                    <!-- ============================================ -->
+                    <!-- EASY-TO-EDIT GALLERY - DIRECTLY IN HTML -->
+                    <!-- ============================================ -->
+                    <!-- To edit the gallery, simply add/remove/update -->
+                    <!-- the data-gallery attributes below -->
+                    <!-- ============================================ -->
+                    
+                    <!-- Collection Gallery - EDIT THIS SECTION -->
                     <div class="collection-gallery" id="collectionGallery">
-                        <!-- Collections will be loaded here -->
-                        <div class="photo-loading">
-                            <i class="fas fa-spinner fa-spin"></i> Loading collections...
+                        <!-- Gallery Item 1 -->
+                        <div class="collection-item" 
+                             data-gallery-title="Season 2026 Launch"
+                             data-gallery-cover="https://afterhourssociety.live/img/Ahsp1.jpg"
+                             data-gallery-images='[
+                                "https://afterhourssociety.live/img/Ahsp1.jpg",
+                                "https://afterhourssociety.live/img/Ahsp2.jpg",
+                                "https://afterhourssociety.live/img/Ahsp3.jpg",
+                                "https://afterhourssociety.live/img/Ahsp4.jpg",
+                                "https://afterhourssociety.live/img/Ahsp5.jpg"
+                             ]'>
+                            <img src="https://afterhourssociety.live/img/Ahsp1.jpg" alt="Season 2026 Launch">
+                            <div class="collection-overlay">
+                                <h4 class="collection-title">Season 2026 Launch</h4>
+                                <div class="collection-count">
+                                    <i class="fas fa-images"></i>
+                                    <span>5 photos</span>
+                                </div>
+                            </div>
                         </div>
+                        
+                        <!-- Gallery Item 2 -->
+                        <div class="collection-item" 
+                             data-gallery-title="Night Meets"
+                             data-gallery-cover="https://afterhourssociety.live/img/Ahsp2.jpg"
+                             data-gallery-images='[
+                                "https://afterhourssociety.live/img/Ahsp2.jpg",
+                                "https://afterhourssociety.live/img/Ahsp3.jpg",
+                                "https://afterhourssociety.live/img/Ahsp1.jpg"
+                             ]'>
+                            <img src="https://afterhourssociety.live/img/Ahsp2.jpg" alt="Night Meets">
+                            <div class="collection-overlay">
+                                <h4 class="collection-title">Night Meets</h4>
+                                <div class="collection-count">
+                                    <i class="fas fa-images"></i>
+                                    <span>3 photos</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Gallery Item 3 -->
+                        <div class="collection-item" 
+                             data-gallery-title="Special Events"
+                             data-gallery-cover="https://afterhourssociety.live/img/Ahsp3.jpg"
+                             data-gallery-images='[
+                                "https://afterhourssociety.live/img/Ahsp3.jpg",
+                                "https://afterhourssociety.live/img/Ahsp4.jpg",
+                                "https://afterhourssociety.live/img/Ahsp5.jpg",
+                                "https://afterhourssociety.live/img/Ahsp1.jpg"
+                             ]'>
+                            <img src="https://afterhourssociety.live/img/Ahsp3.jpg" alt="Special Events">
+                            <div class="collection-overlay">
+                                <h4 class="collection-title">Special Events</h4>
+                                <div class="collection-count">
+                                    <i class="fas fa-images"></i>
+                                    <span>4 photos</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- ============================================ -->
+                        <!-- TO ADD MORE GALLERY ITEMS: -->
+                        <!-- 1. Copy the entire collection-item div above -->
+                        <!-- 2. Update the data attributes: -->
+                        <!--    - data-gallery-title="Your Title" -->
+                        <!--    - data-gallery-cover="URL to cover image" -->
+                        <!--    - data-gallery-images='["img1.jpg", "img2.jpg"]' -->
+                        <!-- 3. Update the img src to match cover image -->
+                        <!-- 4. Update the title and count in the overlay -->
+                        <!-- ============================================ -->
+                        
+                        <!-- Example for adding a new gallery: -->
+                        <!--
+                        <div class="collection-item" 
+                             data-gallery-title="New Collection"
+                             data-gallery-cover="https://your-image-url.com/cover.jpg"
+                             data-gallery-images='[
+                                "https://your-image-url.com/image1.jpg",
+                                "https://your-image-url.com/image2.jpg"
+                             ]'>
+                            <img src="https://your-image-url.com/cover.jpg" alt="New Collection">
+                            <div class="collection-overlay">
+                                <h4 class="collection-title">New Collection</h4>
+                                <div class="collection-count">
+                                    <i class="fas fa-images"></i>
+                                    <span>2 photos</span>
+                                </div>
+                            </div>
+                        </div>
+                        -->
+                        <!-- ============================================ -->
+                        
                     </div>
 
-                    <!-- Google Drive Link -->
-                    <p style="margin-top: 1.5rem;">
-                        <strong>Share your photos with us to our Gallery Collections!</strong><br>
-                        <a href="https://drive.google.com/drive/folders/1IN29jurCr17ZSt-A5q8zm-H6UV7NaHCQ?usp=sharing" 
-                            target="_blank" 
-                            class="drive-link">
-                            <i class="fab fa-google-drive"></i> Add your pictures here!
-                        </a>
-                    </p>
+<!-- Google Drive Link - Centered -->
+<div style="margin-top: 1.5rem; text-align: center;">
+    <p><strong>Share your photos with us to our Gallery Collections!</strong></p>
+    <a href="https://drive.google.com/drive/folders/1IN29jurCr17ZSt-A5q8zm-H6UV7NaHCQ?usp=sharing" 
+       target="_blank" 
+       class="drive-link" 
+       style="display: inline-flex; margin-top: 0.5rem;">
+        <i class="fab fa-google-drive"></i> Add your pictures here!
+    </a>
+</div>
                 </section>
                 <br><br>
             </div>
@@ -2563,6 +2659,13 @@
     </div>
 
     <script>
+// ============================================
+// EASY-TO-EDIT GALLERY SYSTEM - ALL IN HTML
+// ============================================
+// To edit the gallery, simply update the HTML elements
+// in the Photography section above.
+// ============================================
+
 // Debounce function for performance
 function debounce(func, wait) {
     let timeout;
@@ -2580,6 +2683,214 @@ function debounce(func, wait) {
 let currentGallery = null;
 let currentImageIndex = 0;
 
+// Function to load gallery data from HTML elements
+function loadGalleryFromHTML() {
+    const collectionItems = document.querySelectorAll('.collection-item');
+    const collections = [];
+    
+    collectionItems.forEach((item, index) => {
+        try {
+            const title = item.getAttribute('data-gallery-title') || `Collection ${index + 1}`;
+            const cover = item.getAttribute('data-gallery-cover') || '';
+            const imagesJson = item.getAttribute('data-gallery-images') || '[]';
+            
+            // Parse the images array from JSON
+            let images = [];
+            try {
+                images = JSON.parse(imagesJson);
+            } catch (e) {
+                console.error('Error parsing images JSON:', e);
+                images = [];
+            }
+            
+            collections.push({
+                id: index + 1,
+                title: title,
+                cover: cover,
+                images: images
+            });
+        } catch (error) {
+            console.error('Error loading gallery item:', error);
+        }
+    });
+    
+    return collections;
+}
+
+// Initialize collection gallery
+function initCollectionGallery() {
+    const collectionGallery = document.getElementById('collectionGallery');
+    if (!collectionGallery) return;
+    
+    // Load gallery data from HTML
+    const collections = loadGalleryFromHTML();
+    
+    if (collections.length === 0) {
+        collectionGallery.innerHTML = `
+            <div style="text-align: center; grid-column: 1 / -1; padding: 3rem;">
+                <i class="fas fa-images" style="font-size: 3rem; color: var(--neon-primary); margin-bottom: 1rem;"></i>
+                <h3 style="color: var(--light); margin-bottom: 1rem;">No Collections Yet</h3>
+                <p style="color: var(--light-gray);">Check back soon for gallery updates!</p>
+            </div>
+        `;
+        return;
+    }
+    
+    // Set up click handlers for existing gallery items
+    const collectionItems = document.querySelectorAll('.collection-item');
+    collectionItems.forEach((item, index) => {
+        if (index < collections.length) {
+            item.addEventListener('click', () => openGallery(collections[index]));
+        }
+    });
+}
+
+// Gallery Functions
+function openGallery(collection) {
+    currentGallery = collection;
+    currentImageIndex = 0;
+    
+    const modal = document.getElementById('galleryModal');
+    const title = document.getElementById('galleryTitle');
+    const mainImage = document.getElementById('galleryMainImage');
+    const thumbnails = document.getElementById('galleryThumbnails');
+    
+    title.textContent = collection.title;
+    mainImage.src = collection.images[0] || '';
+    mainImage.alt = `${collection.title} - Image 1`;
+    
+    // Create thumbnails
+    thumbnails.innerHTML = '';
+    collection.images.forEach((image, index) => {
+        const thumbnail = document.createElement('div');
+        thumbnail.className = `thumbnail ${index === 0 ? 'active' : ''}`;
+        thumbnail.innerHTML = `<img src="${image}" alt="Thumbnail ${index + 1}" loading="lazy">`;
+        
+        thumbnail.addEventListener('click', () => {
+            currentImageIndex = index;
+            updateMainImage();
+            updateActiveThumbnail();
+        });
+        
+        thumbnails.appendChild(thumbnail);
+    });
+    
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeGallery() {
+    const modal = document.getElementById('galleryModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+    currentGallery = null;
+}
+
+function nextImage() {
+    if (currentGallery) {
+        currentImageIndex = (currentImageIndex + 1) % currentGallery.images.length;
+        updateMainImage();
+        updateActiveThumbnail();
+    }
+}
+
+function prevImage() {
+    if (currentGallery) {
+        currentImageIndex = (currentImageIndex - 1 + currentGallery.images.length) % currentGallery.images.length;
+        updateMainImage();
+        updateActiveThumbnail();
+    }
+}
+
+function updateMainImage() {
+    const mainImage = document.getElementById('galleryMainImage');
+    if (currentGallery && currentGallery.images[currentImageIndex]) {
+        mainImage.src = currentGallery.images[currentImageIndex];
+        mainImage.alt = `${currentGallery.title} - Image ${currentImageIndex + 1}`;
+    }
+}
+
+function updateActiveThumbnail() {
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    thumbnails.forEach((thumb, index) => {
+        thumb.classList.toggle('active', index === currentImageIndex);
+    });
+}
+
+// Keyboard navigation for gallery
+document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('galleryModal');
+    if (!modal.classList.contains('active') || !currentGallery) return;
+    
+    switch(e.key) {
+        case 'Escape':
+            closeGallery();
+            break;
+        case 'ArrowRight':
+            nextImage();
+            break;
+        case 'ArrowLeft':
+            prevImage();
+            break;
+    }
+});
+
+// Touch swipe for gallery
+document.addEventListener('DOMContentLoaded', function() {
+    const mainImage = document.getElementById('galleryMainImage');
+    let touchStartX = 0;
+    
+    if (mainImage) {
+        mainImage.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+        });
+        
+        mainImage.addEventListener('touchend', (e) => {
+            const touchEndX = e.changedTouches[0].clientX;
+            const diff = touchStartX - touchEndX;
+            const threshold = 50;
+            
+            if (Math.abs(diff) > threshold && currentGallery) {
+                if (diff > 0) {
+                    // Swipe left - next image
+                    nextImage();
+                } else {
+                    // Swipe right - previous image
+                    prevImage();
+                }
+            }
+        });
+    }
+});
+
+// ============================================
+// HOW TO EDIT THE GALLERY:
+// ============================================
+// 1. To ADD a new gallery collection:
+//    - Copy one of the existing <div class="collection-item"> blocks
+//    - Update these attributes:
+//      * data-gallery-title="Your Collection Title"
+//      * data-gallery-cover="URL to cover image"
+//      * data-gallery-images='["image1.jpg", "image2.jpg"]'
+//    - Update the <img src> to match cover image
+//    - Update the title and count in the overlay div
+//
+// 2. To REMOVE a gallery collection:
+//    - Simply delete the entire <div class="collection-item"> block
+//
+// 3. To EDIT an existing gallery:
+//    - Update the data-gallery-title for new title
+//    - Update the data-gallery-cover for new cover image
+//    - Update the data-gallery-images array with new image URLs
+//    - Update the overlay title and count
+//
+// 4. To REORDER galleries:
+//    - Simply move the <div class="collection-item"> blocks around
+// ============================================
+
+// ============================================
+// MAIN INITIALIZATION
+// ============================================
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize loading screen
     initLoadingScreen();
@@ -3131,239 +3442,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         window.addEventListener('resize', debounce(handleOrientationChange, 250));
         window.addEventListener('orientationchange', debounce(handleOrientationChange, 500));
-    }
-
-    // Collection Gallery Functionality
-    function initCollectionGallery() {
-        const collectionGallery = document.getElementById('collectionGallery');
-        if (!collectionGallery) return;
-        
-        // ============================================
-        // EASILY EDITABLE COLLECTIONS DATA
-        // ============================================
-        // To add/edit collections, simply modify this array:
-        const collections = [
-            {
-                id: 1,
-                title: "Season 2026 Launch",
-                cover: "https://afterhourssociety.live/img/Ahsp1.jpg",
-                count: 5,
-                images: [
-                    "https://afterhourssociety.live/img/Ahsp1.jpg",
-                    "https://afterhourssociety.live/img/Ahsp2.jpg",
-                    "https://afterhourssociety.live/img/Ahsp3.jpg",
-                    "https://afterhourssociety.live/img/Ahsp4.jpg",
-                    "https://afterhourssociety.live/img/Ahsp5.jpg"
-                ]
-            },
-            {
-                id: 2,
-                title: "Night Meets",
-                cover: "https://afterhourssociety.live/img/Ahsp2.jpg",
-                count: 3,
-                images: [
-                    "https://afterhourssociety.live/img/Ahsp2.jpg",
-                    "https://afterhourssociety.live/img/Ahsp3.jpg",
-                    "https://afterhourssociety.live/img/Ahsp1.jpg"
-                ]
-            },
-            {
-                id: 3,
-                title: "Special Event",
-                cover: "https://afterhourssociety.live/img/Ahsp3.jpg",
-                count: 4,
-                images: [
-                    "https://afterhourssociety.live/img/Ahsp3.jpg",
-                    "https://afterhourssociety.live/img/Ahsp4.jpg",
-                    "https://afterhourssociety.live/img/Ahsp5.jpg",
-                    "https://afterhourssociety.live/img/Ahsp1.jpg"
-                ]
-            },
-            // ============================================
-            // TO ADD MORE COLLECTIONS:
-            // 1. Copy the object below
-            // 2. Change id, title, cover image URL
-            // 3. Add your image URLs to the images array
-            // ============================================
-            // {
-            //     id: 4, // Make this unique (use next number)
-            //     title: "New Collection Name",
-            //     cover: "https://your-image-url.com/cover.jpg",
-            //     count: 0, // Will be auto-calculated
-            //     images: [
-            //         "https://your-image-url.com/image1.jpg",
-            //         "https://your-image-url.com/image2.jpg",
-            //         // Add more image URLs as needed
-            //     ]
-            // }
-            // ============================================
-        ];
-        
-        // Update count for each collection
-        collections.forEach(collection => {
-            collection.count = collection.images.length;
-        });
-        
-        // Save collections to localStorage for persistence (optional)
-        if (!localStorage.getItem('collections')) {
-            localStorage.setItem('collections', JSON.stringify(collections));
-        }
-        
-        const savedCollections = JSON.parse(localStorage.getItem('collections'));
-        renderCollections(savedCollections);
-        
-        function renderCollections(collectionsData) {
-            collectionGallery.innerHTML = '';
-            
-            if (!collectionsData || collectionsData.length === 0) {
-                collectionGallery.innerHTML = `
-                    <div style="text-align: center; grid-column: 1 / -1; padding: 3rem;">
-                        <i class="fas fa-images" style="font-size: 3rem; color: var(--neon-primary); margin-bottom: 1rem;"></i>
-                        <h3 style="color: var(--light); margin-bottom: 1rem;">No Collections Yet</h3>
-                        <p style="color: var(--light-gray);">Check back soon for gallery updates!</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            collectionsData.forEach(collection => {
-                const collectionItem = document.createElement('div');
-                collectionItem.className = 'collection-item';
-                collectionItem.dataset.id = collection.id;
-                
-                collectionItem.innerHTML = `
-                    <img src="${collection.cover}" alt="${collection.title}" loading="lazy">
-                    <div class="collection-overlay">
-                        <h4 class="collection-title">${collection.title}</h4>
-                        <div class="collection-count">
-                            <i class="fas fa-images"></i>
-                            <span>${collection.count} photo${collection.count !== 1 ? 's' : ''}</span>
-                        </div>
-                    </div>
-                `;
-                
-                collectionItem.addEventListener('click', () => openGallery(collection));
-                collectionGallery.appendChild(collectionItem);
-            });
-        }
-    }
-});
-
-// Gallery Functions
-function openGallery(collection) {
-    currentGallery = collection;
-    currentImageIndex = 0;
-    
-    const modal = document.getElementById('galleryModal');
-    const title = document.getElementById('galleryTitle');
-    const mainImage = document.getElementById('galleryMainImage');
-    const thumbnails = document.getElementById('galleryThumbnails');
-    
-    title.textContent = collection.title;
-    mainImage.src = collection.images[0];
-    mainImage.alt = `${collection.title} - Image 1`;
-    
-    // Create thumbnails
-    thumbnails.innerHTML = '';
-    collection.images.forEach((image, index) => {
-        const thumbnail = document.createElement('div');
-        thumbnail.className = `thumbnail ${index === 0 ? 'active' : ''}`;
-        thumbnail.innerHTML = `<img src="${image}" alt="Thumbnail ${index + 1}">`;
-        
-        thumbnail.addEventListener('click', () => {
-            currentImageIndex = index;
-            updateMainImage();
-            updateActiveThumbnail();
-        });
-        
-        thumbnails.appendChild(thumbnail);
-    });
-    
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeGallery() {
-    const modal = document.getElementById('galleryModal');
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-    currentGallery = null;
-}
-
-function nextImage() {
-    if (currentGallery) {
-        currentImageIndex = (currentImageIndex + 1) % currentGallery.images.length;
-        updateMainImage();
-        updateActiveThumbnail();
-    }
-}
-
-function prevImage() {
-    if (currentGallery) {
-        currentImageIndex = (currentImageIndex - 1 + currentGallery.images.length) % currentGallery.images.length;
-        updateMainImage();
-        updateActiveThumbnail();
-    }
-}
-
-function updateMainImage() {
-    const mainImage = document.getElementById('galleryMainImage');
-    if (currentGallery && currentGallery.images[currentImageIndex]) {
-        mainImage.src = currentGallery.images[currentImageIndex];
-        mainImage.alt = `${currentGallery.title} - Image ${currentImageIndex + 1}`;
-    }
-}
-
-function updateActiveThumbnail() {
-    const thumbnails = document.querySelectorAll('.thumbnail');
-    thumbnails.forEach((thumb, index) => {
-        thumb.classList.toggle('active', index === currentImageIndex);
-    });
-}
-
-// Keyboard navigation for gallery
-document.addEventListener('keydown', (e) => {
-    const modal = document.getElementById('galleryModal');
-    if (!modal.classList.contains('active') || !currentGallery) return;
-    
-    switch(e.key) {
-        case 'Escape':
-            closeGallery();
-            break;
-        case 'ArrowRight':
-            nextImage();
-            break;
-        case 'ArrowLeft':
-            prevImage();
-            break;
-    }
-});
-
-// Touch swipe for gallery
-document.addEventListener('DOMContentLoaded', function() {
-    const mainImage = document.getElementById('galleryMainImage');
-    let touchStartX = 0;
-    
-    if (mainImage) {
-        mainImage.addEventListener('touchstart', (e) => {
-            touchStartX = e.touches[0].clientX;
-        });
-        
-        mainImage.addEventListener('touchend', (e) => {
-            const touchEndX = e.changedTouches[0].clientX;
-            const diff = touchStartX - touchEndX;
-            const threshold = 50;
-            
-            if (Math.abs(diff) > threshold && currentGallery) {
-                if (diff > 0) {
-                    // Swipe left - next image
-                    nextImage();
-                } else {
-                    // Swipe right - previous image
-                    prevImage();
-                }
-            }
-        });
     }
 });
     </script>

@@ -3,16 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    
     <!-- Primary Meta Tags -->
-    <meta name="description" content="After Hours Society - A car club for enthusiasts based in Boise, Idaho.">
-    <meta name="keywords" content="car club, automotive, car meets, after hours society, car enthusiasts, modified cars, boise, id, idaho">
+    <meta name="description" content="After Hours Society - A premier car club for enthusiasts based in Boise, Idaho. Join us for meets, events, and automotive community.">
+    <meta name="keywords" content="car club, automotive, car meets, after hours society, car enthusiasts, modified cars, boise, id, idaho, jdm, european, american muscle">
     <meta name="author" content="After Hours Society">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.afterhourssociety.live">
 
-    <!-- Favicon - Using your logo -->
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="https://afterhourssociety.live/img/ahs.png">
     <link rel="icon" type="image/png" sizes="32x32" href="https://afterhourssociety.live/img/ahs-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://afterhourssociety.live/img/ahs-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://afterhourssociety.live/img/ahs-180x180.png">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="https://afterhourssociety.live/img/ahs.png" as="image" type="image/png">
+    <link rel="preload" href="https://afterhourssociety.live/img/torta.jpg" as="image" type="image/jpeg">
     
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:title" content="After Hours Society | Premier Car Club">
@@ -20,23 +29,29 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.afterhourssociety.live">
     <meta property="og:image" content="https://afterhourssociety.live/img/ahs.png">
+    <meta property="og:image:alt" content="After Hours Society Logo">
+    <meta property="og:site_name" content="After Hours Society">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="After Hours Society | Premier Car Club">
     <meta name="twitter:description" content="After Hours Society - A car club for enthusiasts based in Boise, Idaho.">
     <meta name="twitter:image" content="https://afterhourssociety.live/img/ahs.png">
-    <title>After Hours Society | Premier Car Club</title>
+    <meta name="twitter:creator" content="@after_hours_soc1ety">
     
-    <!-- Preload and Preconnect -->
+    <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" as="style">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" as="style">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    
+    <!-- Preload external CSS -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" crossorigin="anonymous">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" as="style" crossorigin="anonymous">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" as="style" crossorigin="anonymous">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
     
@@ -58,8 +73,26 @@
       "sameAs": [
         "https://www.instagram.com/after_hours_soc1ety/",
         "https://www.tiktok.com/@after_hours_society"
-      ]
+      ],
+      "foundingDate": "2025",
+      "founder": {
+        "@type": "Person",
+        "name": "After Hours Society"
+      }
     }
+    </script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX', {
+        'anonymize_ip': true,
+        'allow_ad_personalization_signals': false,
+        'restricted_data_processing': true
+      });
     </script>
     
     <!-- Main CSS -->
@@ -206,6 +239,7 @@
             --neon-primary: #ff073a;  /* Bright red */
             --neon-secondary: #ff4d00; /* Orange-red */
             --neon-accent: #ff0022;   /* Bright red accent */
+            --neon-cyan: #00fff2;     /* Cyan accent */
             --dark: #1a1a1a;          /* Dark grey background */
             --darker: #0d0d0d;        /* Darker elements */
             --light: #f8f9fa;         /* Brighter light text for better contrast */
@@ -232,6 +266,13 @@
             line-height: 1.6;
             overflow-x: hidden;
             position: relative;
+        }
+
+        /* Accessibility Improvements */
+        :focus-visible {
+            outline: 2px solid var(--neon-primary);
+            outline-offset: 3px;
+            border-radius: 2px;
         }
 
         /* Optimized Skeleton Loading Styles */
@@ -430,7 +471,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            padding: 2rem;
+            padding: 1rem;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.5s ease;
@@ -450,7 +491,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 2rem 1rem;
+            padding: 1rem;
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
@@ -537,14 +578,14 @@
         }
 
         .hero-title {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
             margin-bottom: 1rem;
             color: var(--light);
             font-weight: 500;
-            letter-spacing: 8px;
+            letter-spacing: clamp(3px, 2vw, 8px);
             text-transform: uppercase;
             font-family: 'Poppins', sans-serif;
-            margin-left: 8px;
+            margin-left: clamp(2px, 1vw, 8px);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -557,6 +598,7 @@
             opacity: 0;
             transform: translateY(40px);
             animation: titleRise 3s ease-out forwards;
+            flex-wrap: wrap;
         }
 
         @keyframes titleRise {
@@ -578,7 +620,7 @@
             opacity: 0;
             animation: matrixReveal 20s forwards;
             display: inline-block;
-            min-width: 25px;
+            min-width: clamp(15px, 2vw, 25px);
             text-align: center;
             text-shadow: 
                 0 0 5px #fff,
@@ -621,7 +663,7 @@
         }
 
         .hero-content h2, h3 {
-            font-size: 1.8rem;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
             font-weight: 400;
             margin-bottom: 1.5rem;
             color: var(--light);
@@ -642,7 +684,7 @@
         }
 
         .tagline {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2vw, 1.2rem);
             max-width: 600px;
             margin: 0 auto 2rem;
             color: var(--light-gray);
@@ -667,6 +709,31 @@
             opacity: 0;
             animation: fadeIn 1s ease-out forwards;
             animation-delay: 2.1s;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
         }
 
         .portfolio-overlay .btn {
@@ -722,8 +789,8 @@
 
         .gradient-orb {
             position: absolute;
-            width: 600px;
-            height: 600px;
+            width: min(600px, 80vw);
+            height: min(600px, 80vw);
             border-radius: 50%;
             background: radial-gradient(circle, 
                 rgba(255, 7, 58, 0.15) 0%, 
@@ -757,7 +824,7 @@
         }
 
         .services h3 {
-            font-size: 2rem;
+            font-size: clamp(1.5rem, 4vw, 2rem);
             margin-bottom: 1rem;
             position: relative;
             display: inline-block;
@@ -768,7 +835,7 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
@@ -814,7 +881,7 @@
         }
 
         .portfolio-section h2 {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
             text-align: center;
             margin-bottom: 3rem;
             position: relative;
@@ -829,7 +896,7 @@
                 0 0 40px var(--neon-primary);
             letter-spacing: 1px;
             word-break: keep-all;
-            white-space: nowrap;
+            white-space: normal;
         }
 
         /* Flicker effect for the 'e' in Projects */
@@ -875,7 +942,7 @@
         }
 
         .sponsor-name {
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
             color: var(--light);
             font-family: 'Poppins', sans-serif;
             font-weight: 500;
@@ -911,7 +978,7 @@
         }
 
         .pricing-section h2 {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
             margin-bottom: 1rem;
             color: var(--neon-primary);
             font-family: 'Poppins', sans-serif;
@@ -933,7 +1000,7 @@
         .subtitle {
             color: var(--light-gray);
             margin-bottom: 3rem;
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2vw, 1.1rem);
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
@@ -943,7 +1010,7 @@
 
         .pricing-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
@@ -1009,23 +1076,24 @@
             color: var(--neon-accent);
         }
 
+        /* UPDATED: Contact section with reduced side margins */
         .contact-section {
             margin-top: 0px;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 2rem 3rem;
+            padding: 2rem 1rem;
         }
 
         .contact-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
             gap: 3rem;
             margin-top: 2rem;
             padding-bottom: 2rem;
         }
 
         .contact-info h2 {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
             margin-bottom: 1.5rem;
             color: var(--neon-primary);
             font-family: 'Poppins', sans-serif;
@@ -1033,18 +1101,31 @@
         }
 
         .contact-info p {
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             color: var(--light-gray);
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            line-height: 1.7;
         }
 
         .contact-methods {
             width: 100%;
+            margin-top: 2rem;
         }
 
         .contact-method {
             display: flex;
             align-items: center;
             margin-bottom: 1.5rem;
+            background: rgba(255, 7, 58, 0.05);
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 3px solid var(--neon-primary);
+            transition: var(--transition);
+        }
+
+        .contact-method:hover {
+            background: rgba(255, 7, 58, 0.1);
+            transform: translateX(5px);
         }
 
         .contact-method i {
@@ -1073,19 +1154,49 @@
             color: var(--light-gray);
             text-decoration: none;
             transition: var(--transition);
+            display: inline-block;
         }
 
         .contact-method a:hover {
             color: var(--neon-primary);
-            text-decoration: underline;
+            transform: translateY(-1px);
+        }
+
+        /* Google Drive Link Styles */
+        .drive-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(66, 133, 244, 0.1);
+            border: 1px solid #4285f4;
+            color: #4285f4;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            margin-top: 1rem;
+        }
+
+        .drive-link:hover {
+            background: rgba(66, 133, 244, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(66, 133, 244, 0.3);
+            color: #3367d6;
+        }
+
+        .drive-link i {
+            font-size: 1.2rem;
         }
 
         .contact-form {
             background: rgba(26, 26, 26, 0.8);
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: 15px;
             border: 1px solid var(--border-gray);
             transition: var(--transition);
+            width: 100%;
+            max-width: 100%;
         }
 
         .contact-form:hover {
@@ -1101,13 +1212,14 @@
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 0.8rem 1rem;
+            padding: 1rem;
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid var(--border-gray);
             border-radius: 8px;
             color: var(--light);
             font-family: inherit;
             transition: var(--transition);
+            font-size: 1rem;
         }
 
         .form-group input:focus,
@@ -1120,15 +1232,22 @@
 
         .form-group textarea {
             resize: vertical;
-            min-height: 120px;
+            min-height: 140px;
+        }
+
+        /* Form group states */
+        .form-group.filled label {
+            transform: translateY(-25px) scale(0.85);
+            color: var(--neon-primary);
         }
 
         /* Error message styles */
         .error-message {
             color: #ff6b6b;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             margin-top: 0.3rem;
             display: none;
+            text-shadow: 0 0 3px rgba(255, 107, 107, 0.3);
         }
 
         .form-group.error .error-message {
@@ -1138,6 +1257,7 @@
         .form-group.error input,
         .form-group.error textarea {
             border-color: #ff6b6b;
+            background: rgba(255, 107, 107, 0.05);
         }
 
         /* Success message styles */
@@ -1145,12 +1265,13 @@
             display: none;
             background: rgba(0, 255, 0, 0.1);
             border: 1px solid #00ff00;
-            padding: 1rem;
+            padding: 1.2rem;
             border-radius: 8px;
             text-align: center;
             color: #00ff00;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             text-shadow: 0 0 8px rgba(0, 255, 0, 0.5);
+            font-weight: 500;
         }
 
         /* Scroll indicator arrow */
@@ -1160,7 +1281,7 @@
             left: 50%;
             transform: translateX(-50%);
             color: white;
-            font-size: 2rem;
+            font-size: clamp(1.5rem, 4vw, 2rem);
             animation: bounce cubic-bezier(0.6, -0.28, 0.735, 0.045) infinite;
             z-index: 10;
             opacity: 0.7;
@@ -1218,7 +1339,7 @@
         }
 
         .news-updates h2 {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
             text-align: center;
             margin-bottom: 3rem;
             color: white;
@@ -1235,7 +1356,7 @@
 
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
             gap: 2rem;
         }
 
@@ -1261,10 +1382,18 @@
             color: var(--neon-primary);
             font-size: 0.9rem;
             margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .news-date::before {
+            content: '';
+            font-size: 0.8rem;
         }
 
         .news-title {
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
             margin-bottom: 1rem;
             color: var(--light);
             font-family: 'Poppins', sans-serif;
@@ -1276,6 +1405,35 @@
             margin-bottom: 1rem;
             line-height: 1.6;
             opacity: 1;
+        }
+
+        /* UPDATED: Styled link in news excerpt */
+        .news-excerpt a {
+            color: var(--neon-cyan);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 255, 242, 0.1);
+            border: 1px solid transparent;
+        }
+
+        .news-excerpt a::after {
+            content: '↗';
+            font-size: 0.9em;
+        }
+
+        .news-excerpt a:hover {
+            color: white;
+            background: rgba(0, 255, 242, 0.2);
+            border-color: var(--neon-cyan);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 242, 0.3);
         }
 
         .news-image {
@@ -1389,7 +1547,7 @@
             -webkit-backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-around;
-            padding: 15px;
+            padding: 10px 5px;
             z-index: 100;
             box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
         }
@@ -1400,14 +1558,15 @@
             align-items: center;
             text-decoration: none;
             color: var(--gray);
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             position: relative;
             z-index: 1;
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 0.3rem;
             transition: var(--transition);
             flex: 1;
             text-align: center;
             margin-bottom: -10px;
+            min-width: 0;
         }
 
         .nav-link i {
@@ -1433,8 +1592,12 @@
 
         .nav-link span {
             display: block;
-            font-size: 0.7rem;
+            font-size: 0.6rem;
             margin-top: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
         }
 
         .nav-indicator {
@@ -1449,7 +1612,264 @@
             transform: translateX(0);
         }
 
+        /* Instagram CTA Button - Centered */
+        .instagram-cta {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        
+        /* Loading indicator for photos */
+        .photo-loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            color: var(--neon-primary);
+            font-size: 1.2rem;
+        }
+        
+        /* NEW: Collection Gallery Styles */
+        .collection-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            padding: 0 0.5rem;
+        }
+        
+        .collection-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            background: rgba(26, 26, 26, 0.8);
+            border: 2px solid var(--neon-primary);
+            transition: var(--transition);
+            cursor: pointer;
+            aspect-ratio: 4/3;
+        }
+        
+        .collection-item:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 10px 30px rgba(255, 7, 58, 0.4);
+            border-color: var(--neon-secondary);
+        }
+        
+        .collection-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .collection-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .collection-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .collection-item:hover .collection-overlay {
+            opacity: 1;
+        }
+        
+        .collection-title {
+            color: white;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .collection-count {
+            color: var(--neon-cyan);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Gallery Modal Styles - IMPROVED FOR DESKTOP */
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .gallery-modal.active {
+            display: flex;
+        }
+        
+        .gallery-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            background: linear-gradient(rgba(0, 0, 0, 0.9), transparent);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 2001;
+        }
+        
+        .gallery-title {
+            color: white;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            max-width: 70%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .gallery-close {
+            background: rgba(255, 7, 58, 0.7);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+        
+        .gallery-close:hover {
+            background: rgba(255, 7, 58, 0.9);
+            transform: scale(1.1);
+        }
+        
+        .gallery-container {
+            width: 95%;
+            height: 90%; /* Reduced height to ensure thumbnails are visible */
+            display: flex;
+            flex-direction: column;
+            padding: 0.5rem;
+        }
+        
+        .gallery-main-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            position: relative;
+            max-height: 80vh; /* Limit maximum height */
+        }
+        
+        .gallery-main-image img {
+            max-width: 90%;
+            max-height: 70vh; /* Reduced max height */
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(255, 7, 58, 0.5);
+        }
+        
+        /* Navigation Arrows */
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 7, 58, 0.7);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            z-index: 2002;
+        }
+        
+        .gallery-nav:hover {
+            background: rgba(255, 7, 58, 0.9);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .gallery-prev {
+            left: 20px;
+        }
+        
+        .gallery-next {
+            right: 20px;
+        }
+        
+        .gallery-thumbnails {
+            display: flex;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            overflow-x: auto;
+            background: rgba(26, 26, 26, 0.5);
+            border-radius: 10px;
+            margin-top: 0.5rem;
+            height: 100px; /* Fixed height for thumbnails */
+            align-items: center;
+        }
+        
+        .thumbnail {
+            width: 80px;
+            height: 60px;
+            border-radius: 5px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+        
+        .thumbnail:hover,
+        .thumbnail.active {
+            opacity: 1;
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(255, 7, 58, 0.7);
+        }
+        
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .news-excerpt a::after {
+            content: '' !important;
+        }
+
+        /* Responsive Breakpoints */
         @media (max-width: 768px) {
+            .page {
+                padding: 0.5rem;
+            }
+            
+            .hero {
+                padding: 1rem 0.5rem;
+            }
+            
             .hero-content h1 {
                 font-size: 2rem;
                 letter-spacing: 4px;
@@ -1482,7 +1902,7 @@
             }
             
             .nav-link i {
-                font-size: 1.5rem;
+                font-size: 1.2rem;
                 margin-bottom: 0.3rem;
             }
 
@@ -1495,8 +1915,8 @@
             }
 
             .gradient-orb {
-                width: 400px;
-                height: 400px;
+                width: 300px;
+                height: 300px;
             }
 
             .contact-method {
@@ -1509,19 +1929,79 @@
                 margin-bottom: 0;
             }
             
-            #cookie-consent {
-                bottom: 60px;
-            }
-            
             .scroll-indicator {
                 bottom: 60px;
                 font-size: 1.5rem;
+            }
+            
+            /* Updated: Contact section responsive adjustments */
+            .contact-section {
+                padding: 2rem 0.5rem;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .contact-form {
+                padding: 1.5rem;
+            }
+            
+            /* Collection gallery responsive */
+            .collection-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
+                gap: 1rem;
+                padding: 0;
+            }
+            
+            .gallery-container {
+                width: 98%;
+                height: 95%;
+            }
+            
+            .gallery-main-image {
+                padding: 0.5rem;
+            }
+            
+            .gallery-header {
+                padding: 0.8rem;
+            }
+            
+            .gallery-close {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+            
+            .gallery-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .gallery-prev {
+                left: 10px;
+            }
+            
+            .gallery-next {
+                right: 10px;
+            }
+            
+            .thumbnail {
+                width: 60px;
+                height: 45px;
+            }
+            
+            .gallery-thumbnails {
+                height: 80px;
             }
         }
 
         @media (max-width: 480px) {
             .hero {
-                padding: 2rem 1rem;
+                padding: 1rem 0.5rem;
+                height: 85vh;
             }
             
             .hero-content h1 {
@@ -1530,12 +2010,17 @@
             }
             
             .page {
-                padding: 1rem;
+                padding: 0.5rem;
+            }
+            
+            .logo-container {
+                width: 150px;
+                height: 150px;
             }
             
             .gradient-orb {
-                width: 300px;
-                height: 300px;
+                width: 250px;
+                height: 250px;
                 filter: blur(40px);
             }
 
@@ -1546,222 +2031,277 @@
 
             .contact-method i {
                 margin-right: 0;
-                margin-bottom: 3rem;
+                margin-bottom: 0.5rem;
             }
             
             .scroll-indicator {
                 bottom: 80px;
-                font-size: 1.5rem;
+                font-size: 1.3rem;
             }
-        }
-
-        /* Photography Grid Styles */
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .photo-item {
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            background: rgba(26, 26, 26, 0.8);
-            border: 1px solid var(--neon-primary);
-            transition: var(--transition);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 200px;
-        }
-        
-        .photo-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(255, 7, 58, 0.3);
-            border-color: var(--neon-secondary);
-        }
-        
-        .photo-item img {
-            width: 100%;
-            height: auto;
-            max-height: 100%;
-            object-fit: contain;
-            transition: transform 0.3s ease;
-        }
-        
-        .photo-item:hover img {
-            transform: scale(1.05);
-        }
-        
-        .photo-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            padding: 1rem;
-            color: white;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-        
-        .photo-item:hover .photo-overlay {
-            transform: translateY(0);
-        }
-        
-        /* Instagram CTA Button - Centered */
-        .instagram-cta {
-            display: flex;
-            justify-content: center;
-            margin: 2rem 0;
-        }
-        
-        /* Lightbox Modal */
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            touch-action: pan-y pinch-zoom;
-        }
-        
-        .lightbox.active {
-            display: flex;
-        }
-        
-        .lightbox-content {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 10px;
-            box-shadow: 0 0 30px rgba(255, 7, 58, 0.5);
-            object-fit: contain;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-        }
-        
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-            background: none;
-            border: none;
-            z-index: 1001;
-        }
-        
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 7, 58, 0.7);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5rem;
-            transition: var(--transition);
-            z-index: 1001;
-        }
-        
-        .lightbox-nav:hover {
-            background: rgba(255, 7, 58, 0.9);
-            transform: translateY(-50%) scale(1.1);
-        }
-        
-        .lightbox-prev {
-            left: 30px;
-        }
-        
-        .lightbox-next {
-            right: 30px;
-        }
-        
-        /* Photo counter */
-        .photo-counter {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            font-size: 1rem;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 5px 15px;
-            border-radius: 20px;
-            z-index: 1001;
-        }
-        
-        /* Loading indicator for photos */
-        .photo-loading {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 200px;
-            color: var(--neon-primary);
-            font-size: 1.2rem;
-        }
-        
-        /* Responsive adjustments for lightbox */
-        @media (max-width: 768px) {
-            .lightbox-nav {
-                width: 40px;
-                height: 40px;
+            
+            .gallery-title {
                 font-size: 1.2rem;
+                max-width: 60%;
             }
             
-            .lightbox-prev {
-                left: 15px;
-            }
-            
-            .lightbox-next {
-                right: 15px;
-            }
-            
-            .lightbox-close {
-                top: 15px;
-                right: 20px;
-                font-size: 1.5rem;
-            }
-            
-            .photo-counter {
+            .gallery-close {
+                width: 30px;
+                height: 30px;
                 font-size: 0.9rem;
-                bottom: 15px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .photo-grid {
-                grid-template-columns: 1fr;
             }
             
-            .lightbox-nav {
+            .gallery-nav {
                 width: 35px;
                 height: 35px;
                 font-size: 1rem;
             }
             
-            .lightbox-prev {
-                left: 10px;
+            .thumbnail {
+                width: 50px;
+                height: 40px;
             }
             
-            .lightbox-next {
-                right: 10px;
+            .collection-gallery {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .collection-overlay {
+                padding: 1rem;
+            }
+            
+            .collection-title {
+                font-size: 1.2rem;
+            }
+            
+            .bottom-nav {
+                padding: 8px 3px;
+            }
+            
+            .nav-link {
+                padding: 0.3rem 0.2rem;
+            }
+            
+            .nav-link i {
+                font-size: 1rem;
+            }
+            
+            .nav-link span {
+                font-size: 0.55rem;
+            }
+            
+            .nav-indicator {
+                width: 30px;
+                height: 2px;
+            }
+            
+            .gallery-thumbnails {
+                height: 70px;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .hero-title {
+                font-size: 1.5rem;
+            }
+            
+            .logo-container {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.8rem;
+            }
+            
+            .collection-title {
+                font-size: 1rem;
+            }
+            
+            .gallery-title {
+                font-size: 1rem;
+            }
+            
+            .gallery-close {
+                width: 25px;
+                height: 25px;
+                font-size: 0.8rem;
+            }
+            
+            .gallery-nav {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+            
+            .thumbnail {
+                width: 45px;
+                height: 35px;
+            }
+        }
+
+        /* Desktop-specific gallery improvements */
+        @media (min-width: 1024px) {
+            .gallery-container {
+                width: 85%;
+                height: 85%;
+            }
+            
+            .gallery-main-image img {
+                max-width: 80%;
+                max-height: 65vh; /* Ensure thumbnails are visible */
+            }
+            
+            .gallery-nav {
+                width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
+            }
+            
+            .gallery-prev {
+                left: 40px;
+            }
+            
+            .gallery-next {
+                right: 40px;
+            }
+            
+            .thumbnail {
+                width: 100px;
+                height: 75px;
+            }
+            
+            .gallery-thumbnails {
+                height: 120px;
+            }
+        }
+
+        /* Landscape orientation optimizations */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .hero {
+                height: auto;
+                min-height: 100vh;
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+            
+            .logo-container {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .scroll-indicator {
+                display: none;
+            }
+            
+            .gallery-container {
+                flex-direction: row;
+                height: 90%;
+            }
+            
+            .gallery-main-image {
+                flex: 3;
+            }
+            
+            .gallery-thumbnails {
+                flex-direction: column;
+                width: 120px;
+                height: 100%;
+                overflow-y: auto;
+                overflow-x: hidden;
+                margin-top: 0;
+                margin-left: 0.5rem;
+            }
+            
+            .thumbnail {
+                width: 100px;
+                height: 75px;
+            }
+        }
+
+        /* Tablet optimizations */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .collection-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .gallery-container {
+                width: 90%;
+                height: 90%;
+            }
+            
+            .thumbnail {
+                width: 80px;
+                height: 60px;
+            }
+        }
+
+        /* High-density screens */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .speedometer {
+                box-shadow: 0 0 120px rgba(255, 7, 58, var(--glow-intensity)), 
+                            inset 0 0 80px rgba(0, 0, 0, 0.8);
+            }
+            
+            .logo-glow {
+                box-shadow: 
+                    0 0 40px rgba(255, 7, 58, 0.6),
+                    0 0 80px rgba(255, 7, 58, 0.4),
+                    0 0 120px rgba(255, 7, 58, 0.2);
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .loading-screen,
+            .shooting-star-container,
+            .bottom-nav,
+            .gallery-modal,
+            .scroll-indicator {
+                display: none !important;
+            }
+            
+            body {
+                background: white;
+                color: black;
+            }
+            
+            .page {
+                position: static;
+                opacity: 1;
+                height: auto;
+            }
+            
+            .collection-item:hover {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+
+        /* Reduced motion for users who prefer it */
+        @media (prefers-reduced-motion: reduce) {
+            .logo-spin,
+            .gradient-orb,
+            .shooting-star,
+            .scroll-indicator,
+            .collection-item:hover,
+            .news-item:hover,
+            .service-card:hover,
+            .pricing-card:hover,
+            .contact-method:hover,
+            .sponsor-item:hover {
+                animation: none !important;
+                transition: none !important;
+                transform: none !important;
+            }
+            
+            .logo-glow,
+            .flicker-letter,
+            .flicker-e,
+            .matrix-letter {
+                animation: none !important;
+                opacity: 1 !important;
             }
         }
     </style>
@@ -1794,38 +2334,42 @@
 
         <div class="page-container">
             <!-- Home Page (default visible) -->
-            <div class="page active" id="home">
+            <div class="page active" id="home" tabindex="-1" role="main" id="main-content">
                 <header class="hero">
                     <div class="hero-content">
                         <div class="logo-container">
                             <!-- Logo with glow effect -->
                             <div class="logo-glow"></div>
-                            <!-- Replace with your logo image -->
-                            <img id="club-logo" class="logo-spin" src="./img/ahs.png" alt="After Hours Society Logo" loading="lazy">
+                            <!-- FIXED: Logo now uses absolute URL -->
+                            <img id="club-logo" class="logo-spin" src="https://afterhourssociety.live/img/ahs.png" alt="After Hours Society Logo" loading="lazy">
                         </div>
                         <div class="hero-title">
                             <div class="title-part" id="after-hours-title">AFTER H<span class="flicker-letter">O</span><span class="flicker-letter">U</span>R<span class="flicker-letter">S</span></div>
                             <div class="title-part" id="society-title"><span class="flicker-letter">S</span><span class="flicker-letter">O</span><span class="flicker-letter">C</span>I<span class="flicker-letter">E</span>T<span class="flicker-letter">Y</span></div>
                         </div>
-                        <h2 style="font-size: 20px;">EST. 2025</h2>
+                        <h2 style="font-size: clamp(16px, 3vw, 20px);">EST. 2025</h2>
                     </div>
                     <div class="scroll-indicator" id="scrollIndicator" aria-hidden="true">
                         <i class="fas fa-chevron-down"></i>
                     </div>
                 </header>
 
-                <section class="news-updates" id="news">
+                <section class="news-updates" id="news"><br>
                     <h2>Club News & Updates</h2>
                     <div class="news-grid">
                         <div class="news-item">
                             <div class="news-image">
-                                <img src="./img/torta.jpg" alt="Torta Hunt Event" loading="lazy">
+                                <!-- FIXED: Image now uses absolute URL -->
+                                <img src="https://afterhourssociety.live/img/torta.jpg" alt="Torta Hunt Event" loading="lazy">
                             </div>
                             <div class="news-content">
-                                <div class="news-date">10/17/2025</div>
-                                <h3 class="news-title">Torta Hunt This Saturday</h3>
-                                <p class="news-excerpt">This Saturday, we embark not for a meal, but for a meeting with conquest.
-                                Join our fearless leader, Michael_199413, on this noble journey to search for the mightiest torta in town!  </p>
+                                <div class="news-date">1/18/2025</div>
+                                <h3 class="news-title">2026 SEASON DROP: WE'RE LIVE!</h3>
+                                <p class="news-excerpt">The wait is over. The engines are warm, the 2026 season is officially here, and we're kicking things off with the launch of our brand-new website. This is your new home for event calendars, member builds, and exclusive club updates.</p>
+                                <p class="news-excerpt">The Highlights
+                                    <br><br>New Blood: Shoutout to the wave of new members joining the ranks this season—let's show 'em how we roll.
+                                    <br><br>Heart of the Scene: From rolling out for a local kid's birthday to getting the cars on set for a music video shoot, you can check out our Season Gallery<a href="#photography" class="nav-link no-arrow" data-target="photography">Here</a>.
+                                    <br><br>The Gold Standard: We're on a mission to keep the car community how it should be - built on respect and passion. No gatekeeping. No drama. Just the culture we love.</p>
                             </div>
                         </div>
                 </section>
@@ -1833,25 +2377,25 @@
             </div>
 
             <!-- Portfolio Page (Now Sponsors Page) -->
-            <div class="page" id="portfolio" tabindex="-1">
+            <div class="page" id="portfolio" tabindex="-1" role="region" aria-label="Sponsors">
                 <section class="portfolio-section">
                     <h2>Our <br><span class="flicker-e">Spon</span>sors</h2>
                     <div class="sponsors-grid">
                         <div class="sponsor-item">
                             <div class="sponsor-name">Esc8pe Reality Designs</div>
-                            <a href="https://www.instagram.com/esc8perealitydesigns/" target="_blank" class="instagram-btn">
+                            <a href="https://www.instagram.com/esc8perealitydesigns/" target="_blank" class="instagram-btn" aria-label="Visit Esc8pe Reality Designs on Instagram">
                                 <i class="fab fa-instagram"></i>
                             </a>
                         </div>
                         <div class="sponsor-item">
                             <div class="sponsor-name">Hit List</div>
-                            <a href="https://www.instagram.com/hitlistboise/" target="_blank" class="instagram-btn">
+                            <a href="https://www.instagram.com/hitlistboise/" target="_blank" class="instagram-btn" aria-label="Visit Hit List on Instagram">
                                 <i class="fab fa-instagram"></i>
                             </a>
                         </div>
                         <div class="sponsor-item">
                             <div class="sponsor-name">Autolux Detailing</div>
-                            <a href="https://www.instagram.com/autoluxdetailing208/" target="_blank" class="instagram-btn">
+                            <a href="https://www.instagram.com/autoluxdetailing208/" target="_blank" class="instagram-btn" aria-label="Visit Autolux Detailing on Instagram">
                                 <i class="fab fa-instagram"></i>
                             </a>
                         </div>
@@ -1860,9 +2404,9 @@
             </div>
 <br>
             <!-- Photography Page -->
-            <div class="page" id="photography" tabindex="-1">
+            <div class="page" id="photography" tabindex="-1" role="region" aria-label="Season Gallery">
                 <section class="portfolio-section">
-                    <h2>After Hours <span class="flicker-e">Photography</span></h2>
+                    <h2>After Hours <span class="flicker-e">Season Gallery</span></h2>
                     
                     <!-- Centered Instagram CTA -->
                     <div class="instagram-cta">
@@ -1871,11 +2415,11 @@
                         </a>
                     </div>
                     
-                    <!-- Photo Grid -->
-                    <div class="photo-grid" id="photoGrid">
-                        <!-- Photos will be loaded here -->
+                    <!-- Collection Gallery -->
+                    <div class="collection-gallery" id="collectionGallery">
+                        <!-- Collections will be loaded here -->
                         <div class="photo-loading">
-                            <i class="fas fa-spinner fa-spin"></i> Loading photos...
+                            <i class="fas fa-spinner fa-spin"></i> Loading collections...
                         </div>
                     </div>
                 </section>
@@ -1883,32 +2427,25 @@
             </div>
 
             <!-- Pricing Page (Now About Page) -->
-            <div class="page" id="pricing" tabindex="-1">
+            <div class="page" id="pricing" tabindex="-1" role="region" aria-label="About Us">
                 <section class="portfolio-section">
-            <h2>About <br> After H<span class="flicker-e">our</span>s <br><span class="flicker-e">Society</span></h2>
-                    <p class="subtitle">Established in 2025, After Hours Society isn’t just about cars  it’s about the people who drive them.
-                        We’re a crew built on late nights, open roads, and real connections that go deeper than the chrome and paint.
+                    <h2>About <br> After H<span class="flicker-e">our</span>s <br><span class="flicker-e">Society</span></h2>
+                    <p class="subtitle">Established in 2025, After Hours Society isn't just about cars—it's about the people who drive them.
+                        We're a crew built on late nights, open roads, and real connections that go deeper than the chrome and paint.
                         Cars brought us together, but the friendships, laughs, and loyalty keep us rolling. No drama. No fakes. 
-                        Just a family that lives for the ride and has each other’s backs always.</p>
-                    </div>
+                        Just a family that lives for the ride and has each other's backs always.</p>
                 </section>
             </div>
 <br>
             <!-- Contact Page -->
-            <div class="page" id="contact" tabindex="-1">
+            <div class="page" id="contact" tabindex="-1" role="region" aria-label="Contact Us">
                 <section class="contact-section">
                     <div class="contact-container">
                         <div class="contact-info">
                             <h2>Get In Touch</h2>
                             <p>Interested in joining our club, becoming a sponsor, or just want to say hello? We'd love to hear from you.</p>
+                            
                             <div class="contact-methods">
-                                <!-- <div class="contact-method">
-                                    <i class="fas fa-envelope"></i>
-                                    <div>
-                                        <h4>Email</h4>
-                                        <p><a href="mailto:info@afterhourssociety.live">info@afterhourssociety.live</a></p>
-                                    </div>
-                                </div> -->
                                 <div class="contact-method">
                                     <i class="fab fa-instagram"></i>
                                     <div>
@@ -1931,10 +2468,10 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
                         <form class="contact-form" id="contactForm" action="https://formsubmit.co/2dbe592043c5fbb7c149c062f5e296dc" method="POST">
                             <h2>Contact Us</h2>
+                            <br>
                             <div class="form-group">
                                 <input type="text" id="name" name="name" placeholder="Your Name" required aria-label="Your Name">
                                 <div class="error-message" id="name-error">Please enter your name</div>
@@ -1961,8 +2498,20 @@
                             <input type="hidden" name="_next" value="#contact">
                             <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_subject" value="New Contact Form Submission - After Hours Society">
                             <button type="submit" class="btn" id="submitBtn">Send Message</button>
                         </form>
+
+                            <!-- Google Drive Link -->
+                            <p style="margin-top: 1.5rem;">
+                                <strong>Share your photos with us!</strong><br>
+                                <a href="https://drive.google.com/drive/folders/1IN29jurCr17ZSt-A5q8zm-H6UV7NaHCQ?usp=sharing" 
+                                   target="_blank" 
+                                   class="drive-link">
+                                    <i class="fab fa-google-drive"></i> Add your pictures here!
+                                </a>
+                            </p>
+                        </div>
                     </div>
                 </section>
             </div>
@@ -1993,9 +2542,48 @@
                 <span>Contact</span>
             </a>
         </nav>
+        
+        <!-- Gallery Modal -->
+        <div class="gallery-modal" id="galleryModal">
+            <div class="gallery-header">
+                <h3 class="gallery-title" id="galleryTitle">Gallery</h3>
+                <button class="gallery-close" onclick="closeGallery()">&times;</button>
+            </div>
+            <div class="gallery-container">
+                <div class="gallery-main-image">
+                    <button class="gallery-nav gallery-prev" onclick="prevImage()" aria-label="Previous image">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <img id="galleryMainImage" src="" alt="">
+                    <button class="gallery-nav gallery-next" onclick="nextImage()" aria-label="Next image">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="gallery-thumbnails" id="galleryThumbnails">
+                    <!-- Thumbnails will be loaded here -->
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
+// Debounce function for performance
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Global variables for gallery
+let currentGallery = null;
+let currentImageIndex = 0;
+
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize loading screen
     initLoadingScreen();
@@ -2019,7 +2607,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update glow intensity
         function updateGlow(intensity) {
             root.style.setProperty('--glow-intensity', intensity);
-            // CHANGED: Only show glow ring when intensity is above 0.1
             glowRing.style.opacity = intensity > 0.1 ? (intensity - 0.1) * 3 : 0;
         }
 
@@ -2080,7 +2667,6 @@ document.addEventListener('DOMContentLoaded', function() {
         function easeOutCubic(t) { return 15 + Math.pow(1 - t, 3); }
 
         function startAnimation() {
-            // Show initial time immediately
             timeDisplay.style.opacity = '1';
             
             const startTime = performance.now();
@@ -2095,11 +2681,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 needle.style.transform = `rotate(${angle}deg)`;
 
-                // Update glow intensity based on progress - starting from 0
-                const glowIntensity = t * 0.65; // CHANGED: From 0 to 0.65
+                const glowIntensity = t * 0.65;
                 updateGlow(glowIntensity);
 
-                // Update time display when animation is almost complete
                 if (t > 0.95) {
                     timeDisplay.textContent = "12:00am";
                 }
@@ -2107,10 +2691,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (elapsed < duration) {
                     requestAnimationFrame(step);
                 } else {
-                    // Animation complete - ensure final time is displayed
                     timeDisplay.textContent = "12:00am";
                     
-                    // Fade out loading screen and show main content
                     setTimeout(() => {
                         const loadingScreen = document.getElementById('loadingScreen');
                         loadingScreen.classList.add('fade-out');
@@ -2119,7 +2701,6 @@ document.addEventListener('DOMContentLoaded', function() {
                             loadingScreen.style.display = 'none';
                             document.querySelector('.website-content').style.display = 'block';
                             
-                            // Initialize main website content
                             initMainContent();
                         }, 500);
                     }, 500);
@@ -2137,7 +2718,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const newsTitles = document.querySelectorAll('.news-title');
         const newsExcerpts = document.querySelectorAll('.news-excerpt');
         
-        // Set opacity to 1 for all news titles and excerpts
         newsTitles.forEach(title => {
             title.style.opacity = '1';
         });
@@ -2151,7 +2731,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const societyTitle = document.getElementById('society-title');
         const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
-        // Clear existing content
         afterHoursTitle.innerHTML = '';
         societyTitle.innerHTML = '';
 
@@ -2160,9 +2739,7 @@ document.addEventListener('DOMContentLoaded', function() {
         for (let i = 0; i < afterHoursText.length; i++) {
             const charSpan = document.createElement('span');
             
-            // Add flicker class for O, U, R but ONLY in the "HOURS" part
-            // The "R" in "AFTER" should NOT flicker, only the "R" in "HOURS"
-            const isInHoursPart = i >= 6; // "HOURS" starts at position 6
+            const isInHoursPart = i >= 6;
             const shouldFlicker = (afterHoursText[i] === 'O' || afterHoursText[i] === 'U' || afterHoursText[i] === 'R') && isInHoursPart;
             
             if (shouldFlicker) {
@@ -2184,7 +2761,6 @@ document.addEventListener('DOMContentLoaded', function() {
         for (let i = 0; i < societyText.length; i++) {
             const charSpan = document.createElement('span');
             
-            // Add flicker class ONLY for C, I, T, Y
             if (['C', 'I', 'T', 'Y'].includes(societyText[i])) {
                 charSpan.className = 'matrix-letter flicker-letter';
             } else {
@@ -2229,46 +2805,36 @@ document.addEventListener('DOMContentLoaded', function() {
                     const reader = new FileReader();
                     reader.onload = function(event) {
                         clubLogo.src = event.target.result;
-                        // Store in localStorage for persistence
                         localStorage.setItem('clubLogo', event.target.result);
                     };
                     reader.readAsDataURL(file);
                 }
             });
             
-            // Check if logo exists in localStorage
             const savedLogo = localStorage.getItem('clubLogo');
             if (savedLogo) {
                 clubLogo.src = savedLogo;
             }
         }
         
-        // Initialize logo upload functionality
         setupLogoUpload();
 
-        // Scroll indicator functionality
+        // Scroll indicator functionality with debounce
         const scrollIndicator = document.getElementById('scrollIndicator');
         const newsSection = document.getElementById('news');
         
         if (scrollIndicator && newsSection) {
-            // Make arrow clickable to scroll to news
             scrollIndicator.addEventListener('click', () => {
                 newsSection.scrollIntoView({
                     behavior: 'smooth'
                 });
             });
             
-            // Show/hide arrow based on scroll position
-            function checkScrollPosition() {
-                {
-                    scrollIndicator.classList.add('visible');
-                }
-            }
+            const checkScrollPosition = debounce(() => {
+                scrollIndicator.classList.add('visible');
+            }, 100);
             
-            // Initial check
             checkScrollPosition();
-            
-            // Add scroll event listener
             window.addEventListener('scroll', checkScrollPosition);
         }
 
@@ -2315,8 +2881,8 @@ document.addEventListener('DOMContentLoaded', function() {
         createShootingStars();
         setInterval(createShootingStars, 15000);
 
-        // Initialize photography gallery
-        initPhotographyGallery();
+        // Initialize collection gallery
+        initCollectionGallery();
 
         // Page navigation
         const navLinks = document.querySelectorAll('.nav-link');
@@ -2331,18 +2897,11 @@ document.addEventListener('DOMContentLoaded', function() {
         function updateIndicatorPosition(link) {
             const linkRect = link.getBoundingClientRect();
             const navRect = document.querySelector('.bottom-nav').getBoundingClientRect();
-            const indicatorWidth = 60;
+            const indicatorWidth = window.innerWidth <= 480 ? 30 : 60;
             const indicatorLeft = linkRect.left - navRect.left + (linkRect.width - indicatorWidth) / 2;
             
             navIndicator.style.width = `${indicatorWidth}px`;
             navIndicator.style.transform = `translateX(${indicatorLeft}px)`;
-            
-            if (window.innerWidth <= 768) {
-                const mobileIndicatorWidth = 40;
-                const mobileIndicatorLeft = linkRect.left - navRect.left + (linkRect.width - mobileIndicatorWidth) / 2;
-                navIndicator.style.width = `${mobileIndicatorWidth}px`;
-                navIndicator.style.transform = `translateX(${mobileIndicatorLeft}px)`;
-            }
         }
         
         updateIndicatorPosition(activeNavLink);
@@ -2374,7 +2933,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         window.scrollTo(0, 0);
                     }
                     
-                    // Focus the page for keyboard navigation
                     targetPage.focus();
                 }
             });
@@ -2407,71 +2965,103 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        window.addEventListener('resize', function() {
+        window.addEventListener('resize', debounce(function() {
             updateIndicatorPosition(document.querySelector('.nav-link.active'));
-        });
+        }, 150));
 
-        // Form submission handling with enhanced validation
+        // Enhanced form submission handling
         const contactForm = document.getElementById('contactForm');
         const submitBtn = document.getElementById('submitBtn');
         const successMessage = document.getElementById('successMessage');
         
         if (contactForm) {
+            // Form validation with real-time feedback
+            const formGroups = document.querySelectorAll('.form-group');
+            formGroups.forEach(group => {
+                const input = group.querySelector('input, textarea');
+                if (input) {
+                    input.addEventListener('input', function() {
+                        validateField(this);
+                    });
+                    
+                    input.addEventListener('blur', function() {
+                        if (this.value.trim()) {
+                            group.classList.add('filled');
+                        } else {
+                            group.classList.remove('filled');
+                        }
+                    });
+                }
+            });
+            
+            function validateField(field) {
+                const group = field.closest('.form-group');
+                group.classList.remove('error');
+                
+                if (!field.required && !field.value.trim()) {
+                    return true;
+                }
+                
+                let isValid = true;
+                let errorMessage = '';
+                
+                switch(field.type) {
+                    case 'email':
+                        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
+                            isValid = false;
+                            errorMessage = 'Please enter a valid email';
+                        }
+                        break;
+                    case 'tel':
+                        if (field.value.trim() && !/^[\d\s\-()+]{10,}$/.test(field.value)) {
+                            isValid = false;
+                            errorMessage = 'Please enter a valid phone number';
+                        }
+                        break;
+                    default:
+                        if (field.required && !field.value.trim()) {
+                            isValid = false;
+                            errorMessage = field.placeholder ? `Please enter your ${field.placeholder.toLowerCase()}` : 'This field is required';
+                        }
+                }
+                
+                if (!isValid) {
+                    group.classList.add('error');
+                    const errorEl = group.querySelector('.error-message');
+                    if (errorEl) errorEl.textContent = errorMessage;
+                }
+                
+                return isValid;
+            }
+            
             contactForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
-                // Validate form
+                // Validate all fields
                 let isValid = true;
-                const name = document.getElementById('name');
-                const email = document.getElementById('email');
-                const phone = document.getElementById('phone');
-                const message = document.getElementById('message');
+                const requiredFields = contactForm.querySelectorAll('[required]');
                 
-                // Reset error states
-                document.querySelectorAll('.form-group').forEach(group => {
-                    group.classList.remove('error');
+                requiredFields.forEach(field => {
+                    if (!validateField(field)) {
+                        isValid = false;
+                    }
                 });
                 
-                // Name validation
-                if (!name.value.trim()) {
-                    document.getElementById('name-error').textContent = 'Please enter your name';
-                    name.closest('.form-group').classList.add('error');
-                    isValid = false;
+                if (!isValid) {
+                    // Focus first invalid field
+                    const firstInvalid = contactForm.querySelector('.error');
+                    if (firstInvalid) {
+                        const input = firstInvalid.querySelector('input, textarea');
+                        if (input) input.focus();
+                    }
+                    return;
                 }
-                
-                // Email validation
-                if (!email.value.trim()) {
-                    document.getElementById('email-error').textContent = 'Please enter your email';
-                    email.closest('.form-group').classList.add('error');
-                    isValid = false;
-                } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
-                    document.getElementById('email-error').textContent = 'Please enter a valid email';
-                    email.closest('.form-group').classList.add('error');
-                    isValid = false;
-                }
-                
-                // Phone validation (optional but if provided, validate)
-                if (phone.value.trim() && !/^[\d\s\-()+]{10,}$/.test(phone.value)) {
-                    document.getElementById('phone-error').textContent = 'Please enter a valid phone number';
-                    phone.closest('.form-group').classList.add('error');
-                    isValid = false;
-                }
-                
-                // Message validation
-                if (!message.value.trim()) {
-                    document.getElementById('message-error').textContent = 'Please enter your message';
-                    message.closest('.form-group').classList.add('error');
-                    isValid = false;
-                }
-                
-                if (!isValid) return;
                 
                 // Show loading state
                 submitBtn.classList.add('loading');
                 submitBtn.disabled = true;
                 
                 try {
-                    // Submit the form using FormSubmit
                     const formData = new FormData(contactForm);
                     
                     const response = await fetch(contactForm.action, {
@@ -2483,11 +3073,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                     
                     if (response.ok) {
-                        // Show success message
                         successMessage.style.display = 'block';
                         contactForm.reset();
+                        formGroups.forEach(group => group.classList.remove('filled'));
                         
-                        // Hide message after 10 seconds
+                        // Scroll success message into view
+                        successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        
                         setTimeout(() => {
                             successMessage.style.display = 'none';
                         }, 10000);
@@ -2496,160 +3088,277 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 } catch (error) {
                     console.error("Error submitting form:", error);
-                    alert("Error sending message. Please try again later.");
+                    alert("Error sending message. Please try again later or contact us via Instagram.");
                 } finally {
                     submitBtn.classList.remove('loading');
                     submitBtn.disabled = false;
                 }
             });
+        }
+        
+        // Handle responsive gallery for landscape orientation
+        function handleOrientationChange() {
+            const galleryThumbnails = document.getElementById('galleryThumbnails');
+            const galleryContainer = document.querySelector('.gallery-container');
             
-            // Real-time validation
-            document.getElementById('email').addEventListener('input', function() {
-                if (this.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.value)) {
-                    document.getElementById('email-error').textContent = 'Please enter a valid email';
-                    this.closest('.form-group').classList.add('error');
+            if (galleryThumbnails && galleryContainer) {
+                if (window.innerHeight < 600 && window.innerWidth > window.innerHeight) {
+                    // Landscape orientation on small screens
+                    galleryContainer.style.flexDirection = 'row';
+                    galleryThumbnails.style.flexDirection = 'column';
+                    galleryThumbnails.style.width = '120px';
+                    galleryThumbnails.style.height = '100%';
+                    galleryThumbnails.style.overflowY = 'auto';
+                    galleryThumbnails.style.overflowX = 'hidden';
+                    galleryThumbnails.style.marginTop = '0';
+                    galleryThumbnails.style.marginLeft = '0.5rem';
                 } else {
-                    this.closest('.form-group').classList.remove('error');
+                    // Portrait orientation
+                    galleryContainer.style.flexDirection = 'column';
+                    galleryThumbnails.style.flexDirection = 'row';
+                    galleryThumbnails.style.width = 'auto';
+                    galleryThumbnails.style.height = 'auto';
+                    galleryThumbnails.style.overflowX = 'auto';
+                    galleryThumbnails.style.overflowY = 'hidden';
+                    galleryThumbnails.style.marginTop = '0.5rem';
+                    galleryThumbnails.style.marginLeft = '0';
                 }
-            });
+            }
+        }
+        
+        window.addEventListener('resize', debounce(handleOrientationChange, 250));
+        window.addEventListener('orientationchange', debounce(handleOrientationChange, 500));
+    }
+
+    // Collection Gallery Functionality
+    function initCollectionGallery() {
+        const collectionGallery = document.getElementById('collectionGallery');
+        if (!collectionGallery) return;
+        
+        // ============================================
+        // EASILY EDITABLE COLLECTIONS DATA
+        // ============================================
+        // To add/edit collections, simply modify this array:
+        const collections = [
+            {
+                id: 1,
+                title: "Season 2026 Launch",
+                cover: "https://afterhourssociety.live/img/Ahsp1.jpg",
+                count: 5,
+                images: [
+                    "https://afterhourssociety.live/img/Ahsp1.jpg",
+                    "https://afterhourssociety.live/img/Ahsp2.jpg",
+                    "https://afterhourssociety.live/img/Ahsp3.jpg",
+                    "https://afterhourssociety.live/img/Ahsp4.jpg",
+                    "https://afterhourssociety.live/img/Ahsp5.jpg"
+                ]
+            },
+            {
+                id: 2,
+                title: "Night Meets",
+                cover: "https://afterhourssociety.live/img/Ahsp2.jpg",
+                count: 3,
+                images: [
+                    "https://afterhourssociety.live/img/Ahsp2.jpg",
+                    "https://afterhourssociety.live/img/Ahsp3.jpg",
+                    "https://afterhourssociety.live/img/Ahsp1.jpg"
+                ]
+            },
+            {
+                id: 3,
+                title: "Car Show 2025",
+                cover: "https://afterhourssociety.live/img/Ahsp3.jpg",
+                count: 4,
+                images: [
+                    "https://afterhourssociety.live/img/Ahsp3.jpg",
+                    "https://afterhourssociety.live/img/Ahsp4.jpg",
+                    "https://afterhourssociety.live/img/Ahsp5.jpg",
+                    "https://afterhourssociety.live/img/Ahsp1.jpg"
+                ]
+            },
+            // ============================================
+            // TO ADD MORE COLLECTIONS:
+            // 1. Copy the object below
+            // 2. Change id, title, cover image URL
+            // 3. Add your image URLs to the images array
+            // ============================================
+            // {
+            //     id: 4, // Make this unique (use next number)
+            //     title: "New Collection Name",
+            //     cover: "https://your-image-url.com/cover.jpg",
+            //     count: 0, // Will be auto-calculated
+            //     images: [
+            //         "https://your-image-url.com/image1.jpg",
+            //         "https://your-image-url.com/image2.jpg",
+            //         // Add more image URLs as needed
+            //     ]
+            // }
+            // ============================================
+        ];
+        
+        // Update count for each collection
+        collections.forEach(collection => {
+            collection.count = collection.images.length;
+        });
+        
+        // Save collections to localStorage for persistence (optional)
+        if (!localStorage.getItem('collections')) {
+            localStorage.setItem('collections', JSON.stringify(collections));
+        }
+        
+        const savedCollections = JSON.parse(localStorage.getItem('collections'));
+        renderCollections(savedCollections);
+        
+        function renderCollections(collectionsData) {
+            collectionGallery.innerHTML = '';
             
-            document.getElementById('phone').addEventListener('input', function() {
-                if (this.value.trim() && !/^[\d\s\-()+]{10,}$/.test(this.value)) {
-                    document.getElementById('phone-error').textContent = 'Please enter a valid phone number';
-                    this.closest('.form-group').classList.add('error');
-                } else {
-                    this.closest('.form-group').classList.remove('error');
-                }
+            if (!collectionsData || collectionsData.length === 0) {
+                collectionGallery.innerHTML = `
+                    <div style="text-align: center; grid-column: 1 / -1; padding: 3rem;">
+                        <i class="fas fa-images" style="font-size: 3rem; color: var(--neon-primary); margin-bottom: 1rem;"></i>
+                        <h3 style="color: var(--light); margin-bottom: 1rem;">No Collections Yet</h3>
+                        <p style="color: var(--light-gray);">Check back soon for gallery updates!</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            collectionsData.forEach(collection => {
+                const collectionItem = document.createElement('div');
+                collectionItem.className = 'collection-item';
+                collectionItem.dataset.id = collection.id;
+                
+                collectionItem.innerHTML = `
+                    <img src="${collection.cover}" alt="${collection.title}" loading="lazy">
+                    <div class="collection-overlay">
+                        <h4 class="collection-title">${collection.title}</h4>
+                        <div class="collection-count">
+                            <i class="fas fa-images"></i>
+                            <span>${collection.count} photo${collection.count !== 1 ? 's' : ''}</span>
+                        </div>
+                    </div>
+                `;
+                
+                collectionItem.addEventListener('click', () => openGallery(collection));
+                collectionGallery.appendChild(collectionItem);
             });
         }
     }
+});
 
-    // Photography Gallery Functionality
-    function initPhotographyGallery() {
-        const photoGrid = document.getElementById('photoGrid');
-        if (!photoGrid) return; // Exit if photo grid doesn't exist
+// Gallery Functions
+function openGallery(collection) {
+    currentGallery = collection;
+    currentImageIndex = 0;
+    
+    const modal = document.getElementById('galleryModal');
+    const title = document.getElementById('galleryTitle');
+    const mainImage = document.getElementById('galleryMainImage');
+    const thumbnails = document.getElementById('galleryThumbnails');
+    
+    title.textContent = collection.title;
+    mainImage.src = collection.images[0];
+    mainImage.alt = `${collection.title} - Image 1`;
+    
+    // Create thumbnails
+    thumbnails.innerHTML = '';
+    collection.images.forEach((image, index) => {
+        const thumbnail = document.createElement('div');
+        thumbnail.className = `thumbnail ${index === 0 ? 'active' : ''}`;
+        thumbnail.innerHTML = `<img src="${image}" alt="Thumbnail ${index + 1}">`;
         
-        const lightbox = document.createElement('div');
-        lightbox.className = 'lightbox';
-        lightbox.innerHTML = `
-            <button class="lightbox-close">&times;</button>
-            <button class="lightbox-nav lightbox-prev">&lt;</button>
-            <button class="lightbox-nav lightbox-next">&gt;</button>
-            <img class="lightbox-content" src="" alt="">
-            <div class="photo-counter"></div>
-        `;
-        document.body.appendChild(lightbox);
+        thumbnail.addEventListener('click', () => {
+            currentImageIndex = index;
+            updateMainImage();
+            updateActiveThumbnail();
+        });
         
-        // Sample photos - replace with your actual photos
-        const photos = [
-            './img/Ahsp1.jpg', // Using existing image as example
-            './img/Ahsp2.jpg',
-            './img/Ahsp3.jpg',
-            './img/Ahsp4.jpg',
-            './img/Ahsp5.jpg',
-        ];
+        thumbnails.appendChild(thumbnail);
+    });
+    
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeGallery() {
+    const modal = document.getElementById('galleryModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+    currentGallery = null;
+}
+
+function nextImage() {
+    if (currentGallery) {
+        currentImageIndex = (currentImageIndex + 1) % currentGallery.images.length;
+        updateMainImage();
+        updateActiveThumbnail();
+    }
+}
+
+function prevImage() {
+    if (currentGallery) {
+        currentImageIndex = (currentImageIndex - 1 + currentGallery.images.length) % currentGallery.images.length;
+        updateMainImage();
+        updateActiveThumbnail();
+    }
+}
+
+function updateMainImage() {
+    const mainImage = document.getElementById('galleryMainImage');
+    if (currentGallery && currentGallery.images[currentImageIndex]) {
+        mainImage.src = currentGallery.images[currentImageIndex];
+        mainImage.alt = `${currentGallery.title} - Image ${currentImageIndex + 1}`;
+    }
+}
+
+function updateActiveThumbnail() {
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    thumbnails.forEach((thumb, index) => {
+        thumb.classList.toggle('active', index === currentImageIndex);
+    });
+}
+
+// Keyboard navigation for gallery
+document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('galleryModal');
+    if (!modal.classList.contains('active') || !currentGallery) return;
+    
+    switch(e.key) {
+        case 'Escape':
+            closeGallery();
+            break;
+        case 'ArrowRight':
+            nextImage();
+            break;
+        case 'ArrowLeft':
+            prevImage();
+            break;
+    }
+});
+
+// Touch swipe for gallery
+document.addEventListener('DOMContentLoaded', function() {
+    const mainImage = document.getElementById('galleryMainImage');
+    let touchStartX = 0;
+    
+    if (mainImage) {
+        mainImage.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+        });
         
-        // Clear skeleton loading and add actual photos
-        photoGrid.innerHTML = '';
-        
-        photos.forEach((photoSrc, index) => {
-            const photoItem = document.createElement('div');
-            photoItem.className = 'photo-item';
-            photoItem.innerHTML = `
-                <img src="${photoSrc}" alt="After Hours Society photo ${index + 1}" loading="lazy">
-                <div class="photo-overlay">
-                    <p>After Hours Society Meet</p>
-                </div>
-            `;
+        mainImage.addEventListener('touchend', (e) => {
+            const touchEndX = e.changedTouches[0].clientX;
+            const diff = touchStartX - touchEndX;
+            const threshold = 50;
             
-            photoItem.addEventListener('click', () => openLightbox(index));
-            photoGrid.appendChild(photoItem);
-        });
-        
-        let currentPhotoIndex = 0;
-        let touchStartX = 0;
-        let touchEndX = 0;
-        
-        function openLightbox(index) {
-            currentPhotoIndex = index;
-            updateLightboxImage();
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeLightbox() {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        
-        function updateLightboxImage() {
-            const lightboxImg = lightbox.querySelector('.lightbox-content');
-            const photoCounter = lightbox.querySelector('.photo-counter');
-            
-            lightboxImg.src = photos[currentPhotoIndex];
-            photoCounter.textContent = `${currentPhotoIndex + 1} / ${photos.length}`;
-        }
-        
-        function nextPhoto() {
-            currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
-            updateLightboxImage();
-        }
-        
-        function prevPhoto() {
-            currentPhotoIndex = (currentPhotoIndex - 1 + photos.length) % photos.length;
-            updateLightboxImage();
-        }
-        
-        // Event listeners
-        lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
-        lightbox.querySelector('.lightbox-next').addEventListener('click', nextPhoto);
-        lightbox.querySelector('.lightbox-prev').addEventListener('click', prevPhoto);
-        
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                closeLightbox();
-            }
-        });
-        
-        // Touch events for swipe navigation
-        lightbox.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-        
-        lightbox.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        });
-        
-        function handleSwipe() {
-            const swipeThreshold = 50; // Minimum distance for a swipe
-            const difference = touchStartX - touchEndX;
-            
-            if (Math.abs(difference) > swipeThreshold) {
-                if (difference > 0) {
-                    // Swipe left - next photo
-                    nextPhoto();
+            if (Math.abs(diff) > threshold && currentGallery) {
+                if (diff > 0) {
+                    // Swipe left - next image
+                    nextImage();
                 } else {
-                    // Swipe right - previous photo
-                    prevPhoto();
+                    // Swipe right - previous image
+                    prevImage();
                 }
-            }
-        }
-        
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (!lightbox.classList.contains('active')) return;
-            
-            switch(e.key) {
-                case 'Escape':
-                    closeLightbox();
-                    break;
-                case 'ArrowRight':
-                    nextPhoto();
-                    break;
-                case 'ArrowLeft':
-                    prevPhoto();
-                    break;
             }
         });
     }

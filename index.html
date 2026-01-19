@@ -1677,12 +1677,15 @@
             flex-direction: column;
             justify-content: flex-end;
             padding: 1.5rem;
-            opacity: 0;
+            opacity: 1; /* Changed from 0 to 1 - ALWAYS VISIBLE */
             transition: opacity 0.3s ease;
         }
-        
+
+        /* Remove or update the hover effect if you want */
         .collection-item:hover .collection-overlay {
-            opacity: 1;
+            /* Optional: You can keep this for additional hover effects */
+            /* opacity: 1; */ /* Remove or comment this line */
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.95)); /* Optional: darker on hover */
         }
         
         .collection-title {

@@ -471,7 +471,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            padding: 1rem;
+            padding: 2rem;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.5s ease;
@@ -491,7 +491,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 1rem;
+            padding: 2rem 1rem;
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
@@ -578,14 +578,14 @@
         }
 
         .hero-title {
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-size: 2.5rem;
             margin-bottom: 1rem;
             color: var(--light);
             font-weight: 500;
-            letter-spacing: clamp(3px, 2vw, 8px);
+            letter-spacing: 8px;
             text-transform: uppercase;
             font-family: 'Poppins', sans-serif;
-            margin-left: clamp(2px, 1vw, 8px);
+            margin-left: 8px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -598,7 +598,6 @@
             opacity: 0;
             transform: translateY(40px);
             animation: titleRise 3s ease-out forwards;
-            flex-wrap: wrap;
         }
 
         @keyframes titleRise {
@@ -620,7 +619,7 @@
             opacity: 0;
             animation: matrixReveal 20s forwards;
             display: inline-block;
-            min-width: clamp(15px, 2vw, 25px);
+            min-width: 25px;
             text-align: center;
             text-shadow: 
                 0 0 5px #fff,
@@ -663,7 +662,7 @@
         }
 
         .hero-content h2, h3 {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-size: 1.8rem;
             font-weight: 400;
             margin-bottom: 1.5rem;
             color: var(--light);
@@ -684,7 +683,7 @@
         }
 
         .tagline {
-            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-size: 1.2rem;
             max-width: 600px;
             margin: 0 auto 2rem;
             color: var(--light-gray);
@@ -714,7 +713,6 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
-            font-size: clamp(0.9rem, 2vw, 1rem);
         }
 
         .btn::after {
@@ -789,8 +787,8 @@
 
         .gradient-orb {
             position: absolute;
-            width: min(600px, 80vw);
-            height: min(600px, 80vw);
+            width: 600px;
+            height: 600px;
             border-radius: 50%;
             background: radial-gradient(circle, 
                 rgba(255, 7, 58, 0.15) 0%, 
@@ -824,7 +822,7 @@
         }
 
         .services h3 {
-            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-size: 2rem;
             margin-bottom: 1rem;
             position: relative;
             display: inline-block;
@@ -835,7 +833,7 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
@@ -881,7 +879,7 @@
         }
 
         .portfolio-section h2 {
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-size: 2.5rem;
             text-align: center;
             margin-bottom: 3rem;
             position: relative;
@@ -896,7 +894,7 @@
                 0 0 40px var(--neon-primary);
             letter-spacing: 1px;
             word-break: keep-all;
-            white-space: normal;
+            white-space: nowrap;
         }
 
         /* Flicker effect for the 'e' in Projects */
@@ -942,7 +940,7 @@
         }
 
         .sponsor-name {
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-size: 1.5rem;
             color: var(--light);
             font-family: 'Poppins', sans-serif;
             font-weight: 500;
@@ -978,7 +976,7 @@
         }
 
         .pricing-section h2 {
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-size: 2.5rem;
             margin-bottom: 1rem;
             color: var(--neon-primary);
             font-family: 'Poppins', sans-serif;
@@ -1000,7 +998,7 @@
         .subtitle {
             color: var(--light-gray);
             margin-bottom: 3rem;
-            font-size: clamp(1rem, 2vw, 1.1rem);
+            font-size: 1.1rem;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
@@ -1010,7 +1008,7 @@
 
         .pricing-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
@@ -1081,19 +1079,19 @@
             margin-top: 0px;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 2rem 1rem;
+            padding: 2rem 3rem;
         }
 
         .contact-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 3rem;
             margin-top: 2rem;
             padding-bottom: 2rem;
         }
 
         .contact-info h2 {
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-size: 2.5rem;
             margin-bottom: 1.5rem;
             color: var(--neon-primary);
             font-family: 'Poppins', sans-serif;
@@ -1103,7 +1101,7 @@
         .contact-info p {
             margin-bottom: 1rem;
             color: var(--light-gray);
-            font-size: clamp(1rem, 2vw, 1.1rem);
+            font-size: 1.1rem;
             line-height: 1.7;
         }
 
@@ -1281,7 +1279,7 @@
             left: 50%;
             transform: translateX(-50%);
             color: white;
-            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-size: 2rem;
             animation: bounce cubic-bezier(0.6, -0.28, 0.735, 0.045) infinite;
             z-index: 10;
             opacity: 0.7;
@@ -1339,7 +1337,7 @@
         }
 
         .news-updates h2 {
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-size: 2.5rem;
             text-align: center;
             margin-bottom: 3rem;
             color: white;
@@ -1356,7 +1354,7 @@
 
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
@@ -1393,7 +1391,7 @@
         }
 
         .news-title {
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-size: 1.5rem;
             margin-bottom: 1rem;
             color: var(--light);
             font-family: 'Poppins', sans-serif;
@@ -1536,7 +1534,7 @@
             }
         }
 
-        /* Bottom navigation */
+        /* Bottom navigation - UPDATED SIZE */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -1547,7 +1545,7 @@
             -webkit-backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-around;
-            padding: 10px 5px;
+            padding: 15px;
             z-index: 100;
             box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
         }
@@ -1558,15 +1556,14 @@
             align-items: center;
             text-decoration: none;
             color: var(--gray);
-            font-size: 0.7rem;
+            font-size: 0.8rem;
             position: relative;
             z-index: 1;
-            padding: 0.5rem 0.3rem;
+            padding: 0.5rem 1rem;
             transition: var(--transition);
             flex: 1;
             text-align: center;
             margin-bottom: -10px;
-            min-width: 0;
         }
 
         .nav-link i {
@@ -1592,12 +1589,8 @@
 
         .nav-link span {
             display: block;
-            font-size: 0.6rem;
+            font-size: 0.7rem;
             margin-top: 5px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 100%;
         }
 
         .nav-indicator {
@@ -1632,7 +1625,7 @@
         /* NEW: Collection Gallery Styles */
         .collection-gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 1.5rem;
             margin-top: 2rem;
             padding: 0 0.5rem;
@@ -1690,7 +1683,7 @@
         
         .collection-title {
             color: white;
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
             font-family: 'Poppins', sans-serif;
@@ -1737,7 +1730,7 @@
         
         .gallery-title {
             color: white;
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-size: 1.8rem;
             font-weight: 600;
             font-family: 'Poppins', sans-serif;
             max-width: 70%;
@@ -1918,8 +1911,8 @@
             }
 
             .gradient-orb {
-                width: 300px;
-                height: 300px;
+                width: 400px;
+                height: 400px;
             }
 
             .contact-method {
@@ -1953,7 +1946,7 @@
             
             /* Collection gallery responsive */
             .collection-gallery {
-                grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
                 gap: 1rem;
                 padding: 0;
             }
@@ -2022,8 +2015,8 @@
             }
             
             .gradient-orb {
-                width: 250px;
-                height: 250px;
+                width: 300px;
+                height: 300px;
                 filter: blur(40px);
             }
 
@@ -2350,7 +2343,7 @@
                             <div class="title-part" id="after-hours-title">AFTER H<span class="flicker-letter">O</span><span class="flicker-letter">U</span>R<span class="flicker-letter">S</span></div>
                             <div class="title-part" id="society-title"><span class="flicker-letter">S</span><span class="flicker-letter">O</span><span class="flicker-letter">C</span>I<span class="flicker-letter">E</span>T<span class="flicker-letter">Y</span></div>
                         </div>
-                        <h2 style="font-size: clamp(16px, 3vw, 20px);">EST. 2025</h2>
+                        <h2 style="font-size: 20px;">EST. 2025</h2>
                     </div>
                     <div class="scroll-indicator" id="scrollIndicator" aria-hidden="true">
                         <i class="fas fa-chevron-down"></i>
@@ -2424,6 +2417,16 @@
                             <i class="fas fa-spinner fa-spin"></i> Loading collections...
                         </div>
                     </div>
+
+                    <!-- Google Drive Link -->
+                    <p style="margin-top: 1.5rem;">
+                        <strong>Share your photos with us to our Gallery Collections!</strong><br>
+                        <a href="https://drive.google.com/drive/folders/1IN29jurCr17ZSt-A5q8zm-H6UV7NaHCQ?usp=sharing" 
+                            target="_blank" 
+                            class="drive-link">
+                            <i class="fab fa-google-drive"></i> Add your pictures here!
+                        </a>
+                    </p>
                 </section>
                 <br><br>
             </div>
@@ -2504,22 +2507,13 @@
                             <button type="submit" class="btn" id="submitBtn">Send Message</button>
                         </form>
 
-                            <!-- Google Drive Link -->
-                            <p style="margin-top: 1.5rem;">
-                                <strong>Share your photos with us to our Gallery Collections!</strong><br>
-                                <a href="https://drive.google.com/drive/folders/1IN29jurCr17ZSt-A5q8zm-H6UV7NaHCQ?usp=sharing" 
-                                   target="_blank" 
-                                   class="drive-link">
-                                    <i class="fab fa-google-drive"></i> Add your pictures here!
-                                </a>
-                            </p>
                         </div>
                     </div>
                 </section>
             </div>
         </div>
 <br>
-        <!-- Bottom Navigation -->
+        <!-- Bottom Navigation - UPDATED SIZE -->
         <nav class="bottom-nav" aria-label="Main navigation">
             <div class="nav-indicator"></div>
             <a href="#home" class="nav-link active" data-target="home" aria-label="Home">
@@ -2899,11 +2893,18 @@ document.addEventListener('DOMContentLoaded', function() {
         function updateIndicatorPosition(link) {
             const linkRect = link.getBoundingClientRect();
             const navRect = document.querySelector('.bottom-nav').getBoundingClientRect();
-            const indicatorWidth = window.innerWidth <= 480 ? 30 : 60;
+            const indicatorWidth = 60;
             const indicatorLeft = linkRect.left - navRect.left + (linkRect.width - indicatorWidth) / 2;
             
             navIndicator.style.width = `${indicatorWidth}px`;
             navIndicator.style.transform = `translateX(${indicatorLeft}px)`;
+            
+            if (window.innerWidth <= 768) {
+                const mobileIndicatorWidth = 40;
+                const mobileIndicatorLeft = linkRect.left - navRect.left + (linkRect.width - mobileIndicatorWidth) / 2;
+                navIndicator.style.width = `${mobileIndicatorWidth}px`;
+                navIndicator.style.transform = `translateX(${mobileIndicatorLeft}px)`;
+            }
         }
         
         updateIndicatorPosition(activeNavLink);

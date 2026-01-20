@@ -4,26 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     
-    <!-- Primary Meta Tags -->
+    <!-- SEO Stuff - Good for Google and social media -->
     <meta name="description" content="After Hours Society - A premier car club for enthusiasts based in Boise, Idaho. Join us for meets, events, and automotive community.">
     <meta name="keywords" content="car club, automotive, car meets, after hours society, car enthusiasts, modified cars, boise, id, idaho, jdm, european, american muscle">
     <meta name="author" content="After Hours Society">
     <meta name="robots" content="index, follow">
     
-    <!-- Canonical URL -->
+    <!-- Helps Google know this is the main page -->
     <link rel="canonical" href="https://www.afterhourssociety.live">
 
-    <!-- Favicon -->
+    <!-- Favicon - the little icon in browser tabs -->
     <link rel="icon" type="image/x-icon" href="https://afterhourssociety.live/img/ahs.png">
     <link rel="icon" type="image/png" sizes="32x32" href="https://afterhourssociety.live/img/ahs-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://afterhourssociety.live/img/ahs-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://afterhourssociety.live/img/ahs-180x180.png">
     
-    <!-- Preload critical assets -->
+    <!-- Load important stuff first -->
     <link rel="preload" href="https://afterhourssociety.live/img/ahs.png" as="image" type="image/png">
     <link rel="preload" href="https://afterhourssociety.live/img/torta.jpg" as="image" type="image/jpeg">
     
-    <!-- Open Graph / Social Media Meta Tags -->
+    <!-- Social media sharing previews -->
     <meta property="og:title" content="After Hours Society | Premier Car Club">
     <meta property="og:description" content="After Hours Society - A car club for enthusiasts based in Boise, Idaho.">
     <meta property="og:type" content="website">
@@ -32,30 +32,30 @@
     <meta property="og:image:alt" content="After Hours Society Logo">
     <meta property="og:site_name" content="After Hours Society">
     
-    <!-- Twitter Card Meta Tags -->
+    <!-- Twitter card settings -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="After Hours Society | Premier Car Club">
     <meta name="twitter:description" content="After Hours Society - A car club for enthusiasts based in Boise, Idaho.">
     <meta name="twitter:image" content="https://afterhourssociety.live/img/ahs.png">
     <meta name="twitter:creator" content="@after_hours_soc1ety">
     
-    <!-- Preconnect to external domains -->
+    <!-- Connect to external services early -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://www.googletagmanager.com">
     
-    <!-- Preload external CSS -->
+    <!-- Load external CSS files efficiently -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" crossorigin="anonymous">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" as="style" crossorigin="anonymous">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" as="style" crossorigin="anonymous">
     
-    <!-- CSS -->
+    <!-- External stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Structured Data (Schema Markup) -->
+    <!-- Structured data for Google - helps with search results -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -82,7 +82,7 @@
     }
     </script>
     
-    <!-- Google Analytics -->
+    <!-- Google Analytics - Replace with your actual tracking ID -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -95,9 +95,9 @@
       });
     </script>
     
-    <!-- Main CSS -->
+    <!-- Main website styles -->
     <style>
-        /* Loading Screen Styles */
+        /* Loading animation styles */
         .loading-screen {
             position: fixed;
             top: 0;
@@ -120,7 +120,7 @@
         :root {
             --size: 360px;
             --glow-color: rgba(255, 7, 58, 1);
-            --glow-intensity: 0; /* CHANGED: Start with zero glow */
+            --glow-intensity: 0; /* Start with no glow, builds up during animation */
         }
 
         .speedometer {
@@ -213,7 +213,7 @@
             border-radius: 50%;
             background: radial-gradient(circle, rgba(255, 7, 58, 0.3) 0%, transparent 70%);
             z-index: -1;
-            opacity: 0; /* CHANGED: Start with zero opacity */
+            opacity: 0;
             transition: opacity 0.5s ease;
         }
 
@@ -234,18 +234,44 @@
             font-family: 'Orbitron', monospace;
         }
 
-        /* Main Website Styles */
+        /* Gallery loading indicator - NEW */
+        .gallery-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            color: var(--neon-cyan);
+            font-size: 1.2rem;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            border: 1px solid var(--neon-cyan);
+            display: none;
+        }
+
+        .gallery-loading.active {
+            display: block;
+        }
+
+        .gallery-loading i {
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+
+        /* Main website colors and settings */
         :root {
-            --neon-primary: #ff073a;  /* Bright red */
-            --neon-secondary: #ff4d00; /* Orange-red */
-            --neon-accent: #ff0022;   /* Bright red accent */
-            --neon-cyan: #00fff2;     /* Cyan accent */
-            --dark: #1a1a1a;          /* Dark grey background */
-            --darker: #0d0d0d;        /* Darker elements */
-            --light: #f8f9fa;         /* Brighter light text for better contrast */
-            --gray: #666666;          /* Secondary text */
-            --light-gray: #cccccc;     /* Lighter text */
-            --border-gray: #666666;   /* Gray for borders */
+            --neon-primary: #ff073a;  /* Our main red color */
+            --neon-secondary: #ff4d00; /* Orange-red for highlights */
+            --neon-accent: #ff0022;   /* Bright red for accents */
+            --neon-cyan: #00fff2;     /* Cyan for text highlights */
+            --dark: #1a1a1a;          /* Dark background */
+            --darker: #0d0d0d;        /* Even darker for some elements */
+            --light: #f8f9fa;         /* Light text color */
+            --gray: #666666;          /* Gray text */
+            --light-gray: #cccccc;    /* Lighter gray */
+            --border-gray: #666666;   /* Border color */
             
             --transition: all 0.3s ease;
             --shadow: 0 0 8px rgba(255, 7, 58, 0.2);
@@ -268,14 +294,14 @@
             position: relative;
         }
 
-        /* Accessibility Improvements */
+        /* Better focus outlines for accessibility */
         :focus-visible {
             outline: 2px solid var(--neon-primary);
             outline-offset: 3px;
             border-radius: 2px;
         }
 
-        /* Optimized Skeleton Loading Styles */
+        /* Loading placeholders for content */
         .skeleton {
             background: linear-gradient(90deg, #2a2a2a 25%, #333 50%, #2a2a2a 75%);
             background-size: 200% 100%;
@@ -292,74 +318,7 @@
             }
         }
 
-        .skeleton-logo {
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            margin: 0 auto 1rem;
-        }
-
-        .skeleton-title {
-            height: 2.5rem;
-            width: 400px;
-            max-width: 80%;
-            margin: 0 auto 1rem;
-        }
-
-        .skeleton-subtitle {
-            height: 1.8rem;
-            width: 300px;
-            max-width: 60%;
-            margin: 0 auto 1.5rem;
-        }
-
-        .skeleton-tagline {
-            height: 1.2rem;
-            width: 500px;
-            max-width: 70%;
-            margin: 0 auto 2rem;
-        }
-
-        .skeleton-btn {
-            height: 3rem;
-            width: 150px;
-            border-radius: 30px;
-            margin: 0 auto;
-        }
-
-        .skeleton-news-item {
-            height: 350px;
-            border-radius: 15px;
-            margin-bottom: 2rem;
-        }
-
-        .skeleton-sponsor {
-            height: 4rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-        }
-
-        .skeleton-card {
-            height: 400px;
-            border-radius: 15px;
-            margin-bottom: 2rem;
-        }
-
-        .skeleton-contact {
-            height: 500px;
-            border-radius: 15px;
-            margin-bottom: 2rem;
-        }
-
-        /* Optimized skeleton animations for performance */
-        @media (prefers-reduced-motion: reduce) {
-            .skeleton {
-                animation: none;
-                background: #2a2a2a;
-            }
-        }
-
-        /* Reduced motion styles */
+        /* Don't animate for people who prefer reduced motion */
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation-duration: 0.01ms !important;
@@ -401,7 +360,7 @@
             }
         }
 
-        /* Shooting stars with parallax effect */
+        /* Shooting stars background effect */
         .shooting-star-container {
             position: fixed;
             top: 0;
@@ -443,7 +402,7 @@
             }
         }
 
-        /* Parallax layers */
+        /* Different layers for depth */
         .star-layer-1 {
             animation-duration: 1.5s;
             transform: translateZ(-100px);
@@ -459,6 +418,7 @@
             transform: translateZ(-300px);
         }
 
+        /* Page container setup */
         .page-container {
             position: relative;
             min-height: 100vh;
@@ -485,6 +445,7 @@
             pointer-events: all;
         }
 
+        /* Hero section with logo and title */
         .hero {
             display: flex;
             flex-direction: column;
@@ -522,7 +483,7 @@
             animation-delay: 7s;
         }
 
-        /* Logo glow and flicker effect */
+        /* Logo glow effect */
         .logo-glow {
             position: absolute;
             top: 0;
@@ -563,20 +524,6 @@
             100% { transform: rotate(360deg); }
         }
 
-        .logo-placeholder {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: var(--neon-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-            font-weight: bold;
-            animation: spin 15s linear infinite, logoPulse 2s ease-in-out infinite alternate;
-        }
-
         .hero-title {
             font-size: 2.5rem;
             margin-bottom: 1rem;
@@ -607,14 +554,7 @@
             }
         }
 
-        #after-hours-title {
-            animation-delay: 0.5s;
-        }
-
-        #society-title {
-            animation-delay: 4s;
-        }
-
+        /* Matrix-style letter animation */
         .matrix-letter {
             opacity: 0;
             animation: matrixReveal 20s forwards;
@@ -635,7 +575,7 @@
             }
         }
 
-        /* Flicker effect for specific letters */
+        /* Flickering effect for certain letters */
         .flicker-letter {
             display: inline-block;
             animation: signFlicker 2.5s infinite alternate;
@@ -693,6 +633,7 @@
             animation-delay: 8s;
         }
 
+        /* Main button styles */
         .btn {
             display: inline-block;
             padding: 0.8rem 1.8rem;
@@ -754,6 +695,7 @@
             color: var(--darker);
         }
 
+        /* Loading state for buttons */
         .btn.loading {
             position: relative;
             pointer-events: none;
@@ -774,7 +716,7 @@
             animation: spin 0.8s linear infinite;
         }
 
-        /* Animated gradient background element */
+        /* Animated background elements */
         .hero-background {
             position: absolute;
             top: 0;
@@ -814,64 +756,121 @@
             animation-delay: 2s;
         }
 
-        .services {
+        /* News section styles */
+        .news-updates {
             max-width: 1200px;
             margin: 3rem auto;
-            text-align: center;
-            padding-top: 60px;
+            padding: 2rem 1rem;
         }
 
-        .services h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-            color: var(--light);
+        .news-updates h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
             font-family: 'Poppins', sans-serif;
             font-weight: 500;
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 20px var(--neon-primary),
+                0 0 30px var(--neon-primary),
+                0 0 40px var(--neon-primary);
+            letter-spacing: 1px;
         }
 
-        .services-grid {
+        .news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
         }
 
-        .service-card {
+        .news-item {
             background: rgba(26, 26, 26, 0.8);
-            padding: 2rem;
             border-radius: 15px;
-            transition: var(--transition);
+            overflow: hidden;
             border: 1px solid var(--neon-primary);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 10px 20px rgba(255, 7, 58, 0.3);
-            border-color: var(--neon-secondary);
-        }
-
-        .service-card i {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--neon-primary);
             transition: var(--transition);
+            padding: 0;
         }
 
-        .service-card:hover i {
-            transform: scale(1.2);
-            color: var(--neon-secondary);
+        .news-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 7, 58, 0.3);
         }
 
-        .service-card h4 {
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-date {
+            color: var(--neon-primary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .news-title {
             font-size: 1.5rem;
             margin-bottom: 1rem;
             color: var(--light);
             font-family: 'Poppins', sans-serif;
-            font-weight: 500;
+            opacity: 1;
         }
 
+        .news-excerpt {
+            color: var(--light-gray);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            opacity: 1;
+        }
+
+        /* Links in news excerpts */
+        .news-excerpt a {
+            color: var(--neon-cyan);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 255, 242, 0.1);
+            border: 1px solid transparent;
+        }
+
+        .news-excerpt a:hover {
+            color: white;
+            background: rgba(0, 255, 242, 0.2);
+            border-color: var(--neon-cyan);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 242, 0.3);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: 1rem;
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .news-item:hover .news-image img {
+            transform: scale(1.05);
+        }
+
+        /* Sponsors section */
         .portfolio-section {
             max-width: 1200px;
             margin: 0 auto;
@@ -897,7 +896,7 @@
             white-space: nowrap;
         }
 
-        /* Flicker effect for the 'e' in Projects */
+        /* Flicker on the 'e' in Projects */
         .flicker-e {
             display: inline-block;
             animation: flickerE 3s infinite alternate;
@@ -918,7 +917,7 @@
             }
         }
 
-        /* Updated sponsor grid styles (removed boxes) */
+        /* Sponsors list */
         .sponsors-grid {
             display: flex;
             flex-direction: column;
@@ -968,33 +967,7 @@
             box-shadow: 0 0 20px rgba(255, 7, 58, 0.5);
         }
 
-        .pricing-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-
-        .pricing-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--neon-primary);
-            font-family: 'Poppins', sans-serif;
-            font-weight: 500;
-        }
-
-        .popular-badge {
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            background: var(--neon-secondary);
-            color: var(--darker);
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
+        /* About section */
         .subtitle {
             color: var(--light-gray);
             margin-bottom: 3rem;
@@ -1006,75 +979,7 @@
             text-align: center;
         }
 
-        .pricing-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .pricing-card {
-            background: rgba(26, 26, 26, 0.8);
-            padding: 2rem;
-            border-radius: 15px;
-            transition: var(--transition);
-            position: relative;
-            border: 1px solid var(--neon-primary);
-            text-align: left;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(255, 7, 58, 0.3);
-        }
-
-        .pricing-card.featured {
-            transform: scale(1.05);
-            background: rgba(26, 26, 26, 0.9);
-            border: 1px solid var(--neon-secondary);
-        }
-
-        .pricing-card.featured:hover {
-            transform: scale(1.08);
-        }
-
-        .pricing-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--light);
-            font-family: 'Poppins', sans-serif;
-            font-weight: 500;
-            text-align: center;
-        }
-
-        .price {
-            font-size: 2.5rem;
-            font-weight: 500;
-            margin-bottom: 1.5rem;
-            color: var(--neon-primary);
-            text-align: center;
-        }
-
-        .pricing-card ul {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .pricing-card ul li {
-            padding: 0.5rem 0;
-            position: relative;
-            padding-left: 1.5rem;
-            color: var(--light-gray);
-        }
-
-        .pricing-card ul li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--neon-accent);
-        }
-
-        /* UPDATED: Contact section with reduced side margins */
+        /* Contact section */
         .contact-section {
             margin-top: 0px;
             max-width: 1400px;
@@ -1160,7 +1065,7 @@
             transform: translateY(-1px);
         }
 
-        /* Google Drive Link Styles */
+        /* Google Drive link style */
         .drive-link {
             display: inline-flex;
             align-items: center;
@@ -1187,6 +1092,7 @@
             font-size: 1.2rem;
         }
 
+        /* Contact form */
         .contact-form {
             background: rgba(26, 26, 26, 0.8);
             padding: 2.5rem;
@@ -1233,13 +1139,7 @@
             min-height: 140px;
         }
 
-        /* Form group states */
-        .form-group.filled label {
-            transform: translateY(-25px) scale(0.85);
-            color: var(--neon-primary);
-        }
-
-        /* Error message styles */
+        /* Error messages */
         .error-message {
             color: #ff6b6b;
             font-size: 0.85rem;
@@ -1258,7 +1158,7 @@
             background: rgba(255, 107, 107, 0.05);
         }
 
-        /* Success message styles */
+        /* Success message */
         .success-message {
             display: none;
             background: rgba(0, 255, 0, 0.1);
@@ -1272,7 +1172,7 @@
             font-weight: 500;
         }
 
-        /* Scroll indicator arrow */
+        /* Scroll down arrow */
         .scroll-indicator {
             position: absolute;
             bottom: 60px;
@@ -1316,7 +1216,6 @@
             }
         }
 
-        /* Keep your existing bounce animation */
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% {
                 transform: translateY(0) translateX(-50%);
@@ -1329,300 +1228,14 @@
             }
         }
 
-        /* News Updates Section */
-        .news-updates {
-            max-width: 1200px;
-            margin: 3rem auto;
-            padding: 2rem 1rem;
-        }
-
-        .news-updates h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: white;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 500;
-            text-shadow: 
-                0 0 5px #fff,
-                0 0 10px #fff,
-                0 0 20px var(--neon-primary),
-                0 0 30px var(--neon-primary),
-                0 0 40px var(--neon-primary);
-            letter-spacing: 1px;
-        }
-
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .news-item {
-            background: rgba(26, 26, 26, 0.8);
-            border-radius: 15px;
-            overflow: hidden;
-            border: 1px solid var(--neon-primary);
-            transition: var(--transition);
-            padding: 0;
-        }
-
-        .news-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(255, 7, 58, 0.3);
-        }
-
-        .news-content {
-            padding: 1.5rem;
-        }
-
-        .news-date {
-            color: var(--neon-primary);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .news-date::before {
-            content: '';
-            font-size: 0.8rem;
-        }
-
-        .news-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--light);
-            font-family: 'Poppins', sans-serif;
-            opacity: 1;
-        }
-
-        .news-excerpt {
-            color: var(--light-gray);
-            margin-bottom: 1rem;
-            line-height: 1.6;
-            opacity: 1;
-        }
-
-        /* UPDATED: Styled link in news excerpt */
-        .news-excerpt a {
-            color: var(--neon-cyan);
-            text-decoration: none;
-            font-weight: 600;
-            position: relative;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(0, 255, 242, 0.1);
-            border: 1px solid transparent;
-        }
-
-        .news-excerpt a::after {
-            content: '↗';
-            font-size: 0.9em;
-        }
-
-        .news-excerpt a:hover {
-            color: white;
-            background: rgba(0, 255, 242, 0.2);
-            border-color: var(--neon-cyan);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 255, 242, 0.3);
-        }
-
-        .news-image {
-            width: 100%;
-            height: 200px;
-            overflow: hidden;
-            border-radius: 10px 10px 0 0;
-            margin-bottom: 1rem;
-        }
-
-        .news-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .news-item:hover .news-image img {
-            transform: scale(1.05);
-        }
-
-        /* Mobile adjustments */
-        .scroll-indicator {
-            bottom: 20vh !important;
-            font-size: 1.8rem;
-            text-shadow: 
-                0 0 0px var(--neon-primary),
-                0 0 8px var(--neon-primary),
-                0 0 8px var(--neon-primary);
-        }
-        
-        .sponsor-item {
-            flex-direction: column;
-            text-align: center;
-            gap: 1rem;
-            padding: 1rem 0;
-        }
-        
-        .skeleton-logo {
-            width: 180px;
-            height: 180px;
-        }
-        
-        .skeleton-title {
-            width: 300px;
-            height: 2rem;
-        }
-        
-        .skeleton-subtitle {
-            width: 250px;
-            height: 1.5rem;
-        }
-        
-        .skeleton-tagline {
-            width: 350px;
-            height: 1rem;
-        }
-
-        @media (max-width: 480px) {
-            .logo-container {
-                width: 150px;
-                height: 150px;
-            }
-            
-            .scroll-indicator {
-                bottom: 20vh !important;
-                font-size: 1.5rem;
-                text-shadow: 
-                    0 0 0px var(--neon-primary),
-                    0 0 6px var(--neon-primary),
-                    0 0 8px var(--neon-primary);
-            }
-            
-            .sponsor-item {
-                padding: 1rem 0;
-            }
-            
-            .sponsor-name {
-                font-size: 1.2rem;
-            }
-            
-            .skeleton-logo {
-                width: 150px;
-                height: 150px;
-            }
-            
-            .skeleton-title {
-                width: 250px;
-                height: 1.8rem;
-            }
-            
-            .skeleton-subtitle {
-                width: 200px;
-                height: 1.3rem;
-            }
-            
-            .skeleton-tagline {
-                width: 280px;
-                height: 0.9rem;
-            }
-        }
-
-        /* Bottom navigation - UPDATED SIZE */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(13, 13, 13, 0.7);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: space-around;
-            padding: 15px;
-            z-index: 100;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        .nav-link {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-            color: var(--gray);
-            font-size: 0.8rem;
-            position: relative;
-            z-index: 1;
-            padding: 0.5rem 1rem;
-            transition: var(--transition);
-            flex: 1;
-            text-align: center;
-            margin-bottom: -10px;
-        }
-
-        .nav-link i {
-            font-size: 1.2rem;
-            margin-bottom: 0.3rem;
-            transition: var(--transition);
-            color: var(--gray);
-        }
-
-        .nav-link:hover i {
-            transform: scale(1.2);
-        }
-
-        .nav-link.active {
-            color: var(--neon-primary);
-            transform: translateY(-5px);
-        }
-
-        .nav-link.active i {
-            transform: scale(1.3);
-            color: var(--neon-primary);
-        }
-
-        .nav-link span {
-            display: block;
-            font-size: 0.7rem;
-            margin-top: 5px;
-        }
-
-        .nav-indicator {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: var(--neon-primary);
-            border-radius: 5px;
-            transition: var(--transition);
-            transform: translateX(0);
-        }
-
-        /* Instagram CTA Button - Centered */
+        /* Instagram CTA button */
         .instagram-cta {
             display: flex;
             justify-content: center;
             margin: 2rem 0;
         }
         
-        /* Loading indicator for photos */
-        .photo-loading {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 200px;
-            color: var(--neon-primary);
-            font-size: 1.2rem;
-        }
-        
-        /* NEW: Collection Gallery Styles */
+        /* Gallery collection styles */
         .collection-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -1670,15 +1283,12 @@
             flex-direction: column;
             justify-content: flex-end;
             padding: 1.5rem;
-            opacity: 1; /* Changed from 0 to 1 - ALWAYS VISIBLE */
+            opacity: 1;
             transition: opacity 0.3s ease;
         }
 
-        /* Remove or update the hover effect if you want */
         .collection-item:hover .collection-overlay {
-            /* Optional: You can keep this for additional hover effects */
-            /* opacity: 1; */ /* Remove or comment this line */
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.95)); /* Optional: darker on hover */
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.95));
         }
         
         .collection-title {
@@ -1697,7 +1307,7 @@
             gap: 0.5rem;
         }
         
-        /* Gallery Modal Styles - IMPROVED FOR DESKTOP */
+        /* Gallery modal popup */
         .gallery-modal {
             display: none;
             position: fixed;
@@ -1759,7 +1369,7 @@
         
         .gallery-container {
             width: 95%;
-            height: 90%; /* Reduced height to ensure thumbnails are visible */
+            height: 90%;
             display: flex;
             flex-direction: column;
             padding: 0.5rem;
@@ -1772,18 +1382,18 @@
             align-items: center;
             padding: 1rem;
             position: relative;
-            max-height: 80vh; /* Limit maximum height */
+            max-height: 80vh;
         }
         
         .gallery-main-image img {
             max-width: 90%;
-            max-height: 70vh; /* Reduced max height */
+            max-height: 70vh;
             object-fit: contain;
             border-radius: 10px;
             box-shadow: 0 0 30px rgba(255, 7, 58, 0.5);
         }
         
-        /* Navigation Arrows */
+        /* Gallery navigation arrows */
         .gallery-nav {
             position: absolute;
             top: 50%;
@@ -1816,6 +1426,7 @@
             right: 20px;
         }
         
+        /* Gallery thumbnails */
         .gallery-thumbnails {
             display: flex;
             gap: 0.5rem;
@@ -1824,7 +1435,7 @@
             background: rgba(26, 26, 26, 0.5);
             border-radius: 10px;
             margin-top: 0.5rem;
-            height: 100px; /* Fixed height for thumbnails */
+            height: 100px;
             align-items: center;
         }
         
@@ -1852,11 +1463,79 @@
             object-fit: cover;
         }
 
-        .news-excerpt a::after {
-            content: '' !important;
+        /* Bottom navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(13, 13, 13, 0.7);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-around;
+            padding: 15px;
+            z-index: 100;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
         }
 
-        /* Responsive Breakpoints */
+        .nav-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--gray);
+            font-size: 0.8rem;
+            position: relative;
+            z-index: 1;
+            padding: 0.5rem 1rem;
+            transition: var(--transition);
+            flex: 1;
+            text-align: center;
+            margin-bottom: -10px;
+        }
+
+        .nav-link i {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            transition: var(--transition);
+            color: var(--gray);
+        }
+
+        .nav-link:hover i {
+            transform: scale(1.2);
+        }
+
+        .nav-link.active {
+            color: var(--neon-primary);
+            transform: translateY(-5px);
+        }
+
+        .nav-link.active i {
+            transform: scale(1.3);
+            color: var(--neon-primary);
+        }
+
+        .nav-link span {
+            display: block;
+            font-size: 0.7rem;
+            margin-top: 5px;
+        }
+
+        /* Navigation indicator line */
+        .nav-indicator {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--neon-primary);
+            border-radius: 5px;
+            transition: var(--transition);
+            transform: translateX(0);
+        }
+
+        /* Responsive design for different screen sizes */
         @media (max-width: 768px) {
             .page {
                 padding: 0.5rem;
@@ -1875,16 +1554,8 @@
                 font-size: 1.5rem;
             }
             
-            .services-grid, .pricing-cards, .news-grid {
+            .news-grid {
                 grid-template-columns: 1fr;
-            }
-            
-            .pricing-card.featured {
-                transform: scale(1);
-            }
-            
-            .pricing-card.featured:hover {
-                transform: scale(1.03);
             }
             
             .sponsors-grid {
@@ -1930,7 +1601,6 @@
                 font-size: 1.5rem;
             }
             
-            /* Updated: Contact section responsive adjustments */
             .contact-section {
                 padding: 2rem 0.5rem;
             }
@@ -1944,7 +1614,6 @@
                 padding: 1.5rem;
             }
             
-            /* Collection gallery responsive */
             .collection-gallery {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
                 gap: 1rem;
@@ -2096,159 +1765,7 @@
             }
         }
 
-        @media (max-width: 320px) {
-            .hero-title {
-                font-size: 1.5rem;
-            }
-            
-            .logo-container {
-                width: 120px;
-                height: 120px;
-            }
-            
-            .btn {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.8rem;
-            }
-            
-            .collection-title {
-                font-size: 1rem;
-            }
-            
-            .gallery-title {
-                font-size: 1rem;
-            }
-            
-            .gallery-close {
-                width: 25px;
-                height: 25px;
-                font-size: 0.8rem;
-            }
-            
-            .gallery-nav {
-                width: 30px;
-                height: 30px;
-                font-size: 0.9rem;
-            }
-            
-            .thumbnail {
-                width: 45px;
-                height: 35px;
-            }
-        }
-
-        /* Desktop-specific gallery improvements */
-        @media (min-width: 1024px) {
-            .gallery-container {
-                width: 85%;
-                height: 85%;
-            }
-            
-            .gallery-main-image img {
-                max-width: 80%;
-                max-height: 65vh; /* Ensure thumbnails are visible */
-            }
-            
-            .gallery-nav {
-                width: 60px;
-                height: 60px;
-                font-size: 1.8rem;
-            }
-            
-            .gallery-prev {
-                left: 40px;
-            }
-            
-            .gallery-next {
-                right: 40px;
-            }
-            
-            .thumbnail {
-                width: 100px;
-                height: 75px;
-            }
-            
-            .gallery-thumbnails {
-                height: 120px;
-            }
-        }
-
-        /* Landscape orientation optimizations */
-        @media (max-height: 600px) and (orientation: landscape) {
-            .hero {
-                height: auto;
-                min-height: 100vh;
-                padding-top: 3rem;
-                padding-bottom: 3rem;
-            }
-            
-            .logo-container {
-                width: 120px;
-                height: 120px;
-            }
-            
-            .scroll-indicator {
-                display: none;
-            }
-            
-            .gallery-container {
-                flex-direction: row;
-                height: 90%;
-            }
-            
-            .gallery-main-image {
-                flex: 3;
-            }
-            
-            .gallery-thumbnails {
-                flex-direction: column;
-                width: 120px;
-                height: 100%;
-                overflow-y: auto;
-                overflow-x: hidden;
-                margin-top: 0;
-                margin-left: 0.5rem;
-            }
-            
-            .thumbnail {
-                width: 100px;
-                height: 75px;
-            }
-        }
-
-        /* Tablet optimizations */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            .collection-gallery {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
-            
-            .gallery-container {
-                width: 90%;
-                height: 90%;
-            }
-            
-            .thumbnail {
-                width: 80px;
-                height: 60px;
-            }
-        }
-
-        /* High-density screens */
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-            .speedometer {
-                box-shadow: 0 0 120px rgba(255, 7, 58, var(--glow-intensity)), 
-                            inset 0 0 80px rgba(0, 0, 0, 0.8);
-            }
-            
-            .logo-glow {
-                box-shadow: 
-                    0 0 40px rgba(255, 7, 58, 0.6),
-                    0 0 80px rgba(255, 7, 58, 0.4),
-                    0 0 120px rgba(255, 7, 58, 0.2);
-            }
-        }
-
-        /* Print styles */
+        /* Print styles - hide animations for printing */
         @media print {
             .loading-screen,
             .shooting-star-container,
@@ -2274,36 +1791,10 @@
                 box-shadow: none;
             }
         }
-
-        /* Reduced motion for users who prefer it */
-        @media (prefers-reduced-motion: reduce) {
-            .logo-spin,
-            .gradient-orb,
-            .shooting-star,
-            .scroll-indicator,
-            .collection-item:hover,
-            .news-item:hover,
-            .service-card:hover,
-            .pricing-card:hover,
-            .contact-method:hover,
-            .sponsor-item:hover {
-                animation: none !important;
-                transition: none !important;
-                transform: none !important;
-            }
-            
-            .logo-glow,
-            .flicker-letter,
-            .flicker-e,
-            .matrix-letter {
-                animation: none !important;
-                opacity: 1 !important;
-            }
-        }
     </style>
 </head>
 <body>
-    <!-- Loading Screen -->
+    <!-- Loading animation screen -->
     <div class="loading-screen" id="loadingScreen">
         <div class="speedometer">
             <div class="glow-ring" id="glowRing"></div>
@@ -2317,26 +1808,26 @@
         </div>
     </div>
 
-    <!-- Main Website Content -->
+    <!-- Main website content -->
     <div class="website-content" style="display: none;">
-        <!-- Shooting stars container -->
+        <!-- Shooting stars background -->
         <div class="shooting-star-container" id="starContainer"></div>
 
-        <!-- Animated background element -->
+        <!-- Animated background elements -->
         <div class="hero-background">
             <div class="gradient-orb"></div>
             <div class="gradient-orb"></div>
         </div>
 
         <div class="page-container">
-            <!-- Home Page (default visible) -->
-            <div class="page active" id="home" tabindex="-1" role="main" id="main-content">
+            <!-- Home page with news -->
+            <div class="page active" id="home" tabindex="-1" role="main">
                 <header class="hero">
                     <div class="hero-content">
                         <div class="logo-container">
-                            <!-- Logo with glow effect -->
+                            <!-- Logo glow effect -->
                             <div class="logo-glow"></div>
-                            <!-- FIXED: Logo now uses absolute URL -->
+                            <!-- Club logo -->
                             <img id="club-logo" class="logo-spin" src="https://afterhourssociety.live/img/ahs.png" alt="After Hours Society Logo" loading="lazy">
                         </div>
                         <div class="hero-title">
@@ -2345,18 +1836,19 @@
                         </div>
                         <h2 style="font-size: 20px;">EST. 2025</h2>
                     </div>
+                    <!-- Scroll down arrow -->
                     <div class="scroll-indicator" id="scrollIndicator" aria-hidden="true">
                         <i class="fas fa-chevron-down"></i>
                     </div>
                 </header>
 
+                <!-- News and updates section -->
                 <section class="news-updates" id="news">
                     <h2>Club News & Updates</h2>
                     <div class="news-grid">
                         <div class="news-item">
                             <div class="news-image">
-                                <!-- FIXED: Image now uses absolute URL -->
-                                <img src="https://afterhourssociety.live/img/torta.jpg" alt="Torta Hunt Event" loading="lazy">
+                                <img src="https://afterhourssociety.live/img/torta.jpg" alt="Torta Hunt Event - Club members with their cars" loading="lazy">
                             </div>
                             <div class="news-content">
                                 <div class="news-date">1/18/2025</div>
@@ -2364,14 +1856,15 @@
                                 <p class="news-excerpt">The wait is over. The engines are warm, the 2026 season is officially here, and we're kicking things off with the launch of our brand-new website. This is your new home for event calendars, member builds, and exclusive club updates.</p>
                                 <p class="news-excerpt">The Highlights
                                     <br><br>New Blood: Shoutout to the wave of new members joining the ranks this season—let's show 'em how we roll.
-                                    <br><br>Heart of the Scene: From rolling out for a local kid's birthday to getting the cars on set for a music video shoot, you can check out our Season Gallery<a href="#photography" class="nav-link no-arrow" data-target="photography">Here</a>.
+                                    <br><br>Heart of the Scene: From rolling out for a local kid's birthday to getting the cars on set for a music video shoot, you can check out our Season Gallery <a href="#photography" class="nav-link no-arrow" data-target="photography">Here</a>.
                                     <br><br>The Gold Standard: We're on a mission to keep the car community how it should be - built on respect and passion. No gatekeeping. No drama. Just the culture we love.</p>
                             </div>
                         </div>
+                    </div>
                 </section>
             </div>
 
-            <!-- Portfolio Page (Now Sponsors Page) -->
+            <!-- Sponsors page -->
             <div class="page" id="portfolio" tabindex="-1" role="region" aria-label="Sponsors">
                 <section class="portfolio-section">
                     <h2>Our <br><span class="flicker-e">Spon</span>sors</h2>
@@ -2398,28 +1891,21 @@
                 </section>
             </div>
 
-            <!-- Photography Page -->
+            <!-- Photo gallery page -->
             <div class="page" id="photography" tabindex="-1" role="region" aria-label="Season Gallery">
                 <section class="portfolio-section">
                     <h2>After Hours <span class="flicker-e">Season Gallery</span></h2>
                     
-                    <!-- Centered Instagram CTA -->
+                    <!-- Instagram follow button -->
                     <div class="instagram-cta">
                         <a href="https://www.instagram.com/after.hourssphotography/?igsh=N2YzZGlvajJieG9q#" target="_blank" class="btn">
                             <i class="fab fa-instagram"></i> Follow After Hours Photography
                         </a>
                     </div>
                     
-                    <!-- ============================================ -->
-                    <!-- EASY-TO-EDIT GALLERY - DIRECTLY IN HTML -->
-                    <!-- ============================================ -->
-                    <!-- To edit the gallery, simply add/remove/update -->
-                    <!-- the data-gallery attributes below -->
-                    <!-- ============================================ -->
-                    
-                    <!-- Collection Gallery - EDIT THIS SECTION -->
+                    <!-- Gallery collections - Easy to edit! -->
                     <div class="collection-gallery" id="collectionGallery">
-                        <!-- Gallery Item 1 -->
+                        <!-- Collection 1 -->
                         <div class="collection-item" 
                              data-gallery-title="Season 2026 Launch"
                              data-gallery-cover="https://afterhourssociety.live/img/Ahsp1.jpg"
@@ -2430,7 +1916,7 @@
                                 "https://afterhourssociety.live/img/Ahsp4.jpg",
                                 "https://afterhourssociety.live/img/Ahsp5.jpg"
                              ]'>
-                            <img src="https://afterhourssociety.live/img/Ahsp1.jpg" alt="Season 2026 Launch">
+                            <img src="https://afterhourssociety.live/img/Ahsp1.jpg" alt="Season 2026 Launch - Club cars lined up">
                             <div class="collection-overlay">
                                 <h4 class="collection-title">Season 2026 Launch</h4>
                                 <div class="collection-count">
@@ -2440,7 +1926,7 @@
                             </div>
                         </div>
                         
-                        <!-- Gallery Item 2 -->
+                        <!-- Collection 2 -->
                         <div class="collection-item" 
                              data-gallery-title="Night Meets"
                              data-gallery-cover="https://afterhourssociety.live/img/Ahsp2.jpg"
@@ -2449,7 +1935,7 @@
                                 "https://afterhourssociety.live/img/Ahsp3.jpg",
                                 "https://afterhourssociety.live/img/Ahsp1.jpg"
                              ]'>
-                            <img src="https://afterhourssociety.live/img/Ahsp2.jpg" alt="Night Meets">
+                            <img src="https://afterhourssociety.live/img/Ahsp2.jpg" alt="Night Meets - Cars under street lights">
                             <div class="collection-overlay">
                                 <h4 class="collection-title">Night Meets</h4>
                                 <div class="collection-count">
@@ -2459,7 +1945,7 @@
                             </div>
                         </div>
                         
-                        <!-- Gallery Item 3 -->
+                        <!-- Collection 3 -->
                         <div class="collection-item" 
                              data-gallery-title="Special Events"
                              data-gallery-cover="https://afterhourssociety.live/img/Ahsp3.jpg"
@@ -2469,7 +1955,7 @@
                                 "https://afterhourssociety.live/img/Ahsp5.jpg",
                                 "https://afterhourssociety.live/img/Ahsp1.jpg"
                              ]'>
-                            <img src="https://afterhourssociety.live/img/Ahsp3.jpg" alt="Special Events">
+                            <img src="https://afterhourssociety.live/img/Ahsp3.jpg" alt="Special Events - Car show and meet">
                             <div class="collection-overlay">
                                 <h4 class="collection-title">Special Events</h4>
                                 <div class="collection-count">
@@ -2478,56 +1964,23 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        <!-- ============================================ -->
-                        <!-- TO ADD MORE GALLERY ITEMS: -->
-                        <!-- 1. Copy the entire collection-item div above -->
-                        <!-- 2. Update the data attributes: -->
-                        <!--    - data-gallery-title="Your Title" -->
-                        <!--    - data-gallery-cover="URL to cover image" -->
-                        <!--    - data-gallery-images='["img1.jpg", "img2.jpg"]' -->
-                        <!-- 3. Update the img src to match cover image -->
-                        <!-- 4. Update the title and count in the overlay -->
-                        <!-- ============================================ -->
-                        
-                        <!-- Example for adding a new gallery: -->
-                        <!--
-                        <div class="collection-item" 
-                             data-gallery-title="New Collection"
-                             data-gallery-cover="https://your-image-url.com/cover.jpg"
-                             data-gallery-images='[
-                                "https://your-image-url.com/image1.jpg",
-                                "https://your-image-url.com/image2.jpg"
-                             ]'>
-                            <img src="https://your-image-url.com/cover.jpg" alt="New Collection">
-                            <div class="collection-overlay">
-                                <h4 class="collection-title">New Collection</h4>
-                                <div class="collection-count">
-                                    <i class="fas fa-images"></i>
-                                    <span>2 photos</span>
-                                </div>
-                            </div>
-                        </div>
-                        -->
-                        <!-- ============================================ -->
-                        
                     </div>
 
-<!-- Google Drive Link - Centered -->
-<div style="margin-top: 1.5rem; text-align: center;">
-    <p><strong>Share your photos with us to our Gallery Collections!</strong></p>
-    <a href="https://drive.google.com/drive/folders/1IN29jurCr17ZSt-A5q8zm-H6UV7NaHCQ?usp=sharing" 
-       target="_blank" 
-       class="drive-link" 
-       style="display: inline-flex; margin-top: 0.5rem;">
-        <i class="fab fa-google-drive"></i> Add your pictures here!
-    </a>
-</div>
+                    <!-- Google Drive link for photo submissions -->
+                    <div style="margin-top: 1.5rem; text-align: center;">
+                        <p><strong>Share your photos with us to our Gallery Collections!</strong></p>
+                        <a href="https://drive.google.com/drive/folders/1IN29jurCr17ZSt-A5q8zm-H6UV7NaHCQ?usp=sharing" 
+                           target="_blank" 
+                           class="drive-link" 
+                           style="display: inline-flex; margin-top: 0.5rem;">
+                            <i class="fab fa-google-drive"></i> Add your pictures here!
+                        </a>
+                    </div>
                 </section>
                 <br><br>
             </div>
 
-            <!-- Pricing Page (Now About Page) -->
+            <!-- About page -->
             <div class="page" id="pricing" tabindex="-1" role="region" aria-label="About Us">
                 <section class="portfolio-section">
                     <h2>About <br> After H<span class="flicker-e">our</span>s <br><span class="flicker-e">Society</span></h2>
@@ -2538,7 +1991,7 @@
                 </section>
             </div>
 
-            <!-- Contact Page -->
+            <!-- Contact page -->
             <div class="page" id="contact" tabindex="-1" role="region" aria-label="Contact Us">
                 <section class="contact-section">
                     <div class="contact-container">
@@ -2554,7 +2007,7 @@
                                         <p><a href="https://instagram.com/after_hours_soc1ety" target="_blank">@after_hours_soc1ety</a></p>
                                     </div>
                                 </div>
-                                    <div class="contact-method">
+                                <div class="contact-method">
                                     <i class="fab fa-tiktok"></i>
                                     <div>
                                         <h4>TikTok</h4>
@@ -2569,6 +2022,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
                         <form class="contact-form" id="contactForm" action="https://formsubmit.co/2dbe592043c5fbb7c149c062f5e296dc" method="POST">
                             <h2>Contact Us</h2>
@@ -2595,21 +2049,20 @@
                             <div id="successMessage" class="success-message">
                                 Thank you for your message! We will get back to you soon.
                             </div>
-                            <!-- FormSubmit hidden fields -->
+                            <!-- FormSubmit settings -->
                             <input type="hidden" name="_next" value="#contact">
                             <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_template" value="table">
                             <input type="hidden" name="_subject" value="New Contact Form Submission - After Hours Society">
                             <button type="submit" class="btn" id="submitBtn">Send Message</button>
                         </form>
-
-                        </div>
                     </div>
                 </section>
             </div>
         </div>
-<br>
-        <!-- Bottom Navigation - UPDATED SIZE -->
+        <br>
+
+        <!-- Bottom navigation menu -->
         <nav class="bottom-nav" aria-label="Main navigation">
             <div class="nav-indicator"></div>
             <a href="#home" class="nav-link active" data-target="home" aria-label="Home">
@@ -2620,7 +2073,6 @@
                 <i class="fas fa-handshake"></i>
                 <span>Sponsors</span>
             </a>
-            <!-- ADD THIS NEW TAB -->
             <a href="#photography" class="nav-link" data-target="photography" aria-label="Photography">
                 <i class="fas fa-camera"></i>
                 <span>Photos</span>
@@ -2635,13 +2087,18 @@
             </a>
         </nav>
         
-        <!-- Gallery Modal -->
+        <!-- Gallery popup modal -->
         <div class="gallery-modal" id="galleryModal">
             <div class="gallery-header">
                 <h3 class="gallery-title" id="galleryTitle">Gallery</h3>
                 <button class="gallery-close" onclick="closeGallery()">&times;</button>
             </div>
             <div class="gallery-container">
+                <!-- Gallery loading indicator -->
+                <div class="gallery-loading" id="galleryLoading">
+                    <i class="fas fa-spinner"></i> Loading images...
+                </div>
+                
                 <div class="gallery-main-image">
                     <button class="gallery-nav gallery-prev" onclick="prevImage()" aria-label="Previous image">
                         <i class="fas fa-chevron-left"></i>
@@ -2652,798 +2109,785 @@
                     </button>
                 </div>
                 <div class="gallery-thumbnails" id="galleryThumbnails">
-                    <!-- Thumbnails will be loaded here -->
+                    <!-- Thumbnails load here -->
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-// ============================================
-// EASY-TO-EDIT GALLERY SYSTEM - ALL IN HTML
-// ============================================
-// To edit the gallery, simply update the HTML elements
-// in the Photography section above.
+// Main website JavaScript
 // ============================================
 
-// Debounce function for performance
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Global variables for gallery
-let currentGallery = null;
-let currentImageIndex = 0;
-
-// Function to load gallery data from HTML elements
-function loadGalleryFromHTML() {
-    const collectionItems = document.querySelectorAll('.collection-item');
-    const collections = [];
+// Fix for making sure things run smoothly
+(function() {
+    'use strict';
     
-    collectionItems.forEach((item, index) => {
-        try {
-            const title = item.getAttribute('data-gallery-title') || `Collection ${index + 1}`;
-            const cover = item.getAttribute('data-gallery-cover') || '';
-            const imagesJson = item.getAttribute('data-gallery-images') || '[]';
-            
-            // Parse the images array from JSON
-            let images = [];
-            try {
-                images = JSON.parse(imagesJson);
-            } catch (e) {
-                console.error('Error parsing images JSON:', e);
-                images = [];
+    // Gallery loading indicator setup
+    const galleryLoading = document.getElementById('galleryLoading');
+    
+    // Throttle function to prevent too many calls
+    function throttle(func, limit) {
+        let inThrottle;
+        return function() {
+            const args = arguments;
+            const context = this;
+            if (!inThrottle) {
+                func.apply(context, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
             }
-            
-            collections.push({
-                id: index + 1,
-                title: title,
-                cover: cover,
-                images: images
-            });
-        } catch (error) {
-            console.error('Error loading gallery item:', error);
-        }
-    });
-    
-    return collections;
-}
-
-// Initialize collection gallery
-function initCollectionGallery() {
-    const collectionGallery = document.getElementById('collectionGallery');
-    if (!collectionGallery) return;
-    
-    // Load gallery data from HTML
-    const collections = loadGalleryFromHTML();
-    
-    if (collections.length === 0) {
-        collectionGallery.innerHTML = `
-            <div style="text-align: center; grid-column: 1 / -1; padding: 3rem;">
-                <i class="fas fa-images" style="font-size: 3rem; color: var(--neon-primary); margin-bottom: 1rem;"></i>
-                <h3 style="color: var(--light); margin-bottom: 1rem;">No Collections Yet</h3>
-                <p style="color: var(--light-gray);">Check back soon for gallery updates!</p>
-            </div>
-        `;
-        return;
+        };
     }
     
-    // Set up click handlers for existing gallery items
-    const collectionItems = document.querySelectorAll('.collection-item');
-    collectionItems.forEach((item, index) => {
-        if (index < collections.length) {
-            item.addEventListener('click', () => openGallery(collections[index]));
-        }
-    });
-}
-
-// Gallery Functions
-function openGallery(collection) {
-    currentGallery = collection;
-    currentImageIndex = 0;
+    // Track which images are loaded
+    const loadedImages = new Set();
     
-    const modal = document.getElementById('galleryModal');
-    const title = document.getElementById('galleryTitle');
-    const mainImage = document.getElementById('galleryMainImage');
-    const thumbnails = document.getElementById('galleryThumbnails');
-    
-    title.textContent = collection.title;
-    mainImage.src = collection.images[0] || '';
-    mainImage.alt = `${collection.title} - Image 1`;
-    
-    // Create thumbnails
-    thumbnails.innerHTML = '';
-    collection.images.forEach((image, index) => {
-        const thumbnail = document.createElement('div');
-        thumbnail.className = `thumbnail ${index === 0 ? 'active' : ''}`;
-        thumbnail.innerHTML = `<img src="${image}" alt="Thumbnail ${index + 1}" loading="lazy">`;
+    // Load gallery from HTML data
+    function loadGalleryFromHTML() {
+        const collectionItems = document.querySelectorAll('.collection-item');
+        const collections = [];
         
-        thumbnail.addEventListener('click', () => {
-            currentImageIndex = index;
-            updateMainImage();
-            updateActiveThumbnail();
+        collectionItems.forEach((item, index) => {
+            try {
+                const title = item.getAttribute('data-gallery-title') || `Collection ${index + 1}`;
+                const cover = item.getAttribute('data-gallery-cover') || '';
+                const imagesJson = item.getAttribute('data-gallery-images') || '[]';
+                
+                let images = [];
+                try {
+                    images = JSON.parse(imagesJson);
+                } catch (e) {
+                    console.log('Could not parse images for', title, e);
+                    images = [];
+                }
+                
+                collections.push({
+                    id: index + 1,
+                    title: title,
+                    cover: cover,
+                    images: images
+                });
+            } catch (error) {
+                console.log('Error with gallery item', error);
+            }
         });
         
-        thumbnails.appendChild(thumbnail);
-    });
+        return collections;
+    }
     
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeGallery() {
-    const modal = document.getElementById('galleryModal');
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-    currentGallery = null;
-}
-
-function nextImage() {
-    if (currentGallery) {
-        currentImageIndex = (currentImageIndex + 1) % currentGallery.images.length;
-        updateMainImage();
-        updateActiveThumbnail();
+    // Set up gallery when page loads
+    function initCollectionGallery() {
+        const collectionGallery = document.getElementById('collectionGallery');
+        if (!collectionGallery) return;
+        
+        const collections = loadGalleryFromHTML();
+        
+        // Show message if no galleries
+        if (collections.length === 0) {
+            collectionGallery.innerHTML = `
+                <div style="text-align: center; grid-column: 1 / -1; padding: 3rem;">
+                    <i class="fas fa-images" style="font-size: 3rem; color: var(--neon-primary); margin-bottom: 1rem;"></i>
+                    <h3 style="color: var(--light); margin-bottom: 1rem;">No Collections Yet</h3>
+                    <p style="color: var(--light-gray);">Check back soon for gallery updates!</p>
+                </div>
+            `;
+            return;
+        }
+        
+        // Add click handlers to gallery items
+        const collectionItems = document.querySelectorAll('.collection-item');
+        collectionItems.forEach((item, index) => {
+            if (index < collections.length) {
+                item.addEventListener('click', () => {
+                    openGallery(collections[index]);
+                });
+            }
+        });
     }
-}
-
-function prevImage() {
-    if (currentGallery) {
-        currentImageIndex = (currentImageIndex - 1 + currentGallery.images.length) % currentGallery.images.length;
-        updateMainImage();
-        updateActiveThumbnail();
+    
+    // Gallery state
+    let currentGallery = null;
+    let currentImageIndex = 0;
+    
+    // Preload images for better performance
+    function preloadGalleryImages(images) {
+        images.forEach(src => {
+            if (!loadedImages.has(src)) {
+                const img = new Image();
+                img.src = src;
+                img.onload = function() {
+                    loadedImages.add(src);
+                };
+            }
+        });
     }
-}
-
-function updateMainImage() {
-    const mainImage = document.getElementById('galleryMainImage');
-    if (currentGallery && currentGallery.images[currentImageIndex]) {
-        mainImage.src = currentGallery.images[currentImageIndex];
+    
+    // Open gallery with loading indicator
+    function openGallery(collection) {
+        currentGallery = collection;
+        currentImageIndex = 0;
+        
+        const modal = document.getElementById('galleryModal');
+        const title = document.getElementById('galleryTitle');
+        const thumbnails = document.getElementById('galleryThumbnails');
+        
+        title.textContent = collection.title;
+        
+        // Show loading indicator
+        if (galleryLoading) {
+            galleryLoading.classList.add('active');
+        }
+        
+        // Preload all images in background
+        preloadGalleryImages(collection.images);
+        
+        // Load first image
+        loadGalleryImage(collection.images[0], function() {
+            // Hide loading indicator once first image loads
+            if (galleryLoading) {
+                galleryLoading.classList.remove('active');
+            }
+        });
+        
+        // Create thumbnails
+        thumbnails.innerHTML = '';
+        collection.images.forEach((image, index) => {
+            const thumbnail = document.createElement('div');
+            thumbnail.className = `thumbnail ${index === 0 ? 'active' : ''}`;
+            thumbnail.innerHTML = `<img src="${image}" alt="Thumbnail ${index + 1}" loading="lazy">`;
+            
+            thumbnail.addEventListener('click', () => {
+                currentImageIndex = index;
+                updateMainImage();
+                updateActiveThumbnail();
+            });
+            
+            thumbnails.appendChild(thumbnail);
+        });
+        
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    // Load image with callback
+    function loadGalleryImage(src, callback) {
+        const mainImage = document.getElementById('galleryMainImage');
+        
+        // Show loading if image isn't cached
+        if (!loadedImages.has(src) && galleryLoading) {
+            galleryLoading.classList.add('active');
+        }
+        
+        mainImage.onload = function() {
+            if (galleryLoading) {
+                galleryLoading.classList.remove('active');
+            }
+            if (callback) callback();
+            loadedImages.add(src);
+        };
+        
+        mainImage.onerror = function() {
+            if (galleryLoading) {
+                galleryLoading.classList.remove('active');
+            }
+            mainImage.alt = 'Image failed to load';
+        };
+        
+        mainImage.src = src;
         mainImage.alt = `${currentGallery.title} - Image ${currentImageIndex + 1}`;
     }
-}
-
-function updateActiveThumbnail() {
-    const thumbnails = document.querySelectorAll('.thumbnail');
-    thumbnails.forEach((thumb, index) => {
-        thumb.classList.toggle('active', index === currentImageIndex);
-    });
-}
-
-// Keyboard navigation for gallery
-document.addEventListener('keydown', (e) => {
-    const modal = document.getElementById('galleryModal');
-    if (!modal.classList.contains('active') || !currentGallery) return;
     
-    switch(e.key) {
-        case 'Escape':
+    // Close gallery
+    function closeGallery() {
+        const modal = document.getElementById('galleryModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        currentGallery = null;
+        
+        // Hide loading indicator
+        if (galleryLoading) {
+            galleryLoading.classList.remove('active');
+        }
+    }
+    
+    // Next image
+    function nextImage() {
+        if (currentGallery) {
+            currentImageIndex = (currentImageIndex + 1) % currentGallery.images.length;
+            updateMainImage();
+            updateActiveThumbnail();
+        }
+    }
+    
+    // Previous image
+    function prevImage() {
+        if (currentGallery) {
+            currentImageIndex = (currentImageIndex - 1 + currentGallery.images.length) % currentGallery.images.length;
+            updateMainImage();
+            updateActiveThumbnail();
+        }
+    }
+    
+    // Update main gallery image
+    function updateMainImage() {
+        if (currentGallery && currentGallery.images[currentImageIndex]) {
+            loadGalleryImage(currentGallery.images[currentImageIndex]);
+        }
+    }
+    
+    // Update active thumbnail
+    function updateActiveThumbnail() {
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        thumbnails.forEach((thumb, index) => {
+            thumb.classList.toggle('active', index === currentImageIndex);
+        });
+    }
+    
+    // Keyboard controls for gallery
+    document.addEventListener('keydown', function(e) {
+        const modal = document.getElementById('galleryModal');
+        if (!modal.classList.contains('active') || !currentGallery) return;
+        
+        if (e.key === 'Escape') {
             closeGallery();
-            break;
-        case 'ArrowRight':
+        } else if (e.key === 'ArrowRight') {
             nextImage();
-            break;
-        case 'ArrowLeft':
+        } else if (e.key === 'ArrowLeft') {
             prevImage();
-            break;
-    }
-});
-
-// Touch swipe for gallery
-document.addEventListener('DOMContentLoaded', function() {
-    const mainImage = document.getElementById('galleryMainImage');
+        }
+    });
+    
+    // Touch swipe for mobile
     let touchStartX = 0;
-    
-    if (mainImage) {
-        mainImage.addEventListener('touchstart', (e) => {
+    document.addEventListener('touchstart', function(e) {
+        const modal = document.getElementById('galleryModal');
+        if (modal.classList.contains('active')) {
             touchStartX = e.touches[0].clientX;
-        });
-        
-        mainImage.addEventListener('touchend', (e) => {
-            const touchEndX = e.changedTouches[0].clientX;
-            const diff = touchStartX - touchEndX;
-            const threshold = 50;
-            
-            if (Math.abs(diff) > threshold && currentGallery) {
-                if (diff > 0) {
-                    // Swipe left - next image
-                    nextImage();
-                } else {
-                    // Swipe right - previous image
-                    prevImage();
-                }
-            }
-        });
-    }
-});
-
-// ============================================
-// HOW TO EDIT THE GALLERY:
-// ============================================
-// 1. To ADD a new gallery collection:
-//    - Copy one of the existing <div class="collection-item"> blocks
-//    - Update these attributes:
-//      * data-gallery-title="Your Collection Title"
-//      * data-gallery-cover="URL to cover image"
-//      * data-gallery-images='["image1.jpg", "image2.jpg"]'
-//    - Update the <img src> to match cover image
-//    - Update the title and count in the overlay div
-//
-// 2. To REMOVE a gallery collection:
-//    - Simply delete the entire <div class="collection-item"> block
-//
-// 3. To EDIT an existing gallery:
-//    - Update the data-gallery-title for new title
-//    - Update the data-gallery-cover for new cover image
-//    - Update the data-gallery-images array with new image URLs
-//    - Update the overlay title and count
-//
-// 4. To REORDER galleries:
-//    - Simply move the <div class="collection-item"> blocks around
-// ============================================
-
-// ============================================
-// MAIN INITIALIZATION
-// ============================================
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize loading screen
-    initLoadingScreen();
+        }
+    });
     
-    function initLoadingScreen() {
-        const size = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--size')) || 360;
-        const cx = size / 2;
-        const cy = size / 2;
-        const radius = size * 0.35;
-        const tickRadius = size * 0.48;
-        const numbersEl = document.getElementById('numbers');
-        const ticksEl = document.getElementById('ticks');
-        const glowRing = document.getElementById('glowRing');
-        const timeDisplay = document.getElementById('timeDisplay');
-        const root = document.documentElement;
-
-        function valueToAngle(value) {
-            return 225 - (value / 180) * 270;
-        }
-
-        // Update glow intensity
-        function updateGlow(intensity) {
-            root.style.setProperty('--glow-intensity', intensity);
-            glowRing.style.opacity = intensity > 0.1 ? (intensity - 0.1) * 3 : 0;
-        }
-
-        // Initialize with zero glow
-        updateGlow(0);
-
-        // ---- Numbers ----
-        for (let v = 0; v <= 180; v += 20) {
-            const angleDeg = valueToAngle(v);
-            const rad = angleDeg * Math.PI / 180;
-            const x = cx + radius * Math.cos(rad);
-            const y = cy - radius * Math.sin(rad);
-
-            const num = document.createElement('div');
-            num.className = 'number';
-            num.style.left = `${x}px`;
-            num.style.top = `${y}px`;
-            num.textContent = v;
-            numbersEl.appendChild(num);
-        }
-
-        // ---- Ticks ----
-        const majorValues = [];
-        for (let v = 60; v <= 240; v += 20) majorValues.push(v);
-
-        for (let v = 60; v <= 240; v += 5) {
-            const angleDeg = valueToAngle(v);
-            const tick = document.createElement('div');
-            tick.className = 'tick';
-            const isMajor = majorValues.includes(v);
-            const length = isMajor ? size * 0.06 : size * 0.03;
-
-            tick.style.height = `${length}px`;
-            tick.style.background = isMajor ? 'rgba(255,7,58,0.95)' : 'rgba(255,255,255,0.05)';
-            tick.style.boxShadow = isMajor ? '0 0 8px rgba(255,7,58,0.8)' : '';
-            tick.style.left = '50%';
-            tick.style.top = '50%';
-            tick.style.transformOrigin = '50% 0%';
-            tick.style.transform = `rotate(${angleDeg}deg) translateY(-${tickRadius}px)`;
-            ticksEl.appendChild(tick);
-        }
-
-        // ---- Needle Animation ----
-        const needle = document.getElementById('needle');
-        const needleHeight = size * 0.44;
-
-        needle.style.height = needleHeight + 'px';
-        needle.style.left = '49%';
-        needle.style.top = '50%';
-        needle.style.transformOrigin = '50% 100%';
-        needle.style.marginTop = `-${needleHeight}px`;
-
-        const startAngle = valueToAngle(0);
-        needle.style.transform = `rotate(${startAngle}deg)`;
-
-        const duration = 4000;
-
-        function easeOutCubic(t) { return 15 + Math.pow(1 - t, 3); }
-
-        function startAnimation() {
-            timeDisplay.style.opacity = '1';
-            
-            const startTime = performance.now();
-            const endValue = 180;
-
-            function step(now) {
-                const elapsed = now - startTime;
-                const t = Math.min(1, elapsed / duration);
-                const eased = easeOutCubic(t);
-                const currentValue = Math.round(eased * endValue);
-                const angle = valueToAngle(currentValue);
-
-                needle.style.transform = `rotate(${angle}deg)`;
-
-                const glowIntensity = t * 0.65;
-                updateGlow(glowIntensity);
-
-                if (t > 0.95) {
-                    timeDisplay.textContent = "12:00am";
-                }
-
-                if (elapsed < duration) {
-                    requestAnimationFrame(step);
-                } else {
-                    timeDisplay.textContent = "12:00am";
-                    
-                    setTimeout(() => {
-                        const loadingScreen = document.getElementById('loadingScreen');
-                        loadingScreen.classList.add('fade-out');
-                        
-                        setTimeout(() => {
-                            loadingScreen.style.display = 'none';
-                            document.querySelector('.website-content').style.display = 'block';
-                            
-                            initMainContent();
-                        }, 500);
-                    }, 500);
-                }
-            }
-
-            requestAnimationFrame(step);
-        }
-
-        setTimeout(startAnimation, 500);
-    }
-
-    function initMainContent() {
-        // Make news items visible immediately
-        const newsTitles = document.querySelectorAll('.news-title');
-        const newsExcerpts = document.querySelectorAll('.news-excerpt');
+    document.addEventListener('touchend', function(e) {
+        const modal = document.getElementById('galleryModal');
+        if (!modal.classList.contains('active') || !currentGallery) return;
         
-        newsTitles.forEach(title => {
-            title.style.opacity = '1';
-        });
+        const touchEndX = e.changedTouches[0].clientX;
+        const diff = touchStartX - touchEndX;
+        const threshold = 50;
         
-        newsExcerpts.forEach(excerpt => {
-            excerpt.style.opacity = '1';
-        });
-
-        // Matrix-style title animation with flicker only on specific letters
-        const afterHoursTitle = document.getElementById('after-hours-title');
-        const societyTitle = document.getElementById('society-title');
-        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-
-        afterHoursTitle.innerHTML = '';
-        societyTitle.innerHTML = '';
-
-        // Animate "AFTER HOURS" part with flicker on O, U, R in "HOURS"
-        const afterHoursText = "AFTER HOURS";
-        for (let i = 0; i < afterHoursText.length; i++) {
-            const charSpan = document.createElement('span');
-            
-            const isInHoursPart = i >= 6;
-            const shouldFlicker = (afterHoursText[i] === 'O' || afterHoursText[i] === 'U' || afterHoursText[i] === 'R') && isInHoursPart;
-            
-            if (shouldFlicker) {
-                charSpan.className = 'matrix-letter flicker-letter';
+        if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
+                // Swiped left - next image
+                nextImage();
             } else {
-                charSpan.className = 'matrix-letter';
-            }
-            
-            charSpan.textContent = afterHoursText[i] === ' ' ? '\u00A0' : chars[Math.floor(Math.random() * chars.length)];
-            afterHoursTitle.appendChild(charSpan);
-            
-            setTimeout(() => {
-                animateLetter(charSpan, afterHoursText[i], i);
-            }, i * 50);
-        }
-
-        // Animate "SOCIETY" part with flicker ONLY on C, I, T, Y
-        const societyText = "SOCIETY";
-        for (let i = 0; i < societyText.length; i++) {
-            const charSpan = document.createElement('span');
-            
-            if (['C', 'I', 'T', 'Y'].includes(societyText[i])) {
-                charSpan.className = 'matrix-letter flicker-letter';
-            } else {
-                charSpan.className = 'matrix-letter';
-            }
-            
-            charSpan.textContent = societyText[i] === ' ' ? '\u00A0' : chars[Math.floor(Math.random() * chars.length)];
-            societyTitle.appendChild(charSpan);
-            
-            setTimeout(() => {
-                animateLetter(charSpan, societyText[i], i);
-            }, (afterHoursText.length * 50) + (i * 50));
-        }
-
-        function animateLetter(element, finalChar, index) {
-            let iterations = 0;
-            const interval = setInterval(() => {
-                element.textContent = chars[Math.floor(Math.random() * chars.length)];
-                
-                iterations++;
-                if (iterations >= 10 + Math.random() * 50) {
-                    clearInterval(interval);
-                    element.textContent = finalChar === ' ' ? '\u00A0' : finalChar;
-                }
-            }, 200 + Math.random() * 30);
-        }
-
-        // Function to handle logo upload
-        function setupLogoUpload() {
-            const logoInput = document.createElement('input');
-            logoInput.type = 'file';
-            logoInput.accept = 'image/*';
-            logoInput.style.display = 'none';
-            document.body.appendChild(logoInput);
-            
-            const logoContainer = document.querySelector('.logo-container');
-            const clubLogo = document.getElementById('club-logo');
-            
-            logoInput.addEventListener('change', function(e) {
-                const file = e.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(event) {
-                        clubLogo.src = event.target.result;
-                        localStorage.setItem('clubLogo', event.target.result);
-                    };
-                    reader.readAsDataURL(file);
-                }
-            });
-            
-            const savedLogo = localStorage.getItem('clubLogo');
-            if (savedLogo) {
-                clubLogo.src = savedLogo;
+                // Swiped right - previous image
+                prevImage();
             }
         }
+    });
+    
+    // Wait for page to load
+    document.addEventListener('DOMContentLoaded', function() {
+        // Start loading animation
+        initLoadingScreen();
         
-        setupLogoUpload();
-
-        // Scroll indicator functionality with debounce
-        const scrollIndicator = document.getElementById('scrollIndicator');
-        const newsSection = document.getElementById('news');
-        
-        if (scrollIndicator && newsSection) {
-            scrollIndicator.addEventListener('click', () => {
-                newsSection.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-            
-            const checkScrollPosition = debounce(() => {
-                scrollIndicator.classList.add('visible');
-            }, 100);
-            
-            checkScrollPosition();
-            window.addEventListener('scroll', checkScrollPosition);
-        }
-
-        // Create subtle shooting stars with parallax effect
-        const starContainer = document.getElementById('starContainer');
-        const starCount = 15;
-        
-        function createShootingStars() {
-            starContainer.innerHTML = '';
-            
-            for (let i = 0; i < starCount; i++) {
-                const star = document.createElement('div');
-                star.className = 'shooting-star';
-                
-                const layer = Math.floor(Math.random() * 3) + 1;
-                star.classList.add(`star-layer-${layer}`);
-                
-                const startX = Math.random() * window.innerWidth;
-                const startY = Math.random() * window.innerHeight;
-                
-                const angle = 30 + Math.random() * 30;
-                
-                const distance = 500 + (layer * 300);
-                
-                const delay = Math.random() * 10;
-                
-                star.style.setProperty('--angle', `${angle}deg`);
-                star.style.setProperty('--distance', `${distance}px`);
-                star.style.left = `${startX}px`;
-                star.style.top = `${startY}px`;
-                star.style.animationDelay = `${delay}s`;
-                
-                const size = 1 + Math.random() * 2;
-                star.style.width = `${size}px`;
-                star.style.height = `${size}px`;
-                
-                const opacity = 0.5 + Math.random() * 0.5;
-                star.style.opacity = opacity;
-                
-                starContainer.appendChild(star);
+        function initLoadingScreen() {
+            const size = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--size')) || 360;
+            const cx = size / 2;
+            const cy = size / 2;
+            const radius = size * 0.35;
+            const tickRadius = size * 0.48;
+            const numbersEl = document.getElementById('numbers');
+            const ticksEl = document.getElementById('ticks');
+            const glowRing = document.getElementById('glowRing');
+            const timeDisplay = document.getElementById('timeDisplay');
+            const root = document.documentElement;
+    
+            function valueToAngle(value) {
+                return 225 - (value / 180) * 270;
             }
-        }
-        
-        createShootingStars();
-        setInterval(createShootingStars, 15000);
-
-        // Initialize collection gallery
-        initCollectionGallery();
-
-        // Page navigation
-        const navLinks = document.querySelectorAll('.nav-link');
-        const pages = document.querySelectorAll('.page');
-        const navIndicator = document.querySelector('.nav-indicator');
-        
-        const scrollPositions = {};
-        
-        let activePage = document.querySelector('.page.active');
-        let activeNavLink = document.querySelector('.nav-link.active');
-        
-        function updateIndicatorPosition(link) {
-            const linkRect = link.getBoundingClientRect();
-            const navRect = document.querySelector('.bottom-nav').getBoundingClientRect();
-            const indicatorWidth = 60;
-            const indicatorLeft = linkRect.left - navRect.left + (linkRect.width - indicatorWidth) / 2;
-            
-            navIndicator.style.width = `${indicatorWidth}px`;
-            navIndicator.style.transform = `translateX(${indicatorLeft}px)`;
-            
-            if (window.innerWidth <= 768) {
-                const mobileIndicatorWidth = 40;
-                const mobileIndicatorLeft = linkRect.left - navRect.left + (linkRect.width - mobileIndicatorWidth) / 2;
-                navIndicator.style.width = `${mobileIndicatorWidth}px`;
-                navIndicator.style.transform = `translateX(${mobileIndicatorLeft}px)`;
+    
+            // Update glow effect
+            function updateGlow(intensity) {
+                root.style.setProperty('--glow-intensity', intensity);
+                glowRing.style.opacity = intensity > 0.1 ? (intensity - 0.1) * 3 : 0;
             }
-        }
-        
-        updateIndicatorPosition(activeNavLink);
-        
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
+    
+            // Start with no glow
+            updateGlow(0);
+    
+            // Add numbers to speedometer
+            for (let v = 0; v <= 180; v += 20) {
+                const angleDeg = valueToAngle(v);
+                const rad = angleDeg * Math.PI / 180;
+                const x = cx + radius * Math.cos(rad);
+                const y = cy - radius * Math.sin(rad);
+    
+                const num = document.createElement('div');
+                num.className = 'number';
+                num.style.left = `${x}px`;
+                num.style.top = `${y}px`;
+                num.textContent = v;
+                numbersEl.appendChild(num);
+            }
+    
+            // Add ticks to speedometer
+            const majorValues = [];
+            for (let v = 60; v <= 240; v += 20) majorValues.push(v);
+    
+            for (let v = 60; v <= 240; v += 5) {
+                const angleDeg = valueToAngle(v);
+                const tick = document.createElement('div');
+                tick.className = 'tick';
+                const isMajor = majorValues.includes(v);
+                const length = isMajor ? size * 0.06 : size * 0.03;
+    
+                tick.style.height = `${length}px`;
+                tick.style.background = isMajor ? 'rgba(255,7,58,0.95)' : 'rgba(255,255,255,0.05)';
+                tick.style.boxShadow = isMajor ? '0 0 8px rgba(255,7,58,0.8)' : '';
+                tick.style.left = '50%';
+                tick.style.top = '50%';
+                tick.style.transformOrigin = '50% 0%';
+                tick.style.transform = `rotate(${angleDeg}deg) translateY(-${tickRadius}px)`;
+                ticksEl.appendChild(tick);
+            }
+    
+            // Needle animation
+            const needle = document.getElementById('needle');
+            const needleHeight = size * 0.44;
+    
+            needle.style.height = needleHeight + 'px';
+            needle.style.left = '49%';
+            needle.style.top = '50%';
+            needle.style.transformOrigin = '50% 100%';
+            needle.style.marginTop = `-${needleHeight}px`;
+    
+            const startAngle = valueToAngle(0);
+            needle.style.transform = `rotate(${startAngle}deg)`;
+    
+            const duration = 4000;
+    
+            function easeOutCubic(t) { return 15 + Math.pow(1 - t, 3); }
+    
+            function startAnimation() {
+                timeDisplay.style.opacity = '1';
                 
-                const targetId = this.getAttribute('data-target');
-                const targetPage = document.getElementById(targetId);
-                
-                if (targetPage && targetPage !== activePage) {
-                    scrollPositions[activePage.id] = window.scrollY || activePage.scrollTop;
-                    
-                    activePage.classList.remove('active');
-                    activeNavLink.classList.remove('active');
-                    
-                    targetPage.classList.add('active');
-                    this.classList.add('active');
-                    
-                    activePage = targetPage;
-                    activeNavLink = this;
-                    
-                    updateIndicatorPosition(this);
-                    
-                    if (scrollPositions[targetPage.id]) {
-                        window.scrollTo(0, scrollPositions[targetPage.id]);
-                    } else {
-                        window.scrollTo(0, 0);
+                const startTime = performance.now();
+                const endValue = 180;
+    
+                function step(now) {
+                    const elapsed = now - startTime;
+                    const t = Math.min(1, elapsed / duration);
+                    const eased = easeOutCubic(t);
+                    const currentValue = Math.round(eased * endValue);
+                    const angle = valueToAngle(currentValue);
+    
+                    needle.style.transform = `rotate(${angle}deg)`;
+    
+                    const glowIntensity = t * 0.65;
+                    updateGlow(glowIntensity);
+    
+                    if (t > 0.95) {
+                        timeDisplay.textContent = "12:00am";
                     }
-                    
-                    targetPage.focus();
+    
+                    if (elapsed < duration) {
+                        requestAnimationFrame(step);
+                    } else {
+                        timeDisplay.textContent = "12:00am";
+                        
+                        // Hide loading screen and show website
+                        setTimeout(() => {
+                            const loadingScreen = document.getElementById('loadingScreen');
+                            loadingScreen.classList.add('fade-out');
+                            
+                            setTimeout(() => {
+                                loadingScreen.style.display = 'none';
+                                document.querySelector('.website-content').style.display = 'block';
+                                
+                                // Initialize main website
+                                initMainContent();
+                            }, 500);
+                        }, 500);
+                    }
                 }
-            });
-        });
-        
-        if (window.location.hash) {
-            const hash = window.location.hash.substring(1);
-            const targetLink = document.querySelector(`.nav-link[data-target="${hash}"]`);
-            
-            if (targetLink) {
-                targetLink.click();
+    
+                requestAnimationFrame(step);
             }
+    
+            setTimeout(startAnimation, 500);
         }
         
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                if (this.classList.contains('nav-link')) return;
+        function initMainContent() {
+            // Make news visible immediately
+            const newsTitles = document.querySelectorAll('.news-title');
+            const newsExcerpts = document.querySelectorAll('.news-excerpt');
+            
+            newsTitles.forEach(title => {
+                title.style.opacity = '1';
+            });
+            
+            newsExcerpts.forEach(excerpt => {
+                excerpt.style.opacity = '1';
+            });
+    
+            // Title animation with matrix effect
+            const afterHoursTitle = document.getElementById('after-hours-title');
+            const societyTitle = document.getElementById('society-title');
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    
+            afterHoursTitle.innerHTML = '';
+            societyTitle.innerHTML = '';
+    
+            // Animate "AFTER HOURS"
+            const afterHoursText = "AFTER HOURS";
+            for (let i = 0; i < afterHoursText.length; i++) {
+                const charSpan = document.createElement('span');
                 
-                e.preventDefault();
+                // Add flicker to O, U, R in "HOURS"
+                const isInHoursPart = i >= 6;
+                const shouldFlicker = (afterHoursText[i] === 'O' || afterHoursText[i] === 'U' || afterHoursText[i] === 'R') && isInHoursPart;
                 
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
+                if (shouldFlicker) {
+                    charSpan.className = 'matrix-letter flicker-letter';
+                } else {
+                    charSpan.className = 'matrix-letter';
+                }
                 
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 20,
+                charSpan.textContent = afterHoursText[i] === ' ' ? '\u00A0' : chars[Math.floor(Math.random() * chars.length)];
+                afterHoursTitle.appendChild(charSpan);
+                
+                setTimeout(() => {
+                    animateLetter(charSpan, afterHoursText[i], i);
+                }, i * 50);
+            }
+    
+            // Animate "SOCIETY" with flicker on C, I, T, Y
+            const societyText = "SOCIETY";
+            for (let i = 0; i < societyText.length; i++) {
+                const charSpan = document.createElement('span');
+                
+                if (['C', 'I', 'T', 'Y'].includes(societyText[i])) {
+                    charSpan.className = 'matrix-letter flicker-letter';
+                } else {
+                    charSpan.className = 'matrix-letter';
+                }
+                
+                charSpan.textContent = societyText[i] === ' ' ? '\u00A0' : chars[Math.floor(Math.random() * chars.length)];
+                societyTitle.appendChild(charSpan);
+                
+                setTimeout(() => {
+                    animateLetter(charSpan, societyText[i], i);
+                }, (afterHoursText.length * 50) + (i * 50));
+            }
+    
+            function animateLetter(element, finalChar, index) {
+                let iterations = 0;
+                const interval = setInterval(() => {
+                    element.textContent = chars[Math.floor(Math.random() * chars.length)];
+                    
+                    iterations++;
+                    if (iterations >= 10 + Math.random() * 50) {
+                        clearInterval(interval);
+                        element.textContent = finalChar === ' ' ? '\u00A0' : finalChar;
+                    }
+                }, 200 + Math.random() * 30);
+            }
+    
+            // Scroll down arrow functionality
+            const scrollIndicator = document.getElementById('scrollIndicator');
+            const newsSection = document.getElementById('news');
+            
+            if (scrollIndicator && newsSection) {
+                scrollIndicator.addEventListener('click', () => {
+                    newsSection.scrollIntoView({
                         behavior: 'smooth'
                     });
-                }
-            });
-        });
-
-        window.addEventListener('resize', debounce(function() {
-            updateIndicatorPosition(document.querySelector('.nav-link.active'));
-        }, 150));
-
-        // Enhanced form submission handling
-        const contactForm = document.getElementById('contactForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const successMessage = document.getElementById('successMessage');
-        
-        if (contactForm) {
-            // Form validation with real-time feedback
-            const formGroups = document.querySelectorAll('.form-group');
-            formGroups.forEach(group => {
-                const input = group.querySelector('input, textarea');
-                if (input) {
-                    input.addEventListener('input', function() {
-                        validateField(this);
-                    });
-                    
-                    input.addEventListener('blur', function() {
-                        if (this.value.trim()) {
-                            group.classList.add('filled');
-                        } else {
-                            group.classList.remove('filled');
-                        }
-                    });
-                }
-            });
+                });
+                
+                // Show arrow after a moment
+                setTimeout(() => {
+                    scrollIndicator.classList.add('visible');
+                }, 5000);
+                
+                // Hide arrow when scrolling
+                window.addEventListener('scroll', throttle(() => {
+                    if (window.scrollY > 100) {
+                        scrollIndicator.classList.remove('visible');
+                    }
+                }, 200));
+            }
+    
+            // Shooting stars background
+            const starContainer = document.getElementById('starContainer');
+            const starCount = 15;
             
-            function validateField(field) {
-                const group = field.closest('.form-group');
-                group.classList.remove('error');
+            function createShootingStars() {
+                starContainer.innerHTML = '';
                 
-                if (!field.required && !field.value.trim()) {
-                    return true;
+                for (let i = 0; i < starCount; i++) {
+                    const star = document.createElement('div');
+                    star.className = 'shooting-star';
+                    
+                    const layer = Math.floor(Math.random() * 3) + 1;
+                    star.classList.add(`star-layer-${layer}`);
+                    
+                    const startX = Math.random() * window.innerWidth;
+                    const startY = Math.random() * window.innerHeight;
+                    
+                    const angle = 30 + Math.random() * 30;
+                    const distance = 500 + (layer * 300);
+                    const delay = Math.random() * 10;
+                    
+                    star.style.setProperty('--angle', `${angle}deg`);
+                    star.style.setProperty('--distance', `${distance}px`);
+                    star.style.left = `${startX}px`;
+                    star.style.top = `${startY}px`;
+                    star.style.animationDelay = `${delay}s`;
+                    
+                    const size = 1 + Math.random() * 2;
+                    star.style.width = `${size}px`;
+                    star.style.height = `${size}px`;
+                    
+                    const opacity = 0.5 + Math.random() * 0.5;
+                    star.style.opacity = opacity;
+                    
+                    starContainer.appendChild(star);
                 }
-                
-                let isValid = true;
-                let errorMessage = '';
-                
-                switch(field.type) {
-                    case 'email':
-                        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
-                            isValid = false;
-                            errorMessage = 'Please enter a valid email';
-                        }
-                        break;
-                    case 'tel':
-                        if (field.value.trim() && !/^[\d\s\-()+]{10,}$/.test(field.value)) {
-                            isValid = false;
-                            errorMessage = 'Please enter a valid phone number';
-                        }
-                        break;
-                    default:
-                        if (field.required && !field.value.trim()) {
-                            isValid = false;
-                            errorMessage = field.placeholder ? `Please enter your ${field.placeholder.toLowerCase()}` : 'This field is required';
-                        }
-                }
-                
-                if (!isValid) {
-                    group.classList.add('error');
-                    const errorEl = group.querySelector('.error-message');
-                    if (errorEl) errorEl.textContent = errorMessage;
-                }
-                
-                return isValid;
             }
             
-            contactForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
+            createShootingStars();
+            setInterval(createShootingStars, 15000);
+    
+            // Initialize gallery
+            initCollectionGallery();
+    
+            // Page navigation setup
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page');
+            const navIndicator = document.querySelector('.nav-indicator');
+            
+            const scrollPositions = {};
+            
+            let activePage = document.querySelector('.page.active');
+            let activeNavLink = document.querySelector('.nav-link.active');
+            
+            function updateIndicatorPosition(link) {
+                const linkRect = link.getBoundingClientRect();
+                const navRect = document.querySelector('.bottom-nav').getBoundingClientRect();
+                const indicatorWidth = 60;
+                const indicatorLeft = linkRect.left - navRect.left + (linkRect.width - indicatorWidth) / 2;
                 
-                // Validate all fields
-                let isValid = true;
-                const requiredFields = contactForm.querySelectorAll('[required]');
+                navIndicator.style.width = `${indicatorWidth}px`;
+                navIndicator.style.transform = `translateX(${indicatorLeft}px)`;
                 
-                requiredFields.forEach(field => {
-                    if (!validateField(field)) {
-                        isValid = false;
+                if (window.innerWidth <= 768) {
+                    const mobileIndicatorWidth = 40;
+                    const mobileIndicatorLeft = linkRect.left - navRect.left + (linkRect.width - mobileIndicatorWidth) / 2;
+                    navIndicator.style.width = `${mobileIndicatorWidth}px`;
+                    navIndicator.style.transform = `translateX(${mobileIndicatorLeft}px)`;
+                }
+            }
+            
+            updateIndicatorPosition(activeNavLink);
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('data-target');
+                    const targetPage = document.getElementById(targetId);
+                    
+                    if (targetPage && targetPage !== activePage) {
+                        // Save scroll position
+                        scrollPositions[activePage.id] = window.scrollY || activePage.scrollTop;
+                        
+                        // Switch pages
+                        activePage.classList.remove('active');
+                        activeNavLink.classList.remove('active');
+                        
+                        targetPage.classList.add('active');
+                        this.classList.add('active');
+                        
+                        activePage = targetPage;
+                        activeNavLink = this;
+                        
+                        updateIndicatorPosition(this);
+                        
+                        // Restore scroll position or go to top
+                        if (scrollPositions[targetPage.id]) {
+                            window.scrollTo(0, scrollPositions[targetPage.id]);
+                        } else {
+                            window.scrollTo(0, 0);
+                        }
+                        
+                        targetPage.focus();
+                    }
+                });
+            });
+            
+            // Handle URL hash links
+            if (window.location.hash) {
+                const hash = window.location.hash.substring(1);
+                const targetLink = document.querySelector(`.nav-link[data-target="${hash}"]`);
+                
+                if (targetLink) {
+                    targetLink.click();
+                }
+            }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    if (this.classList.contains('nav-link')) return;
+                    
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Update indicator on window resize
+            window.addEventListener('resize', throttle(() => {
+                updateIndicatorPosition(document.querySelector('.nav-link.active'));
+            }, 150));
+            
+            // Contact form handling
+            const contactForm = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const successMessage = document.getElementById('successMessage');
+            
+            if (contactForm) {
+                // Real-time form validation
+                const formGroups = document.querySelectorAll('.form-group');
+                formGroups.forEach(group => {
+                    const input = group.querySelector('input, textarea');
+                    if (input) {
+                        input.addEventListener('input', function() {
+                            validateField(this);
+                        });
                     }
                 });
                 
-                if (!isValid) {
-                    // Focus first invalid field
-                    const firstInvalid = contactForm.querySelector('.error');
-                    if (firstInvalid) {
-                        const input = firstInvalid.querySelector('input, textarea');
-                        if (input) input.focus();
+                function validateField(field) {
+                    const group = field.closest('.form-group');
+                    group.classList.remove('error');
+                    
+                    if (!field.required && !field.value.trim()) {
+                        return true;
                     }
-                    return;
+                    
+                    let isValid = true;
+                    let errorMessage = '';
+                    
+                    switch(field.type) {
+                        case 'email':
+                            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
+                                isValid = false;
+                                errorMessage = 'Please enter a valid email';
+                            }
+                            break;
+                        case 'tel':
+                            if (field.value.trim() && !/^[\d\s\-()+]{10,}$/.test(field.value)) {
+                                isValid = false;
+                                errorMessage = 'Please enter a valid phone number';
+                            }
+                            break;
+                        default:
+                            if (field.required && !field.value.trim()) {
+                                isValid = false;
+                                errorMessage = field.placeholder ? `Please enter your ${field.placeholder.toLowerCase()}` : 'This field is required';
+                            }
+                    }
+                    
+                    if (!isValid) {
+                        group.classList.add('error');
+                        const errorEl = group.querySelector('.error-message');
+                        if (errorEl) errorEl.textContent = errorMessage;
+                    }
+                    
+                    return isValid;
                 }
                 
-                // Show loading state
-                submitBtn.classList.add('loading');
-                submitBtn.disabled = true;
-                
-                try {
-                    const formData = new FormData(contactForm);
+                // Form submission
+                contactForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
                     
-                    const response = await fetch(contactForm.action, {
-                        method: 'POST',
-                        body: formData,
-                        headers: {
-                            'Accept': 'application/json'
+                    // Validate all fields
+                    let isValid = true;
+                    const requiredFields = contactForm.querySelectorAll('[required]');
+                    
+                    requiredFields.forEach(field => {
+                        if (!validateField(field)) {
+                            isValid = false;
                         }
                     });
                     
-                    if (response.ok) {
-                        successMessage.style.display = 'block';
-                        contactForm.reset();
-                        formGroups.forEach(group => group.classList.remove('filled'));
-                        
-                        // Scroll success message into view
-                        successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                        
-                        setTimeout(() => {
-                            successMessage.style.display = 'none';
-                        }, 10000);
-                    } else {
-                        throw new Error('Form submission failed');
+                    if (!isValid) {
+                        // Focus first invalid field
+                        const firstInvalid = contactForm.querySelector('.error');
+                        if (firstInvalid) {
+                            const input = firstInvalid.querySelector('input, textarea');
+                            if (input) input.focus();
+                        }
+                        return;
                     }
-                } catch (error) {
-                    console.error("Error submitting form:", error);
-                    alert("Error sending message. Please try again later or contact us via Instagram.");
-                } finally {
-                    submitBtn.classList.remove('loading');
-                    submitBtn.disabled = false;
-                }
-            });
-        }
-        
-        // Handle responsive gallery for landscape orientation
-        function handleOrientationChange() {
-            const galleryThumbnails = document.getElementById('galleryThumbnails');
-            const galleryContainer = document.querySelector('.gallery-container');
-            
-            if (galleryThumbnails && galleryContainer) {
-                if (window.innerHeight < 600 && window.innerWidth > window.innerHeight) {
-                    // Landscape orientation on small screens
-                    galleryContainer.style.flexDirection = 'row';
-                    galleryThumbnails.style.flexDirection = 'column';
-                    galleryThumbnails.style.width = '120px';
-                    galleryThumbnails.style.height = '100%';
-                    galleryThumbnails.style.overflowY = 'auto';
-                    galleryThumbnails.style.overflowX = 'hidden';
-                    galleryThumbnails.style.marginTop = '0';
-                    galleryThumbnails.style.marginLeft = '0.5rem';
-                } else {
-                    // Portrait orientation
-                    galleryContainer.style.flexDirection = 'column';
-                    galleryThumbnails.style.flexDirection = 'row';
-                    galleryThumbnails.style.width = 'auto';
-                    galleryThumbnails.style.height = 'auto';
-                    galleryThumbnails.style.overflowX = 'auto';
-                    galleryThumbnails.style.overflowY = 'hidden';
-                    galleryThumbnails.style.marginTop = '0.5rem';
-                    galleryThumbnails.style.marginLeft = '0';
-                }
+                    
+                    // Show loading state
+                    submitBtn.classList.add('loading');
+                    submitBtn.disabled = true;
+                    
+                    try {
+                        const formData = new FormData(contactForm);
+                        
+                        const response = await fetch(contactForm.action, {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+                        
+                        if (response.ok) {
+                            successMessage.style.display = 'block';
+                            contactForm.reset();
+                            
+                            // Scroll to success message
+                            successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                            
+                            // Hide success message after 10 seconds
+                            setTimeout(() => {
+                                successMessage.style.display = 'none';
+                            }, 10000);
+                        } else {
+                            throw new Error('Form submission failed');
+                        }
+                    } catch (error) {
+                        console.log("Error sending form:", error);
+                        alert("Error sending message. Please try again later or contact us via Instagram.");
+                    } finally {
+                        submitBtn.classList.remove('loading');
+                        submitBtn.disabled = false;
+                    }
+                });
             }
         }
-        
-        window.addEventListener('resize', debounce(handleOrientationChange, 250));
-        window.addEventListener('orientationchange', debounce(handleOrientationChange, 500));
-    }
-});
+    });
+    
+    // Make functions available globally for HTML onclick attributes
+    window.openGallery = openGallery;
+    window.closeGallery = closeGallery;
+    window.prevImage = prevImage;
+    window.nextImage = nextImage;
+})();
     </script>
 </body>
 </html>

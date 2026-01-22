@@ -636,9 +636,7 @@
 
         /* Main button styles */
         .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+            display: inline-block;
             padding: 0.8rem 1.8rem;
             background-color: var(--neon-primary);
             color: var(--darker);
@@ -657,7 +655,6 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
-            text-align: center;
         }
 
         .btn::after {
@@ -1232,21 +1229,11 @@
             }
         }
 
-        /* Instagram CTA button - FIXED CENTERING */
+        /* Instagram CTA button */
         .instagram-cta {
             display: flex;
             justify-content: center;
             margin: 2rem 0;
-            width: 100%;
-        }
-        
-        .instagram-cta .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            white-space: nowrap;
-            min-width: 300px;
         }
         
         /* Gallery collection styles */
@@ -1321,7 +1308,7 @@
             gap: 0.5rem;
         }
         
-        /* Gallery modal popup with description area */
+        /* Gallery modal popup */
         .gallery-modal {
             display: none;
             position: fixed;
@@ -1396,53 +1383,15 @@
             align-items: center;
             padding: 1rem;
             position: relative;
-            max-height: 70vh;
+            max-height: 80vh;
         }
         
         .gallery-main-image img {
-            max-width: 100%;
-            max-height: 65vh;
+            max-width: 90%;
+            max-height: 70vh;
             object-fit: contain;
             border-radius: 10px;
             box-shadow: 0 0 30px rgba(255, 7, 58, 0.5);
-        }
-        
-        /* Gallery description area */
-        .gallery-description {
-            background: rgba(26, 26, 26, 0.9);
-            border-radius: 10px;
-            padding: 1rem 1.5rem;
-            margin: 1rem 0;
-            border-left: 3px solid var(--neon-primary);
-            max-height: 150px;
-            overflow-y: auto;
-        }
-        
-        .gallery-description p {
-            color: var(--light-gray);
-            line-height: 1.6;
-            margin: 0;
-        }
-        
-        .gallery-description a {
-            color: var(--neon-cyan);
-            text-decoration: none;
-            font-weight: 600;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            transition: var(--transition);
-            display: inline-block;
-            background: rgba(0, 255, 242, 0.1);
-            border: 1px solid transparent;
-            margin: 0.3rem 0;
-        }
-        
-        .gallery-description a:hover {
-            color: white;
-            background: rgba(0, 255, 242, 0.2);
-            border-color: var(--neon-cyan);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 255, 242, 0.3);
         }
         
         /* Gallery navigation arrows */
@@ -1634,16 +1583,6 @@
                 font-size: 2rem;
             }
             
-            /* Instagram CTA button on mobile */
-            .instagram-cta .btn {
-                min-width: 250px;
-                padding: 0.7rem 1.5rem;
-                font-size: 0.95rem;
-                white-space: normal;
-                text-align: center;
-                line-height: 1.3;
-            }
-            
             /* Enhanced mobile navbar */
             .bottom-nav {
                 padding: 12px 3px;
@@ -1715,17 +1654,6 @@
             
             .gallery-main-image {
                 padding: 0.5rem;
-                max-height: 60vh;
-            }
-            
-            .gallery-main-image img {
-                max-height: 55vh;
-            }
-            
-            .gallery-description {
-                padding: 0.8rem 1rem;
-                max-height: 120px;
-                font-size: 0.9rem;
             }
             
             .gallery-header {
@@ -1803,17 +1731,6 @@
                 font-size: 1.3rem;
             }
             
-            /* Instagram CTA button on very small screens */
-            .instagram-cta .btn {
-                min-width: 200px;
-                padding: 0.6rem 1.2rem;
-                font-size: 0.85rem;
-                white-space: normal;
-                word-wrap: break-word;
-                text-align: center;
-                line-height: 1.4;
-            }
-            
             .gallery-title {
                 font-size: 1.2rem;
                 max-width: 60%;
@@ -1847,12 +1764,6 @@
             
             .collection-title {
                 font-size: 1.2rem;
-            }
-            
-            .gallery-description {
-                padding: 0.7rem 0.9rem;
-                max-height: 100px;
-                font-size: 0.85rem;
             }
             
             /* Extra enhancements for very small screens */
@@ -2024,7 +1935,7 @@
                 <section class="portfolio-section">
                     <h2>After Hours <span class="flicker-e">Season Gallery</span></h2>
                     
-                    <!-- Instagram follow button - NOW CENTERED ON ALL DEVICES -->
+                    <!-- Instagram follow button -->
                     <div class="instagram-cta">
                         <a href="https://www.instagram.com/after.hourssphotography/?igsh=N2YzZGlvajJieG9q#" target="_blank" class="btn">
                             <i class="fab fa-instagram"></i> Follow After Hours Photography
@@ -2033,15 +1944,12 @@
                     
                     <!-- Gallery collections - Easy to edit! -->
                     <div class="collection-gallery" id="collectionGallery">
-                        <!-- Collection 1 - Routes -->
+                        <!-- Collection 1 -->
                         <div class="collection-item" 
                              data-gallery-title="Routes"
                              data-gallery-cover="https://afterhourssociety.live/img/Season 2026/January/Screenshot_20260121_191458.jpg"
                              data-gallery-images='[
                                 "https://afterhourssociety.live/img/Season 2026/January/Screenshot_20260121_191458.jpg"
-                             ]'
-                             data-gallery-descriptions='[
-                                "Season Opener Cruise - March 15th, 2026<br><a href=\"https://maps.app.goo.gl/tUYckrUEct57Ddgr6\" target=\"_blank\" style=\"color: #00fff2; font-weight: bold;\">📌 Click here to navigate to the starting location</a><br><a href=\"https://maps.app.goo.gl/CxZctS94eR2vdRrEA\" target=\"_blank\" style=\"color: #00fff2; font-weight: bold;\">📌 Click here to navigate to the cruise route</a>"
                              ]'>
                             <img src="https://afterhourssociety.live/img/Season 2026/January/Screenshot_20260121_191458.jpg" alt="Routes">
                             <div class="collection-overlay">
@@ -2064,52 +1972,39 @@
                                 "https://afterhourssociety.live/img/Season 2026/January/Snapshot_20260119_140173.jpg",
                                 "https://afterhourssociety.live/img/Season 2026/January/Snapshot_20260119_140161.jpg",
                                 "https://afterhourssociety.live/img/Season 2026/January/IMG_20260120_153444_207.jpg"
-                             ]'
-                             data-gallery-descriptions='[
-                                "Season 2026 Launch Event - The crew getting ready for an epic year",
-                                "Club members showcasing their rides at the launch event",
-                                "Group shot of After Hours Society members",
-                                "Cars lined up ready for the season ahead",
-                                "Another angle of our amazing lineup",
-                                "Official Season 2026 launch photo"
+
                              ]'>
                             <img src="https://afterhourssociety.live/img/Season 2026/January/Snapshot_20260119_140122.jpg" alt="Season 2026 Launch - Club cars lined up">
                             <div class="collection-overlay">
                                 <h4 class="collection-title">Season 2026 Launch</h4>
                                 <div class="collection-count">
                                     <i class="fas fa-images"></i>
-                                    <span>6 photos</span>
+                                    <span>5 photos</span>
                                 </div>
                             </div>
                         </div>
                         
-<!-- Collection 3 -->
-<div class="collection-item" 
-     data-gallery-title="Hakeem Prime Music Video Shoot"
-     data-gallery-cover="https://afterhourssociety.live/img/Season 2026/January/IMG_3994.png"
-     data-gallery-images='[
-        "https://afterhourssociety.live/img/Season 2026/January/IMG_3916.png",
-        "https://afterhourssociety.live/img/Season 2026/January/IMG_3994.png",
-        "https://afterhourssociety.live/img/Season 2026/January/lhtsjyryskhgc.jpg",
-        "https://afterhourssociety.live/img/Season 2026/January/IMG_3915.jpg",
-        "https://afterhourssociety.live/img/Season 2026/January/nvdfxdmbd.png"
-     ]'
-     data-gallery-descriptions='[
-        "Behind the scenes with Hakeem Prime during the music video shoot",
-        "Hakeem Prime and the After Hours Society crew on set",
-        "Action shot from the music video production",
-        "Club cars featured in Hakeem Prime\u0027s latest music video",
-        "Group photo with Hakeem Prime after successful shoot"
-     ]'>
-    <img src="https://afterhourssociety.live/img/Season 2026/January/IMG_3994.png" alt="Hakeem Prime Music Video Shoot - Hakeem and crew">
-    <div class="collection-overlay">
-        <h4 class="collection-title">Hakeem Prime Music Video Shoot</h4>
-        <div class="collection-count">
-            <i class="fas fa-images"></i>
-            <span>5 photos</span>
-        </div>
-    </div>
-</div>
+                        <!-- Collection 3 -->
+                        <div class="collection-item" 
+                             data-gallery-title="Hakeem Prime Music Video Shoot"
+                             data-gallery-cover="https://afterhourssociety.live/img/Season 2026/January/IMG_3994.png"
+                             data-gallery-images='[
+                                "https://afterhourssociety.live/img/Season 2026/January/IMG_3916.png",
+                                "https://afterhourssociety.live/img/Season 2026/January/IMG_3994.png",
+                                "https://afterhourssociety.live/img/Season 2026/January/lhtsjyryskhgc.jpg",
+                                "https://afterhourssociety.live/img/Season 2026/January/IMG_3915.jpg",
+                                "https://afterhourssociety.live/img/Season 2026/January/nvdfxdmbd.png"
+
+                             ]'>
+                            <img src="https://afterhourssociety.live/img/Season 2026/January/IMG_3994.png" alt="Hakeem Prime Music Video Shoot - Hakeem and crew">
+                            <div class="collection-overlay">
+                                <h4 class="collection-title">Hakeem Prime Music Video Shoot</h4>
+                                <div class="collection-count">
+                                    <i class="fas fa-images"></i>
+                                    <span>4 photos</span>
+                                </div>
+                            </div>
+                        </div>
                         <!-- Collection 4 -->
 
 
@@ -2236,7 +2131,7 @@
             </a>
         </nav>
         
-        <!-- Gallery popup modal - UPDATED WITH DESCRIPTION AREA -->
+        <!-- Gallery popup modal -->
         <div class="gallery-modal" id="galleryModal">
             <div class="gallery-header">
                 <h3 class="gallery-title" id="galleryTitle">Gallery</h3>
@@ -2257,12 +2152,6 @@
                         <i class="fas fa-chevron-right"></i>
                     </button>
                 </div>
-                
-                <!-- Gallery description area -->
-                <div class="gallery-description" id="galleryDescription">
-                    <!-- Descriptions load here -->
-                </div>
-                
                 <div class="gallery-thumbnails" id="galleryThumbnails">
                     <!-- Thumbnails load here -->
                 </div>
@@ -2302,7 +2191,7 @@ const SHOW_LOADING_SCREEN = false; // Change to false to disable loading screen
     // Track which images are loaded
     const loadedImages = new Set();
     
-    // Load gallery from HTML data with descriptions
+    // Load gallery from HTML data
     function loadGalleryFromHTML() {
         const collectionItems = document.querySelectorAll('.collection-item');
         const collections = [];
@@ -2312,30 +2201,20 @@ const SHOW_LOADING_SCREEN = false; // Change to false to disable loading screen
                 const title = item.getAttribute('data-gallery-title') || `Collection ${index + 1}`;
                 const cover = item.getAttribute('data-gallery-cover') || '';
                 const imagesJson = item.getAttribute('data-gallery-images') || '[]';
-                const descriptionsJson = item.getAttribute('data-gallery-descriptions') || '[]';
                 
                 let images = [];
-                let descriptions = [];
                 try {
                     images = JSON.parse(imagesJson);
-                    descriptions = JSON.parse(descriptionsJson);
                 } catch (e) {
-                    console.log('Could not parse data for', title, e);
+                    console.log('Could not parse images for', title, e);
                     images = [];
-                    descriptions = [];
-                }
-                
-                // Ensure we have a description for each image (or empty string)
-                while (descriptions.length < images.length) {
-                    descriptions.push('');
                 }
                 
                 collections.push({
                     id: index + 1,
                     title: title,
                     cover: cover,
-                    images: images,
-                    descriptions: descriptions
+                    images: images
                 });
             } catch (error) {
                 console.log('Error with gallery item', error);
@@ -2400,7 +2279,6 @@ const SHOW_LOADING_SCREEN = false; // Change to false to disable loading screen
         const modal = document.getElementById('galleryModal');
         const title = document.getElementById('galleryTitle');
         const thumbnails = document.getElementById('galleryThumbnails');
-        const description = document.getElementById('galleryDescription');
         
         title.textContent = collection.title;
         
@@ -2412,16 +2290,13 @@ const SHOW_LOADING_SCREEN = false; // Change to false to disable loading screen
         // Preload all images in background
         preloadGalleryImages(collection.images);
         
-        // Load first image and description
+        // Load first image
         loadGalleryImage(collection.images[0], function() {
             // Hide loading indicator once first image loads
             if (galleryLoading) {
                 galleryLoading.classList.remove('active');
             }
         });
-        
-        // Set first description
-        updateGalleryDescription();
         
         // Create thumbnails
         thumbnails.innerHTML = '';
@@ -2434,7 +2309,6 @@ const SHOW_LOADING_SCREEN = false; // Change to false to disable loading screen
                 currentImageIndex = index;
                 updateMainImage();
                 updateActiveThumbnail();
-                updateGalleryDescription();
             });
             
             thumbnails.appendChild(thumbnail);
@@ -2472,28 +2346,6 @@ const SHOW_LOADING_SCREEN = false; // Change to false to disable loading screen
         mainImage.alt = `${currentGallery.title} - Image ${currentImageIndex + 1}`;
     }
     
-    // Update gallery description
-    function updateGalleryDescription() {
-        if (!currentGallery || !currentGallery.descriptions) return;
-        
-        const description = document.getElementById('galleryDescription');
-        const descText = currentGallery.descriptions[currentImageIndex] || '';
-        
-        if (descText) {
-            description.innerHTML = `<p>${descText}</p>`;
-            description.style.display = 'block';
-            
-            // Make links clickable
-            const links = description.querySelectorAll('a');
-            links.forEach(link => {
-                link.setAttribute('target', '_blank');
-                link.setAttribute('rel', 'noopener noreferrer');
-            });
-        } else {
-            description.style.display = 'none';
-        }
-    }
-    
     // Close gallery
     function closeGallery() {
         const modal = document.getElementById('galleryModal');
@@ -2513,7 +2365,6 @@ const SHOW_LOADING_SCREEN = false; // Change to false to disable loading screen
             currentImageIndex = (currentImageIndex + 1) % currentGallery.images.length;
             updateMainImage();
             updateActiveThumbnail();
-            updateGalleryDescription();
         }
     }
     
@@ -2523,7 +2374,6 @@ const SHOW_LOADING_SCREEN = false; // Change to false to disable loading screen
             currentImageIndex = (currentImageIndex - 1 + currentGallery.images.length) % currentGallery.images.length;
             updateMainImage();
             updateActiveThumbnail();
-            updateGalleryDescription();
         }
     }
     
@@ -3097,3 +2947,11 @@ const SHOW_LOADING_SCREEN = false; // Change to false to disable loading screen
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+

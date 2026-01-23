@@ -263,8 +263,8 @@
 
         /* Main website colors and settings */
         :root {
-            --neon-primary: #ff073a;  /* Our main red color */
-            --neon-secondary: #ff4d00; /* Orange-red for highlights */
+            --neon-primary: #ff0707;  /* Our main red color */
+            --neon-secondary: rgb(255, 0, 0); /* Orange-red for highlights */
             --neon-accent: #ff0022;   /* Bright red for accents */
             --neon-cyan: #00fff2;     /* Cyan for text highlights */
             --dark: #1a1a1a;          /* Dark background */
@@ -1910,6 +1910,27 @@
                 box-shadow: none;
             }
         }
+        
+        /* Smoke particle layers */
+        .smoke-particle {
+            position: fixed;
+            pointer-events: none;
+            border-radius: 50%;
+            z-index: 5000;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: screen;
+            filter: blur(2px);
+        }
+        
+        .smoke-particle.dense {
+            mix-blend-mode: plus-lighter;
+            filter: blur(3px);
+        }
+        
+        .smoke-particle.light {
+            mix-blend-mode: screen;
+            filter: blur(1px);
+        }
     </style>
 </head>
 <body>
@@ -3094,6 +3115,319 @@ const SHOW_LOADING_SCREEN = false; // Change to false to disable loading screen
     window.prevImage = prevImage;
     window.nextImage = nextImage;
 })();
+        document.addEventListener('DOMContentLoaded', function() {
+            const particles = [];
+            const vortices = [];
+            let mouseX = 0;
+            let mouseY = 0;
+            let lastMouseX = 0;
+            let lastMouseY = 0;
+            let mouseVelocity = 0;
+            const maxParticles = 120;
+            let particleCreationCooldown = 0;
+            
+            // Track mouse position and velocity
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                
+                // Calculate mouse velocity
+                const deltaX = mouseX - lastMouseX;
+                const deltaY = mouseY - lastMouseY;
+                mouseVelocity = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+                lastMouseX = mouseX;
+                lastMouseY = mouseY;
+                
+                // Create vortex if moving fast enough
+                if (mouseVelocity > 10 && Math.random() > 0.7) {
+                    createVortex(mouseX, mouseY, deltaX * 0.1, deltaY * 0.1);
+                }
+                
+                // Create smoke particles based on velocity
+                particleCreationCooldown--;
+                if (particleCreationCooldown <= 0) {
+                    const density = Math.min(mouseVelocity / 5, 3);
+                    createSmokeParticles(mouseX, mouseY, density);
+                    particleCreationCooldown = Math.max(3 - density, 1);
+                }
+            });
+            
+            // Create a vortex for swirling effects
+            function createVortex(x, y, strengthX, strengthY) {
+                vortices.push({
+                    x: x,
+                    y: y,
+                    strengthX: strengthX * 0.5,
+                    strengthY: strengthY * 0.5,
+                    life: 1.0,
+                    decay: 0.005
+                });
+                
+                // Limit number of vortices
+                if (vortices.length > 8) {
+                    vortices.shift();
+                }
+            }
+            
+            // Create multiple smoke particles at once
+            function createSmokeParticles(x, y, density) {
+                const particleCount = Math.floor(density * 3);
+                
+                for (let i = 0; i < particleCount; i++) {
+                    if (particles.length < maxParticles) {
+                        // Create different particle types
+                        const type = Math.random();
+                        if (type < 0.3) {
+                            createDenseSmokeParticle(x, y);
+                        } else if (type < 0.7) {
+                            createMediumSmokeParticle(x, y);
+                        } else {
+                            createLightSmokeParticle(x, y);
+                        }
+                    }
+                }
+            }
+            
+            // Create dense smoke particle (core of smoke)
+            function createDenseSmokeParticle(x, y) {
+                const particle = document.createElement('div');
+                particle.classList.add('smoke-particle', 'dense');
+                
+                // Size between 20 and 40 pixels
+                const size = Math.random() * 20 + 20;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                // Off-white to light gray color with blue/gray tint
+                const grayValue = Math.random() * 30 + 200;
+                const blueTint = Math.random() * 30 + 200;
+                particle.style.backgroundColor = `rgba(${grayValue}, ${grayValue}, ${blueTint}, 0.12)`;
+                
+                // Position with offset
+                const offsetX = (Math.random() - 0.5) * 25;
+                const offsetY = (Math.random() - 0.5) * 25;
+                particle.style.left = (x + offsetX) + 'px';
+                particle.style.top = (y + offsetY) + 'px';
+                
+                document.body.appendChild(particle);
+                
+                // Particle physics data
+                particles.push({
+                    element: particle,
+                    x: x + offsetX,
+                    y: y + offsetY,
+                    size: size,
+                    type: 'dense',
+                    velocityX: (Math.random() - 0.5) * 0.8,
+                    velocityY: (Math.random() - 0.5) * 0.8 - 0.5, // Upward bias
+                    life: 1.0,
+                    decay: Math.random() * 0.008 + 0.005, // Slow decay
+                    scale: 1.0,
+                    rotation: Math.random() * 360,
+                    turbulence: Math.random() * 0.05,
+                    temperature: 0.8 + Math.random() * 0.4, // Hot particles rise faster
+                    originalColor: {r: grayValue, g: grayValue, b: blueTint}
+                });
+            }
+            
+            // Create medium smoke particle
+            function createMediumSmokeParticle(x, y) {
+                const particle = document.createElement('div');
+                particle.classList.add('smoke-particle');
+                
+                // Size between 15 and 30 pixels
+                const size = Math.random() * 15 + 15;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                // Lighter gray with blue tint
+                const grayValue = Math.random() * 40 + 210;
+                const blueTint = Math.random() * 40 + 210;
+                particle.style.backgroundColor = `rgba(${grayValue}, ${grayValue}, ${blueTint}, 0.09)`;
+                
+                // Position with offset
+                const offsetX = (Math.random() - 0.5) * 35;
+                const offsetY = (Math.random() - 0.5) * 35;
+                particle.style.left = (x + offsetX) + 'px';
+                particle.style.top = (y + offsetY) + 'px';
+                
+                document.body.appendChild(particle);
+                
+                particles.push({
+                    element: particle,
+                    x: x + offsetX,
+                    y: y + offsetY,
+                    size: size,
+                    type: 'medium',
+                    velocityX: (Math.random() - 0.5) * 1.2,
+                    velocityY: (Math.random() - 0.5) * 1.2 - 0.8, // More upward bias
+                    life: 1.0,
+                    decay: Math.random() * 0.01 + 0.006,
+                    scale: 1.0,
+                    rotation: Math.random() * 360,
+                    turbulence: Math.random() * 0.08,
+                    temperature: 0.6 + Math.random() * 0.3,
+                    originalColor: {r: grayValue, g: grayValue, b: blueTint}
+                });
+            }
+            
+            // Create light wispy smoke particle
+            function createLightSmokeParticle(x, y) {
+                const particle = document.createElement('div');
+                particle.classList.add('smoke-particle', 'light');
+                
+                // Smaller size between 10 and 25 pixels
+                const size = Math.random() * 15 + 10;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                // Very light, almost white
+                const grayValue = Math.random() * 30 + 225;
+                particle.style.backgroundColor = `rgba(${grayValue}, ${grayValue}, ${grayValue}, 0.07)`;
+                
+                // Position with larger offset
+                const offsetX = (Math.random() - 0.5) * 45;
+                const offsetY = (Math.random() - 0.5) * 45;
+                particle.style.left = (x + offsetX) + 'px';
+                particle.style.top = (y + offsetY) + 'px';
+                
+                document.body.appendChild(particle);
+                
+                particles.push({
+                    element: particle,
+                    x: x + offsetX,
+                    y: y + offsetY,
+                    size: size,
+                    type: 'light',
+                    velocityX: (Math.random() - 0.5) * 2,
+                    velocityY: (Math.random() - 0.5) * 2 - 1.2, // Strong upward bias
+                    life: 1.0,
+                    decay: Math.random() * 0.015 + 0.008,
+                    scale: 1.0,
+                    rotation: Math.random() * 360,
+                    turbulence: Math.random() * 0.12,
+                    temperature: 0.4 + Math.random() * 0.2,
+                    originalColor: {r: grayValue, g: grayValue, b: grayValue}
+                });
+            }
+            
+            // Animate particles with advanced physics
+            function animateParticles() {
+                // Update vortices
+                for (let i = vortices.length - 1; i >= 0; i--) {
+                    const v = vortices[i];
+                    v.life -= v.decay;
+                    if (v.life <= 0) {
+                        vortices.splice(i, 1);
+                    }
+                }
+                
+                // Update particles
+                for (let i = particles.length - 1; i >= 0; i--) {
+                    const p = particles[i];
+                    
+                    // Reduce life
+                    p.life -= p.decay;
+                    
+                    // If particle is dead, remove it
+                    if (p.life <= 0) {
+                        p.element.remove();
+                        particles.splice(i, 1);
+                        continue;
+                    }
+                    
+                    // Apply buoyancy based on temperature
+                    p.velocityY -= 0.02 * p.temperature;
+                    
+                    // Apply vortex forces
+                    for (const vortex of vortices) {
+                        const dx = vortex.x - p.x;
+                        const dy = vortex.y - p.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < 100 && distance > 5) {
+                            const force = vortex.life * (1 - distance/100) * 0.5;
+                            // Swirling effect (perpendicular force)
+                            p.velocityX += (dy / distance) * force * 0.1;
+                            p.velocityY -= (dx / distance) * force * 0.1;
+                        }
+                    }
+                    
+                    // Apply air resistance
+                    p.velocityX *= 0.985;
+                    p.velocityY *= 0.985;
+                    
+                    // Apply turbulence
+                    p.velocityX += (Math.random() - 0.5) * p.turbulence;
+                    p.velocityY += (Math.random() - 0.5) * p.turbulence;
+                    
+                    // Update position
+                    p.x += p.velocityX;
+                    p.y += p.velocityY;
+                    
+                    // Expand as smoke dissipates
+                    p.scale += 0.004;
+                    
+                    // Slow rotation
+                    p.rotation += p.velocityX * 0.3;
+                    
+                    // Apply transformations
+                    p.element.style.transform = `translate(-50%, -50%) scale(${p.scale}) rotate(${p.rotation}deg)`;
+                    
+                    // Update opacity based on life
+                    const opacityMultiplier = p.type === 'dense' ? 0.12 : 
+                                             p.type === 'medium' ? 0.09 : 0.07;
+                    
+                    p.element.style.opacity = p.life * opacityMultiplier;
+                    
+                    // Update color - smoke gets lighter as it dissipates
+                    const colorFade = 0.2 + p.life * 0.8;
+                    const r = p.originalColor.r * colorFade;
+                    const g = p.originalColor.g * colorFade;
+                    const b = p.originalColor.b * colorFade;
+                    
+                    p.element.style.backgroundColor = `rgba(${r}, ${g}, ${b}, ${p.life * opacityMultiplier})`;
+                    
+                    // Update blur based on life
+                    const blurAmount = p.type === 'dense' ? 3 : p.type === 'medium' ? 2 : 1;
+                    p.element.style.filter = `blur(${blurAmount + (1 - p.life) * 2}px)`;
+                    
+                    // Update position
+                    p.element.style.left = p.x + 'px';
+                    p.element.style.top = p.y + 'px';
+                }
+                
+                // Continue animation
+                requestAnimationFrame(animateParticles);
+            }
+            
+            // Start animation
+            animateParticles();
+            
+            // Create initial smoke puff for visual appeal
+            function createInitialSmokePuff() {
+                const centerX = window.innerWidth / 2;
+                const centerY = window.innerHeight / 2;
+                
+                // Create a rising smoke puff
+                for (let i = 0; i < 25; i++) {
+                    setTimeout(() => {
+                        const angle = Math.random() * Math.PI * 2;
+                        const radius = Math.random() * 40;
+                        const x = centerX + Math.cos(angle) * radius;
+                        const y = centerY + Math.sin(angle) * radius;
+                        
+                        // Create a mix of particles
+                        if (i % 3 === 0) createDenseSmokeParticle(x, y);
+                        else if (i % 3 === 1) createMediumSmokeParticle(x, y);
+                        else createLightSmokeParticle(x, y);
+                    }, i * 30);
+                }
+            }
+            
+            // Create initial smoke after loading
+            setTimeout(createInitialSmokePuff, 100);
+        });
     </script>
 </body>
 </html>

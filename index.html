@@ -270,9 +270,9 @@
             --dark: #1a1a1a;          /* Dark background */
             --darker: #0d0d0d;        /* Even darker for some elements */
             --light: #f8f9fa;         /* Light text color */
-            --gray: #666666;          /* Gray text */
-            --light-gray: #cccccc;    /* Lighter gray */
-            --border-gray: #666666;   /* Border color */
+            --gray: #666666;           /* Gray text */
+            --light-gray: #cccccc;     /* Lighter gray */
+            --border-gray: #666666;    /* Border color */
             
             --transition: all 0.3s ease;
             --shadow: 0 0 8px rgba(255, 7, 58, 0.2);
@@ -983,15 +983,15 @@
             text-align: center;
         }
 
-        /* Contact section */
-        .contact-section {
+        /* Events section (renamed from contact) */
+        .events-section {
             margin-top: 0px;
             max-width: 1400px;
             margin: 0 auto;
             padding: 2rem 4rem;
         }
 
-        .contact-container {
+        .events-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 3rem;
@@ -999,7 +999,7 @@
             padding-bottom: 2rem;
         }
 
-        .contact-info h2 {
+        .events-info h2 {
             font-size: 3rem;
             margin-bottom: 1.5rem;
             color: var(--neon-primary);
@@ -1007,7 +1007,7 @@
             font-weight: 500;
         }
 
-        .contact-info p {
+        .events-info p {
             margin-bottom: 1rem;
             color: var(--light-gray);
             font-size: 1.1rem;
@@ -1096,8 +1096,8 @@
             font-size: 1.2rem;
         }
 
-        /* Contact form */
-        .contact-form {
+        /* Event registration form (formsubmit style) */
+        .event-form {
             background: rgba(26, 26, 26, 0.8);
             padding: 2.5rem;
             border-radius: 15px;
@@ -1107,7 +1107,7 @@
             max-width: 100%;
         }
 
-        .contact-form:hover {
+        .event-form:hover {
             border-color: var(--neon-primary);
             box-shadow: var(--shadow);
         }
@@ -1689,16 +1689,16 @@
                 font-size: 1.5rem;
             }
             
-            .contact-section {
+            .events-section {
                 padding: 2rem 0.5rem;
             }
             
-            .contact-container {
+            .events-container {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
             
-            .contact-form {
+            .event-form {
                 padding: 1.5rem;
             }
             
@@ -2112,7 +2112,7 @@
                     <!-- Google Drive link for photo submissions -->
                     <div style="margin-top: 1.5rem; text-align: center;">
                         <p><strong>More pictures to come <br>Share your photos with us to add to our Season Gallery!</strong></p>
-                        <a href="https://drive.google.com/drive/folders/1IN29jurCr17ZSt-A5q8zm-H6UV7NaHCQ" 
+                        <a href="https://drive.google.com/drive/folders/1IN29jurCr17ZSt-A5q8zm-H6UV7NaHCQ?usp=sharing" 
                            target="_blank" 
                            class="drive-link" 
                            style="display: inline-flex; margin-top: 0.5rem;">
@@ -2134,13 +2134,13 @@
                 </section>
             </div>
 
-            <!-- Contact page -->
-            <div class="page" id="contact" tabindex="-1" role="region" aria-label="Contact Us">
-                <section class="contact-section">
-                    <div class="contact-container">
-                        <div class="contact-info">
-                            <h2>Get In Touch</h2>
-                            <p>Interested in joining, becoming a sponsor, or just want to say what's up? Hit us up.
+            <!-- Events page (was Contact) -->
+            <div class="page" id="events" tabindex="-1" role="region" aria-label="Events">
+                <section class="events-section">
+                    <div class="events-container">
+                        <div class="events-info">
+                            <h2>Events</h2>
+                            <p>Register for upcoming events. $10 registration fee. Arrival by 11 AM sharp.</p>
                             
                             <div class="contact-methods">
                                 <div class="contact-method">
@@ -2167,37 +2167,40 @@
                             </div>
                         </div>
 
-                        <form class="contact-form" id="contactForm" action="https://formsubmit.co/2dbe592043c5fbb7c149c062f5e296dc" method="POST">
-                            <h2>Contact Us</h2>
-                            <br>
+                        <!-- Event registration form (FormSubmit style) -->
+                        <form class="event-form" id="eventForm" action="https://formsubmit.co/2dbe592043c5fbb7c149c062f5e296dc" method="POST">
+                            <h2>Event Registration</h2>
+                            <p style="color:var(--neon-cyan); margin-bottom:1.5rem;">Must be there by 11 am · $10 fee</p>
                             <div class="form-group">
-                                <input type="text" id="name" name="name" placeholder="Your Name" required aria-label="Your Name">
-                                <div class="error-message" id="name-error">Please enter your name</div>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" id="vehicle" name="vehicle" placeholder="Your Vehicle Make/Model" aria-label="Your Vehicle">
+                                <input type="text" id="event-name" name="name" placeholder="Your Name" required aria-label="Your Name">
+                                <div class="error-message">Please enter your name</div>
                             </div>
                             <div class="form-group">
-                                <input type="email" id="email" name="email" placeholder="Your Email" required aria-label="Your Email">
-                                <div class="error-message" id="email-error">Please enter a valid email</div>
+                                <input type="text" id="car-specs" name="Car Specs" placeholder="Car Specs (engine, mods)" required aria-label="Car Specs">
+                                <div class="error-message">Please enter your car specs</div>
                             </div>
                             <div class="form-group">
-                                <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" aria-label="Your Phone Number">
-                                <div class="error-message" id="phone-error">Please enter a valid phone number</div>
+                                <input type="text" id="car-color" name="Color" placeholder="Car Color" required aria-label="Car Color">
+                                <div class="error-message">Please enter your car color</div>
                             </div>
                             <div class="form-group">
-                                <textarea id="message" name="message" placeholder="Your Message" rows="5" required aria-label="Your Message"></textarea>
-                                <div class="error-message" id="message-error">Please enter your message</div>
+                                <input type="text" id="car-model" name="Year_Make_Model" placeholder="Year / Make / Model" required aria-label="Year Make Model">
+                                <div class="error-message">Please enter year, make, model</div>
                             </div>
-                            <div id="successMessage" class="success-message">
-                                Thanks! We'll hit you back up soon.
+                            <div class="form-group">
+                                <input type="text" id="instagram-tag" name="Instagram" placeholder="@instagram" aria-label="Instagram handle">
+                                <div class="error-message">Please enter your Instagram tag</div>
                             </div>
+                            
                             <!-- FormSubmit settings -->
-                            <input type="hidden" name="_next" value="#contact">
+                            <input type="hidden" name="_next" value="#events">
                             <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_template" value="table">
-                            <input type="hidden" name="_subject" value="New Contact Form Submission - After Hours Society">
-                            <button type="submit" class="btn" id="submitBtn">Send Message</button>
+                            <input type="hidden" name="_subject" value="New Event Registration - After Hours Society">
+                            <div id="eventSuccessMessage" class="success-message">
+                                Thanks! We'll hit you up.
+                            </div>
+                            <button type="submit" class="btn" id="eventSubmitBtn">Register Now</button>
                         </form>
                     </div>
                 </section>
@@ -2224,9 +2227,9 @@
                 <i class="fas fa-info-circle"></i>
                 <span>About</span>
             </a>
-            <a href="#contact" class="nav-link" data-target="contact" aria-label="Contact">
-                <i class="fas fa-envelope"></i>
-                <span>Contact</span>
+            <a href="#events" class="nav-link" data-target="events" aria-label="Events">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Events</span>
             </a>
         </nav>
         
@@ -2960,16 +2963,16 @@ const SHOW_LOADING_SCREEN = false; // Change to false to disable loading screen
                 updateIndicatorPosition(document.querySelector('.nav-link.active'));
             }, 150));
             
-            // Contact form handling
-            const contactForm = document.getElementById('contactForm');
-            const submitBtn = document.getElementById('submitBtn');
-            const successMessage = document.getElementById('successMessage');
+            // Event registration form handling
+            const eventForm = document.getElementById('eventForm');
+            const eventSubmitBtn = document.getElementById('eventSubmitBtn');
+            const eventSuccessMessage = document.getElementById('eventSuccessMessage');
             
-            if (contactForm) {
+            if (eventForm) {
                 // Real-time form validation
-                const formGroups = document.querySelectorAll('.form-group');
+                const formGroups = document.querySelectorAll('#eventForm .form-group');
                 formGroups.forEach(group => {
-                    const input = group.querySelector('input, textarea');
+                    const input = group.querySelector('input');
                     if (input) {
                         input.addEventListener('input', function() {
                             validateField(this);
@@ -2988,24 +2991,10 @@ const SHOW_LOADING_SCREEN = false; // Change to false to disable loading screen
                     let isValid = true;
                     let errorMessage = '';
                     
-                    switch(field.type) {
-                        case 'email':
-                            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
-                                isValid = false;
-                                errorMessage = 'Please enter a valid email';
-                            }
-                            break;
-                        case 'tel':
-                            if (field.value.trim() && !/^[\d\s\-()+]{10,}$/.test(field.value)) {
-                                isValid = false;
-                                errorMessage = 'Please enter a valid phone number';
-                            }
-                            break;
-                        default:
-                            if (field.required && !field.value.trim()) {
-                                isValid = false;
-                                errorMessage = field.placeholder ? `Please enter your ${field.placeholder.toLowerCase()}` : 'This field is required';
-                            }
+                    // simple validation for required fields
+                    if (field.required && !field.value.trim()) {
+                        isValid = false;
+                        errorMessage = field.placeholder ? `Please enter your ${field.placeholder.toLowerCase()}` : 'This field is required';
                     }
                     
                     if (!isValid) {
@@ -3018,12 +3007,12 @@ const SHOW_LOADING_SCREEN = false; // Change to false to disable loading screen
                 }
                 
                 // Form submission
-                contactForm.addEventListener('submit', async function(e) {
+                eventForm.addEventListener('submit', async function(e) {
                     e.preventDefault();
                     
                     // Validate all fields
                     let isValid = true;
-                    const requiredFields = contactForm.querySelectorAll('[required]');
+                    const requiredFields = eventForm.querySelectorAll('[required]');
                     
                     requiredFields.forEach(field => {
                         if (!validateField(field)) {
@@ -3033,22 +3022,22 @@ const SHOW_LOADING_SCREEN = false; // Change to false to disable loading screen
                     
                     if (!isValid) {
                         // Focus first invalid field
-                        const firstInvalid = contactForm.querySelector('.error');
+                        const firstInvalid = eventForm.querySelector('.error');
                         if (firstInvalid) {
-                            const input = firstInvalid.querySelector('input, textarea');
+                            const input = firstInvalid.querySelector('input');
                             if (input) input.focus();
                         }
                         return;
                     }
                     
                     // Show loading state
-                    submitBtn.classList.add('loading');
-                    submitBtn.disabled = true;
+                    eventSubmitBtn.classList.add('loading');
+                    eventSubmitBtn.disabled = true;
                     
                     try {
-                        const formData = new FormData(contactForm);
+                        const formData = new FormData(eventForm);
                         
-                        const response = await fetch(contactForm.action, {
+                        const response = await fetch(eventForm.action, {
                             method: 'POST',
                             body: formData,
                             headers: {
@@ -3057,25 +3046,25 @@ const SHOW_LOADING_SCREEN = false; // Change to false to disable loading screen
                         });
                         
                         if (response.ok) {
-                            successMessage.style.display = 'block';
-                            contactForm.reset();
+                            eventSuccessMessage.style.display = 'block';
+                            eventForm.reset();
                             
                             // Scroll to success message
-                            successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                            eventSuccessMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                             
                             // Hide success message after 10 seconds
                             setTimeout(() => {
-                                successMessage.style.display = 'none';
+                                eventSuccessMessage.style.display = 'none';
                             }, 10000);
                         } else {
                             throw new Error('Form submission failed');
                         }
                     } catch (error) {
                         console.log("Error sending form:", error);
-                        alert("Error sending message. Please try again later or contact us via Instagram.");
+                        alert("Error sending registration. Please try again later or contact us via Instagram.");
                     } finally {
-                        submitBtn.classList.remove('loading');
-                        submitBtn.disabled = false;
+                        eventSubmitBtn.classList.remove('loading');
+                        eventSubmitBtn.disabled = false;
                     }
                 });
             }
@@ -3091,5 +3080,3 @@ const SHOW_LOADING_SCREEN = false; // Change to false to disable loading screen
     </script>
 </body>
 </html>
-
-

@@ -900,7 +900,7 @@
             white-space: nowrap;
         }
 
-        /* Flicker on the 'e' in Projects */
+        /* Flicker on the 'e' in Projects and Events */
         .flicker-e {
             display: inline-block;
             animation: flickerE 3s infinite alternate;
@@ -1002,9 +1002,15 @@
         .events-info h2 {
             font-size: 3rem;
             margin-bottom: 1.5rem;
-            color: var(--neon-primary);
+            color: var(--light);
             font-family: 'Poppins', sans-serif;
             font-weight: 500;
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 20px var(--neon-primary),
+                0 0 30px var(--neon-primary),
+                0 0 40px var(--neon-primary);
         }
 
         .events-info p {
@@ -1998,6 +2004,12 @@
                     <h2>Our <br><span class="flicker-e">Spon</span>sors</h2>
                     <div class="sponsors-grid">
                         <div class="sponsor-item">
+                            <div class="sponsor-name">Esc8pe Reality Designs</div>
+                            <a href="https://www.instagram.com/esc8perealitydesigns/" target="_blank" class="instagram-btn" aria-label="Visit Esc8pe Reality Designs on Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                        <div class="sponsor-item">
                             <div class="sponsor-name">Hit List</div>
                             <a href="https://www.instagram.com/hitlistboise/" target="_blank" class="instagram-btn" aria-label="Visit Hit List on Instagram">
                                 <i class="fab fa-instagram"></i>
@@ -2134,14 +2146,16 @@
                 </section>
             </div>
 
-            <!-- Events page (was Contact) -->
+            <!-- Events page (was Contact) - with glowing title and flickering S -->
             <div class="page" id="events" tabindex="-1" role="region" aria-label="Events">
                 <section class="events-section">
                     <div class="events-container">
                         <div class="events-info">
-                            <h2>Events</h2>
-                            <p>Register for upcoming events. $10 registration fee. Arrival by 11 AM sharp.</p>
-                            
+                            <div style="text-align: center; width: 100%; margin: 0 auto 1.5rem auto;">
+                            <h1 style="display: inline-block; text-align: center;">
+                            <h2>E<span class="flicker-e">v</span>ent<span class="flicker-e">s</span></h2>
+                            </div>
+
                             <div class="contact-methods">
                                 <div class="contact-method">
                                     <i class="fab fa-instagram"></i>
@@ -2169,8 +2183,16 @@
 
                         <!-- Event registration form (FormSubmit style) -->
                         <form class="event-form" id="eventForm" action="https://formsubmit.co/2dbe592043c5fbb7c149c062f5e296dc" method="POST">
+                            <br>
+                        <div style="text-align: center; width: 100%; margin: 0 auto 1.5rem auto;">
+                            <h1 style="display: inline-block; text-align: center;">
+                                <span class="flicker-e">STREETS & SKIES
+                            </h1><br><br>
                             <h2>Event Registration</h2>
-                            <p style="color:var(--neon-cyan); margin-bottom:1.5rem;">Must be there by 11 am · $10 fee</p>
+                            <p style="color:var(--neon-cyan)">Municipal Airport · Nampa</p>
+                            <p style="color:var(--neon-cyan)">April 26th · 11 am</p>
+                            <p style="color:var(--neon-cyan)">$10/driver ·$10/spectator</p><br>
+                        </div>
                             <div class="form-group">
                                 <input type="text" id="event-name" name="name" placeholder="Your Name" required aria-label="Your Name">
                                 <div class="error-message">Please enter your name</div>
@@ -2188,7 +2210,11 @@
                                 <div class="error-message">Please enter year, make, model</div>
                             </div>
                             <div class="form-group">
-                                <input type="text" id="instagram-tag" name="Instagram" placeholder="@instagram" aria-label="Instagram handle">
+                                <input type="text" id="instagram-tag" name="Spectators" placeholder="How many spectators if any?ctators">
+                                <div class="error-message">How many spectators if any?</div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="instagram-tag" name="Instagram" placeholder="@instagram" required aria-label="Instagram handle">
                                 <div class="error-message">Please enter your Instagram tag</div>
                             </div>
                             
@@ -2198,7 +2224,7 @@
                             <input type="hidden" name="_template" value="table">
                             <input type="hidden" name="_subject" value="New Event Registration - After Hours Society">
                             <div id="eventSuccessMessage" class="success-message">
-                                Thanks! We'll hit you up.
+                                Thanks! See you at the meet. 🚗
                             </div>
                             <button type="submit" class="btn" id="eventSubmitBtn">Register Now</button>
                         </form>

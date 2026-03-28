@@ -21,7 +21,6 @@
     
     <!-- Load important stuff first -->
     <link rel="preload" href="https://afterhourssociety.live/img/ahs.png" as="image" type="image/png">
-    <link rel="preload" href="https://afterhourssociety.live/img/torta.jpg" as="image" type="image/jpeg">
     
     <!-- Social media sharing previews -->
     <meta property="og:title" content="After Hours Society | Premier Car Club">
@@ -45,10 +44,10 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://www.googletagmanager.com">
     
-    <!-- Load external CSS files efficiently -->
+    <!-- Load external CSS files efficiently - Fixed crossorigin attributes -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" crossorigin="anonymous">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" as="style" crossorigin="anonymous">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" as="style" crossorigin="anonymous">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" as="style" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" as="style" crossorigin>
     
     <!-- External stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -85,18 +84,14 @@
     <!-- Google Analytics - Replace with your actual tracking ID -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
-      // Google Analytics disabled by default - replace G-XXXXXXXXXX with your actual ID to enable
-      if (typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        // Note: Replace 'G-XXXXXXXXXX' with your actual Google Analytics tracking ID
-        // gtag('config', 'G-XXXXXXXXXX', {
-        //   'anonymize_ip': true,
-        //   'allow_ad_personalization_signals': false,
-        //   'restricted_data_processing': true
-        // });
-      }
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX', {
+        'anonymize_ip': true,
+        'allow_ad_personalization_signals': false,
+        'restricted_data_processing': true
+      });
     </script>
     
     <!-- Main website styles -->
@@ -124,8 +119,8 @@
         :root {
             --size: 360px;
             --glow-color: rgba(255, 7, 58, 1);
-            --glow-intensity: 0; /* Start with no glow, builds up during animation */
-            --show-loading-screen: true; /* Set to false to disable loading screen */
+            --glow-intensity: 0;
+            --show-loading-screen: true;
         }
 
         .speedometer {
@@ -239,7 +234,7 @@
             font-family: 'Orbitron', monospace;
         }
 
-        /* Gallery loading indicator - NEW */
+        /* Gallery loading indicator */
         .gallery-loading {
             position: absolute;
             top: 50%;
@@ -264,71 +259,19 @@
             animation: spin 1s linear infinite;
             margin-right: 10px;
         }
-        
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* Image error fallback styling */
-        img.error-fallback {
-            opacity: 0.7;
-            filter: grayscale(0.3);
-        }
-        
-        .image-error-placeholder {
-            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 200px;
-            color: var(--neon-primary);
-            font-size: 0.9rem;
-            text-align: center;
-            padding: 2rem;
-        }
-        
-        .image-error-placeholder i {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        /* Loading skeleton for gallery */
-        .gallery-skeleton {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-            padding: 0 0.5rem;
-        }
-        
-        .skeleton-item {
-            aspect-ratio: 4/3;
-            border-radius: 15px;
-            background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
-            background-size: 200% 100%;
-            animation: skeleton-loading 1.5s infinite;
-            border: 2px solid rgba(255, 7, 58, 0.3);
-        }
-        
-        @keyframes skeleton-loading {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
 
         /* Main website colors and settings */
         :root {
-            --neon-primary: #ff073a;  /* Our main red color */
-            --neon-secondary: #ff4d00; /* Orange-red for highlights */
-            --neon-accent: #ff0022;   /* Bright red for accents */
-            --neon-cyan: #00fff2;     /* Cyan for text highlights */
-            --dark: #1a1a1a;          /* Dark background */
-            --darker: #0d0d0d;        /* Even darker for some elements */
-            --light: #f8f9fa;         /* Light text color */
-            --gray: #666666;          /* Gray text */
-            --light-gray: #cccccc;    /* Lighter gray */
-            --border-gray: #666666;   /* Border color */
+            --neon-primary: #ff0707;
+            --neon-secondary: #ff0000;
+            --neon-accent: #ff0022;
+            --neon-cyan: #00fff2;
+            --dark: #1a1a1a;
+            --darker: #0d0d0d;
+            --light: #f8f9fa;
+            --gray: #666666;
+            --light-gray: #cccccc;
+            --border-gray: #666666;
             
             --transition: all 0.3s ease;
             --shadow: 0 0 8px rgba(255, 7, 58, 0.2);
@@ -356,6 +299,23 @@
             outline: 2px solid var(--neon-primary);
             outline-offset: 3px;
             border-radius: 2px;
+        }
+
+        /* Loading placeholders for content */
+        .skeleton {
+            background: linear-gradient(90deg, #2a2a2a 25%, #333 50%, #2a2a2a 75%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite;
+            border-radius: 4px;
+        }
+
+        @keyframes skeleton-loading {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
         }
 
         /* Don't animate for people who prefer reduced motion */
@@ -395,7 +355,7 @@
                 animation: none !important;
             }
             
-            .skeleton-item {
+            .skeleton {
                 animation: none !important;
             }
         }
@@ -458,16 +418,16 @@
             transform: translateZ(-300px);
         }
 
-        /* Page container setup - FIXED FOR SCROLLING */
+        /* Page container setup */
         .page-container {
             position: relative;
             min-height: 100vh;
             padding-bottom: 80px;
-            overflow: visible;
+            overflow: hidden;
         }
 
         .page {
-            position: relative;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
@@ -475,16 +435,14 @@
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.5s ease;
-            overflow-y: visible;
-            min-height: calc(100vh - 80px);
-            height: auto;
-            display: none;
+            overflow-y: auto;
+            height: calc(100vh);
+            padding-bottom: 100px;
         }
 
         .page.active {
             opacity: 1;
             pointer-events: all;
-            display: block;
         }
 
         /* Hero section with logo and title */
@@ -498,7 +456,7 @@
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
-            min-height: 90vh;
+            height: 90vh;
             padding-bottom: 50px;
         }
 
@@ -643,8 +601,24 @@
             }
         }
 
-        .hero-content h2, h3 {
+        /* Hero subheading style - with glowing text */
+        .hero-subheading {
             font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 1px;
+            text-shadow: 
+                0 0 5px rgba(255, 255, 255, 0.594),
+                0 0 10px rgba(255, 255, 255, 0.3);
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 7s;
+        }
+
+        .est-year {
+            font-size: 20px;
             font-weight: 400;
             margin-bottom: 1.5rem;
             color: var(--light);
@@ -677,7 +651,9 @@
 
         /* Main button styles */
         .btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             padding: 0.8rem 1.8rem;
             background-color: var(--neon-primary);
             color: var(--darker);
@@ -696,6 +672,7 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
+            text-align: center;
         }
 
         .btn::after {
@@ -760,14 +737,13 @@
 
         /* Animated background elements */
         .hero-background {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
             overflow: hidden;
-            pointer-events: none;
         }
 
         .gradient-orb {
@@ -900,8 +876,6 @@
             overflow: hidden;
             border-radius: 10px 10px 0 0;
             margin-bottom: 1rem;
-            position: relative;
-            background: #2a2a2a;
         }
 
         .news-image img {
@@ -941,7 +915,7 @@
             white-space: nowrap;
         }
 
-        /* Flicker on the 'e' in Projects */
+        /* Flicker on the 'e' in Projects and Events */
         .flicker-e {
             display: inline-block;
             animation: flickerE 3s infinite alternate;
@@ -1024,43 +998,11 @@
             text-align: center;
         }
 
-        /* Contact section & Join Form */
-        .contact-section, .join-section {
-            margin-top: 0px;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem 4rem;
-        }
-        
-        .join-section {
-            max-width: 800px;
-        }
-
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            margin-top: 2rem;
-            padding-bottom: 2rem;
-        }
-
-        .contact-info h2 {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            color: var(--neon-primary);
-            font-family: 'Poppins', sans-serif;
-            font-weight: 500;
-        }
-
-        .contact-info p {
-            margin-bottom: 1rem;
-            color: var(--light-gray);
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
-
+        /* Contact methods */
         .contact-methods {
             width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
             margin-top: 2rem;
         }
 
@@ -1141,7 +1083,7 @@
             font-size: 1.2rem;
         }
 
-        /* Contact form & Join Form */
+        /* Contact form & Join Form - improved spacing */
         .contact-form, .join-form {
             background: rgba(26, 26, 26, 0.8);
             padding: 2.5rem;
@@ -1149,13 +1091,27 @@
             border: 1px solid var(--border-gray);
             transition: var(--transition);
             width: 100%;
-            max-width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
             margin-bottom: 4rem;
         }
 
         .contact-form:hover, .join-form:hover {
             border-color: var(--neon-primary);
             box-shadow: var(--shadow);
+        }
+
+        /* About page section styling */
+        .about-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .join-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
         }
 
         .form-group {
@@ -1195,6 +1151,9 @@
             padding: 1.2rem;
             margin-bottom: 2rem;
             border-radius: 8px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .requirements-box h4 {
@@ -1272,7 +1231,7 @@
             font-weight: 500;
         }
 
-        /* Scroll down arrow */
+        /* Scroll down arrow - fixed animation duration */
         .scroll-indicator {
             position: absolute;
             bottom: 60px;
@@ -1280,7 +1239,7 @@
             transform: translateX(-50%);
             color: white;
             font-size: 2rem;
-            animation: bounce cubic-bezier(0.6, -0.28, 0.735, 0.045) infinite;
+            animation: bounce 5s infinite, glow-pulse 1.5s infinite alternate;
             z-index: 10;
             opacity: 0.7;
             cursor: pointer;
@@ -1295,9 +1254,6 @@
 
         .scroll-indicator.visible {
             display: block;
-            animation: 
-                bounce 5s infinite,
-                glow-pulse 1.5s infinite alternate;
         }
 
         @keyframes glow-pulse {
@@ -1328,11 +1284,21 @@
             }
         }
 
-        /* Instagram CTA button */
+        /* Instagram CTA button - FIXED CENTERING */
         .instagram-cta {
             display: flex;
             justify-content: center;
             margin: 2rem 0;
+            width: 100%;
+        }
+        
+        .instagram-cta .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            white-space: nowrap;
+            min-width: 300px;
         }
         
         /* Gallery collection styles */
@@ -1407,7 +1373,7 @@
             gap: 0.5rem;
         }
         
-        /* Gallery modal popup */
+        /* Gallery modal popup with description area */
         .gallery-modal {
             display: none;
             position: fixed;
@@ -1450,7 +1416,7 @@
         }
         
         .gallery-close {
-            background: rgba(255, 7, 58, 0.7);
+            background: rgba(119, 119, 119, 0);
             color: white;
             border: none;
             width: 40px;
@@ -1482,17 +1448,53 @@
             align-items: center;
             padding: 1rem;
             position: relative;
-            max-height: 80vh;
-            background: #000;
-            border-radius: 10px;
+            max-height: 70vh;
         }
         
         .gallery-main-image img {
-            max-width: 90%;
-            max-height: 70vh;
+            max-width: 100%;
+            max-height: 65vh;
             object-fit: contain;
             border-radius: 10px;
             box-shadow: 0 0 30px rgba(255, 7, 58, 0.5);
+        }
+        
+        /* Gallery description area */
+        .gallery-description {
+            background: rgba(26, 26, 26, 0.9);
+            border-radius: 10px;
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            border-left: 3px solid var(--neon-primary);
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        
+        .gallery-description p {
+            color: var(--light-gray);
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        .gallery-description a {
+            color: var(--neon-cyan);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            transition: var(--transition);
+            display: inline-block;
+            background: rgba(0, 255, 242, 0.1);
+            border: 1px solid transparent;
+            margin: 0.3rem 0;
+        }
+        
+        .gallery-description a:hover {
+            color: white;
+            background: rgba(0, 255, 242, 0.2);
+            border-color: var(--neon-cyan);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 242, 0.3);
         }
         
         /* Gallery navigation arrows */
@@ -1571,15 +1573,14 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background: rgba(13, 13, 13, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(13, 13, 13, 0.7);
+            backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-around;
-            padding: 12px 10px;
-            z-index: 1000;
-            box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.5);
-            border-top: 1px solid rgba(255, 7, 58, 0.3);
+            padding: 15px;
+            z-index: 100;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
         }
 
         .nav-link {
@@ -1595,6 +1596,7 @@
             transition: var(--transition);
             flex: 1;
             text-align: center;
+            margin-bottom: -5px;
             min-width: 60px;
         }
 
@@ -1611,11 +1613,11 @@
 
         .nav-link.active {
             color: var(--neon-primary);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
         }
 
         .nav-link.active i {
-            transform: scale(1.2);
+            transform: scale(1.3);
             color: var(--neon-primary);
             text-shadow: 0 0 10px rgba(255, 7, 58, 0.4);
         }
@@ -1637,16 +1639,22 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 70px;
+            width: 60px;
             height: 3px;
             background: var(--neon-primary);
             border-radius: 5px;
-            transition: transform 0.3s ease;
+            transition: var(--transition);
+            transform: translateX(0);
             box-shadow: 0 0 10px rgba(255, 7, 58, 0.8);
         }
 
+        /* .no-arrow class - defined for navigation links that shouldn't have arrows */
+        .no-arrow {
+            text-decoration: none;
+        }
+
         /* Make just the Send Message button text bigger */
-        #submitBtn, #joinSubmitBtn {
+        #submitBtn {
             font-size: 1rem;
         }
 
@@ -1654,12 +1662,10 @@
         @media (max-width: 768px) {
             .page {
                 padding: 1rem;
-                padding-bottom: 90px;
             }
             
             .hero {
                 padding: 1rem 0.5rem;
-                min-height: 85vh;
             }
             
             .hero-content h1 {
@@ -1667,7 +1673,7 @@
                 letter-spacing: 4px;
             }
             
-            .hero-content h2 {
+            .hero-subheading {
                 font-size: 1.5rem;
             }
             
@@ -1685,9 +1691,19 @@
                 font-size: 2rem;
             }
             
+            /* Instagram CTA button on mobile */
+            .instagram-cta .btn {
+                min-width: 250px;
+                padding: 0.7rem 1.5rem;
+                font-size: 0.95rem;
+                white-space: normal;
+                text-align: center;
+                line-height: 1.3;
+            }
+            
             /* Enhanced mobile navbar */
             .bottom-nav {
-                padding: 10px 5px;
+                padding: 12px 3px;
             }
             
             .nav-link {
@@ -1730,20 +1746,6 @@
                 font-size: 1.5rem;
             }
             
-            .contact-section, .join-section {
-                padding: 2rem 1rem;
-            }
-            
-            .contact-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .contact-form, .join-form {
-                padding: 1.5rem;
-                margin-bottom: 5rem;
-            }
-            
             .collection-gallery {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
                 gap: 1rem;
@@ -1757,6 +1759,17 @@
             
             .gallery-main-image {
                 padding: 0.5rem;
+                max-height: 60vh;
+            }
+            
+            .gallery-main-image img {
+                max-height: 55vh;
+            }
+            
+            .gallery-description {
+                padding: 0.8rem 1rem;
+                max-height: 120px;
+                font-size: 0.9rem;
             }
             
             .gallery-header {
@@ -1791,12 +1804,17 @@
             .gallery-thumbnails {
                 height: 80px;
             }
+            
+            .contact-form, .join-form {
+                padding: 1.5rem;
+                margin-bottom: 5rem;
+            }
         }
 
         @media (max-width: 480px) {
             .hero {
                 padding: 1rem 0.5rem;
-                min-height: 80vh;
+                height: 85vh;
             }
             
             .hero-content h1 {
@@ -1804,9 +1822,12 @@
                 letter-spacing: 3px;
             }
             
+            .hero-subheading {
+                font-size: 1.2rem;
+            }
+            
             .page {
                 padding: 0.75rem;
-                padding-bottom: 90px;
             }
             
             .logo-container {
@@ -1833,6 +1854,22 @@
             .scroll-indicator {
                 bottom: 80px;
                 font-size: 1.3rem;
+            }
+            
+            .contact-form, .join-form {
+                padding: 1.25rem;
+                margin-bottom: 5rem;
+            }
+            
+            /* Instagram CTA button on very small screens */
+            .instagram-cta .btn {
+                min-width: 200px;
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+                white-space: normal;
+                word-wrap: break-word;
+                text-align: center;
+                line-height: 1.4;
             }
             
             .gallery-title {
@@ -1870,9 +1907,15 @@
                 font-size: 1.2rem;
             }
             
+            .gallery-description {
+                padding: 0.7rem 0.9rem;
+                max-height: 100px;
+                font-size: 0.85rem;
+            }
+            
             /* Extra enhancements for very small screens */
             .bottom-nav {
-                padding: 8px 3px;
+                padding: 10px 2px;
             }
             
             .nav-link {
@@ -1897,10 +1940,6 @@
             .gallery-thumbnails {
                 height: 70px;
             }
-            
-            .contact-form, .join-form {
-                margin-bottom: 5rem;
-            }
         }
 
         /* Print styles - hide animations for printing */
@@ -1922,7 +1961,6 @@
                 position: static;
                 opacity: 1;
                 height: auto;
-                display: block !important;
             }
             
             .collection-item:hover {
@@ -1933,22 +1971,11 @@
     </style>
 </head>
 <body>
-    <!-- Loading animation screen -->
-    <div class="loading-screen" id="loadingScreen" style="display: none;">
-        <div class="speedometer">
-            <div class="glow-ring" id="glowRing"></div>
-            <div class="reflection"></div>
-            <div class="ticks" id="ticks"></div>
-            <div class="numbers" id="numbers"></div>
-            <div class="needle" id="needle"></div>
-            <div class="center-cap"></div>
-            <div class="time-display" id="timeDisplay">11:59pm</div>
-            <div class="ahs-text">Loading...</div>
-        </div>
-    </div>
+    <!-- Loading animation screen - Will be conditionally shown/removed by JavaScript -->
+    <div class="loading-screen" id="loadingScreen"></div>
 
     <!-- Main website content -->
-    <div class="website-content">
+    <div class="website-content" style="display: none;">
         <!-- Shooting stars background -->
         <div class="shooting-star-container" id="starContainer"></div>
 
@@ -1967,13 +1994,13 @@
                             <!-- Logo glow effect -->
                             <div class="logo-glow"></div>
                             <!-- Club logo -->
-                            <img id="club-logo" class="logo-spin" src="https://afterhourssociety.live/img/ahs.png" alt="After Hours Society Logo" loading="lazy" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'45\' fill=\'%23ff073a\'/%3E%3Ctext x=\'50\' y=\'67\' text-anchor=\'middle\' fill=\'white\' font-size=\'40\' font-weight=\'bold\'%3EAHS%3C/text%3E%3C/svg%3E';">
+                            <img id="club-logo" class="logo-spin" src="https://afterhourssociety.live/img/ahs.png" alt="After Hours Society Logo" loading="lazy">
                         </div>
                         <div class="hero-title">
                             <div class="title-part" id="after-hours-title">AFTER H<span class="flicker-letter">O</span><span class="flicker-letter">U</span>R<span class="flicker-letter">S</span></div>
                             <div class="title-part" id="society-title"><span class="flicker-letter">S</span><span class="flicker-letter">O</span><span class="flicker-letter">C</span>I<span class="flicker-letter">E</span>T<span class="flicker-letter">Y</span></div>
                         </div>
-                        <h2 style="font-size: 20px;">EST. 2025</h2>
+                        <div class="est-year">EST. 2025</div>
                     </div>
                     <!-- Scroll down arrow -->
                     <div class="scroll-indicator" id="scrollIndicator" aria-hidden="true">
@@ -1983,30 +2010,29 @@
 
                 <!-- News and updates section -->
                 <section class="news-updates" id="news">
-                    <h2>Club News & Updates</h2>
+                    <h2>News & Updates</h2>
                     <div class="news-grid">
                         <div class="news-item">
                             <div class="news-image">
-                                <img src="https://afterhourssociety.live/img/torta.jpg" alt="Torta Hunt Event - Club members with their cars" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-error-placeholder\'><i class=\'fas fa-image\'></i><br>Image not available</div>'">
+                                <img src="./img/Season 2026/January/Screenshot_20260121_191458.jpg" alt="Torta Hunt Event - Club members with their cars" loading="lazy">
+                            </div>
+                            <div class="news-content">
+                                <div class="news-date">Posted 1/22/2026</div>
+                                <h3 class="news-title">It's Confirmed</h3>
+                                <p class="news-excerpt">Better fix up that power steering or missing lugnut, because the After Hours Society season opener cruise is officially scheduled for March 15th.
+                                    <br><br>Get the route picture and Google Navigation Links in the <a href="#photography" class="nav-link no-arrow" data-target="photography">Routes</a> Gallery.</p>
+                            </div>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-image">
+                                <img src="https://afterhourssociety.live/img/torta.jpg" alt="Torta Hunt Event - Club members with their cars" loading="lazy">
                             </div>
                             <div class="news-content">
                                 <div class="news-date">Posted 1/18/2026</div>
                                 <h3 class="news-title">2026 SEASON DROP: WE'RE LIVE</h3>
                                 <p class="news-excerpt">The wait is over. The engines are warm, the 2026 season is coming up, and we're kicking things off with the launch of our brand-new website. This is your new home for event calendars, behind the scene photos, and exclusive club updates.</p>
                                 <p class="news-excerpt">
-                                    <br>You can check out photos from our Season Gallery <a href="#" class="nav-link-trigger" data-target="photography">Here</a>.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="news-item">
-                            <div class="news-image">
-                                <img src="./img/Season 2026/January/Screenshot_20260121_191458.jpg" alt="Torta Hunt Event - Club members with their cars" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'image-error-placeholder\'><i class=\'fas fa-image\'></i><br>Image not available</div>'">
-                            </div>
-                            <div class="news-content">
-                                <div class="news-date">Posted 1/22/2026</div>
-                                <h3 class="news-title">It's Confirmed</h3>
-                                <p class="news-excerpt">Better fix up that power steering or missing lugnut, because the After Hours Society season opener cruise is officially scheduled for March 15th.
-                                    <br><br>Get the route picture and Google Navigation Link in the <a href="#" class="nav-link-trigger" data-target="photography">Routes</a> Gallery.</p>
+                                    <br>You can check out photos from our Season Gallery <a href="#photography" class="nav-link no-arrow" data-target="photography">Here</a>.
                             </div>
                         </div>
                     </div>
@@ -2051,7 +2077,7 @@
                              data-gallery-descriptions='[
                                 "Season Opener Cruise - March 15th, 2026<br><a href=\"https://maps.app.goo.gl/tUYckrUEct57Ddgr6\" target=\"_blank\" style=\"color: #00fff2; font-weight: bold;\">📌 Click here to navigate to the starting location</a><br><a href=\"https://maps.app.goo.gl/CxZctS94eR2vdRrEA\" target=\"_blank\" style=\"color: #00fff2; font-weight: bold;\">📌 Click here to navigate to the cruise route</a>"
                              ]'>
-                            <img src="https://afterhourssociety.live/img/Season 2026/January/Screenshot_20260121_191458.jpg" alt="Routes">
+                            <img src="https://afterhourssociety.live/img/Season 2026/January/Screenshot_20260121_191458.jpg" alt="Routes" loading="lazy">
                             <div class="collection-overlay">
                                 <h4 class="collection-title">Routes</h4>
                                 <div class="collection-count">
@@ -2081,7 +2107,7 @@
                                 "Group shots of the After Hours Society members for the Season 2026 Launch",
                                 "Group shots of the After Hours Society members for the Season 2026 Launch"
                              ]'>
-                            <img src="https://afterhourssociety.live/img/Season 2026/January/Snapshot_20260119_140122.jpg" alt="Season 2026 Launch - Club cars lined up">
+                            <img src="https://afterhourssociety.live/img/Season 2026/January/Snapshot_20260119_140122.jpg" alt="Season 2026 Launch - Club cars lined up" loading="lazy">
                             <div class="collection-overlay">
                                 <h4 class="collection-title">Season 2026 Launch</h4>
                                 <div class="collection-count">
@@ -2091,40 +2117,41 @@
                             </div>
                         </div>
                         
-<!-- Collection 3 -->
-<div class="collection-item" 
-     data-gallery-title="Hakeem Prime Music Video Shoot"
-     data-gallery-cover="https://afterhourssociety.live/img/Season 2026/January/IMG_3994.png"
-     data-gallery-images='[
-        "https://afterhourssociety.live/img/Season 2026/January/IMG_3916.png",
-        "https://afterhourssociety.live/img/Season 2026/January/IMG_3994.png",
-        "https://afterhourssociety.live/img/Season 2026/January/lhtsjyryskhgc.jpg",
-        "https://afterhourssociety.live/img/Season 2026/January/IMG_3915.jpg",
-        "https://afterhourssociety.live/img/Season 2026/January/nvdfxdmbd.png"
-     ]'
-     data-gallery-descriptions='[
-        "Hakeem Prime and the After Hours Society crew on set for his music video",
-        "Hakeem Prime and the After Hours Society crew on set for his music video",
-        "Hakeem Prime and the After Hours Society crew on set for his music video",
-        "Hakeem Prime and the After Hours Society crew on set for his music video",
-        "Hakeem Prime and the After Hours Society crew on set for his music video"
-     ]'>
-    <img src="https://afterhourssociety.live/img/Season 2026/January/IMG_3994.png" alt="Hakeem Prime Music Video Shoot - Hakeem and crew">
-    <div class="collection-overlay">
-        <h4 class="collection-title">Hakeem Prime Music Video Shoot</h4>
-        <div class="collection-count">
-            <i class="fas fa-images"></i>
-            <span>5 photos</span>
-        </div>
-    </div>
-</div>
+                        <!-- Collection 3 -->
+                        <div class="collection-item" 
+                             data-gallery-title="Hakeem Prime Music Video Shoot"
+                             data-gallery-cover="https://afterhourssociety.live/img/Season 2026/January/IMG_3994.png"
+                             data-gallery-images='[
+                                "https://afterhourssociety.live/img/Season 2026/January/IMG_3916.png",
+                                "https://afterhourssociety.live/img/Season 2026/January/IMG_3994.png",
+                                "https://afterhourssociety.live/img/Season 2026/January/lhtsjyryskhgc.jpg",
+                                "https://afterhourssociety.live/img/Season 2026/January/IMG_3915.jpg",
+                                "https://afterhourssociety.live/img/Season 2026/January/nvdfxdmbd.png"
+                             ]'
+                             data-gallery-descriptions='[
+                                "Hakeem Prime and the After Hours Society crew on set for his music video",
+                                "Hakeem Prime and the After Hours Society crew on set for his music video",
+                                "Hakeem Prime and the After Hours Society crew on set for his music video",
+                                "Hakeem Prime and the After Hours Society crew on set for his music video",
+                                "Hakeem Prime and the After Hours Society crew on set for his music video"
+                             ]'>
+                            <img src="https://afterhourssociety.live/img/Season 2026/January/IMG_3994.png" alt="Hakeem Prime Music Video Shoot - Hakeem and crew" loading="lazy">
+                            <div class="collection-overlay">
+                                <h4 class="collection-title">Hakeem Prime Music Video Shoot</h4>
+                                <div class="collection-count">
+                                    <i class="fas fa-images"></i>
+                                    <span>5 photos</span>
+                                </div>
+                            </div>
+                        </div>
                         
                         <!-- Collection 4 - Coming Soon -->
                         <div class="collection-item" 
                              data-gallery-title="Coming Soon"
                              data-gallery-cover=""
-                             data-gallery-images='[]'>
-                            <div class="image-error-placeholder" style="height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background: rgba(0,0,0,0.5);">
+                             data-gallery-images='[]'
+                             data-gallery-descriptions='[]'>
+                            <div style="height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background: rgba(0,0,0,0.5);">
                                 <i class="fas fa-clock" style="font-size: 3rem; color: var(--neon-primary); margin-bottom: 1rem;"></i>
                                 <h4 style="color: var(--neon-primary);">More Collections Coming Soon</h4>
                                 <p style="color: var(--light-gray); font-size: 0.9rem;">Stay tuned for updates!</p>
@@ -2149,17 +2176,19 @@
                         </a>
                         <p style="margin-top: 0.5rem; font-size: 0.85rem;">(Sign into Google through the link to upload)</p>
                     </div>
-                </section>
+                </section><br>
             </div>
 
-            <!-- About page -->
+            <!-- About page - IMPROVED SPACING -->
             <div class="page" id="pricing" tabindex="-1" role="region" aria-label="About Us">
-                <section class="portfolio-section">
-                    <h2>About <br> After H<span class="flicker-e">our</span>s <br><span class="flicker-e">Society</span></h2>
+                <section class="about-section">
+                    <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 2rem; color: white; font-family: 'Poppins', sans-serif; font-weight: 500; text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px var(--neon-primary), 0 0 30px var(--neon-primary), 0 0 40px var(--neon-primary);">About <br> After H<span class="flicker-e">our</span>s <br><span class="flicker-e">Society</span></h2>
                     <p class="subtitle">Established in 2025, After Hours Society isn't just about cars—it's about the people who drive them.
                         We're a crew built on late nights, open roads, and real connections that go deeper than the chrome and paint.
                         Cars brought us together, but the friendships, laughs, and loyalty keep us rolling. No drama. No fakes. 
                         Just a family that lives for the ride and has each other's backs always.</p>
+                </section>
+                <div class="contact-methods">
                     <div class="contact-method">
                         <i class="fab fa-instagram"></i>
                         <div>
@@ -2181,11 +2210,11 @@
                             <p>Boise, ID</p>
                         </div>
                     </div>
-
+                </div>
                     <!-- Q&A Form - Name, Email, Phone are OPTIONAL -->
                     <form class="contact-form" id="contactForm" action="https://formsubmit.co/afterhourssociety.live@gmail.com" method="POST">
                         <br>
-                        <h2>Q&A</h2>
+                        <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 1rem; color: white; font-family: 'Poppins', sans-serif; font-weight: 500; text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px var(--neon-primary), 0 0 30px var(--neon-primary), 0 0 40px var(--neon-primary);">Q&A</h2>
                         <p style="margin-bottom: .8rem; color: var(--light-gray); text-align: center;">Have questions? Ask us anything</p>
                         <div class="form-group">
                             <input type="text" id="name" name="name" placeholder="Your Name (Optional)" aria-label="Your Name">
@@ -2212,14 +2241,13 @@
                         <input type="hidden" name="_template" value="table">
                         <input type="hidden" name="_subject" value="New Q&A Message - After Hours Society">
                         <button type="submit" class="btn" id="submitBtn">Send</button>
-                    </form>
-                </section>
+                    </form><br>
             </div>
 
-            <!-- JOIN PAGE - REPLACING EVENTS TAB -->
+            <!-- JOIN PAGE - FIXED FORM SUBMISSION -->
             <div class="page" id="join" tabindex="-1" role="region" aria-label="Join Our Club">
                 <section class="join-section">
-                    <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 1rem;">Become a Member</h2>
+                    <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 1rem; color: white; font-family: 'Poppins', sans-serif; font-weight: 500; text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px var(--neon-primary), 0 0 30px var(--neon-primary), 0 0 40px var(--neon-primary);">Become a Member</h2>
                     <p style="text-align: center; margin-bottom: 2rem; color: var(--light-gray);">Join the After Hours Society family. Fill out the registration below.</p>
                     
                     <div class="requirements-box">
@@ -2239,7 +2267,7 @@
                         </div>
                         
                         <div class="form-group">
-                            <input type="text" id="instagram-handle" name="Instagram Handle" placeholder="Instagram Handle (e.g., @username)" required aria-label="Instagram Handle">
+                            <input type="text" id="instagram-handle" name="Instagram Handle" placeholder="Instagram Handle" required aria-label="Instagram Handle">
                             <div class="error-message">Please enter your Instagram handle</div>
                         </div>
                         
@@ -2249,17 +2277,17 @@
                         </div>
                         
                         <div class="form-group">
-                            <input type="text" id="car-year" name="Car Year" placeholder="Car Year (e.g., 2005)" required aria-label="Car Year">
+                            <input type="text" id="car-year" name="Car Year" placeholder="Car Year" required aria-label="Car Year">
                             <div class="error-message">Please enter your car's year</div>
                         </div>
                         
                         <div class="form-group">
-                            <input type="text" id="car-make" name="Car Make" placeholder="Car Make (e.g., BMW, Honda, Ford)" required aria-label="Car Make">
+                            <input type="text" id="car-make" name="Car Make" placeholder="Car Make" required aria-label="Car Make">
                             <div class="error-message">Please enter your car's make</div>
                         </div>
                         
                         <div class="form-group">
-                            <input type="text" id="car-model" name="Car Model" placeholder="Car Model (e.g., M3, Civic, Mustang)" required aria-label="Car Model">
+                            <input type="text" id="car-model" name="Car Model" placeholder="Car Model" required aria-label="Car Model">
                             <div class="error-message">Please enter your car's model</div>
                         </div>
                         
@@ -2288,7 +2316,7 @@
                             <label for="code-of-conduct">I agree to follow the club's code of conduct and maintain a respectful attitude.</label>
                         </div>
                         
-                        <input type="hidden" name="_next" value="#join">
+                        <input type="hidden" name="_next" value="https://afterhourssociety.live/#join">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_template" value="table">
                         <input type="hidden" name="_subject" value="New Membership Application - After Hours Society">
@@ -2302,31 +2330,31 @@
                 </section>
             </div>
 
-            <!-- Bottom navigation menu -->
-            <nav class="bottom-nav" aria-label="Main navigation">
-                <div class="nav-indicator"></div>
-                <a href="#home" class="nav-link active" data-target="home" aria-label="Home">
-                    <i class="fas fa-home"></i>
-                    <span>News</span>
-                </a>
-                <a href="#portfolio" class="nav-link" data-target="portfolio" aria-label="Sponsors">
-                    <i class="fas fa-handshake"></i>
-                    <span>Sponsors</span>
-                </a>
-                <a href="#photography" class="nav-link" data-target="photography" aria-label="Photography">
-                    <i class="fas fa-camera"></i>
-                    <span>Photos</span>
-                </a>
-                <a href="#pricing" class="nav-link" data-target="pricing" aria-label="About">
-                    <i class="fas fa-info-circle"></i>
-                    <span>About</span>
-                </a>
-                <a href="#join" class="nav-link" data-target="join" aria-label="Join">
-                    <i class="fas fa-user-plus"></i>
-                    <span>Join</span>
-                </a>
-            </nav>
         </div>
+        <!-- Bottom navigation menu -->
+        <nav class="bottom-nav" aria-label="Main navigation">
+            <div class="nav-indicator"></div>
+            <a href="#home" class="nav-link active" data-target="home" aria-label="Home">
+                <i class="fas fa-home"></i>
+                <span>News</span>
+            </a>
+            <a href="#portfolio" class="nav-link" data-target="portfolio" aria-label="Sponsors">
+                <i class="fas fa-handshake"></i>
+                <span>Sponsors</span>
+            </a>
+            <a href="#photography" class="nav-link" data-target="photography" aria-label="Photography">
+                <i class="fas fa-camera"></i>
+                <span>Photos</span>
+            </a>
+            <a href="#pricing" class="nav-link" data-target="pricing" aria-label="About">
+                <i class="fas fa-info-circle"></i>
+                <span>About</span>
+            </a>
+            <a href="#join" class="nav-link" data-target="join" aria-label="Join">
+                <i class="fas fa-user-plus"></i>
+                <span>Join</span>
+            </a>
+        </nav>
         
         <!-- Gallery popup modal -->
         <div class="gallery-modal" id="galleryModal">
@@ -2349,6 +2377,12 @@
                         <i class="fas fa-chevron-right"></i>
                     </button>
                 </div>
+                
+                <!-- Gallery description area -->
+                <div class="gallery-description" id="galleryDescription">
+                    <!-- Descriptions load here -->
+                </div>
+                
                 <div class="gallery-thumbnails" id="galleryThumbnails">
                     <!-- Thumbnails load here -->
                 </div>
@@ -2358,13 +2392,42 @@
 
     <script>
 // Main website JavaScript
-const SHOW_LOADING_SCREEN = false;
+// ============================================
 
+// EASY LOADING SCREEN TOGGLE FEATURE
+// Set this variable to true to enable loading screen, false to disable it
+const SHOW_LOADING_SCREEN = false; // Change to false to disable loading screen
+
+// Fix for making sure things run smoothly
 (function() {
     'use strict';
     
+    // Function to create and populate loading screen elements only when needed
+    function createLoadingScreenElements() {
+        const loadingScreen = document.getElementById('loadingScreen');
+        if (!loadingScreen) return;
+        
+        // Create the speedometer HTML structure
+        loadingScreen.innerHTML = `
+            <div class="speedometer">
+                <div class="glow-ring" id="glowRing"></div>
+                <div class="reflection"></div>
+                <div class="ticks" id="ticks"></div>
+                <div class="numbers" id="numbers"></div>
+                <div class="needle" id="needle"></div>
+                <div class="center-cap"></div>
+                <div class="time-display" id="timeDisplay">11:59pm</div>
+                <div class="ahs-text">Loading...</div>
+            </div>
+        `;
+        
+        return loadingScreen;
+    }
+    
+    // Gallery loading indicator setup
     const galleryLoading = document.getElementById('galleryLoading');
     
+    // Throttle function to prevent too many calls
     function throttle(func, limit) {
         let inThrottle;
         return function() {
@@ -2378,249 +2441,639 @@ const SHOW_LOADING_SCREEN = false;
         };
     }
     
+    // Track which images are loaded
     const loadedImages = new Set();
     
+    // Load gallery from HTML data with descriptions
     function loadGalleryFromHTML() {
         const collectionItems = document.querySelectorAll('.collection-item');
         const collections = [];
+        
         collectionItems.forEach((item, index) => {
             try {
                 const title = item.getAttribute('data-gallery-title') || `Collection ${index + 1}`;
                 const cover = item.getAttribute('data-gallery-cover') || '';
                 const imagesJson = item.getAttribute('data-gallery-images') || '[]';
+                const descriptionsJson = item.getAttribute('data-gallery-descriptions') || '[]';
+                
                 let images = [];
+                let descriptions = [];
                 try {
                     images = JSON.parse(imagesJson);
+                    descriptions = JSON.parse(descriptionsJson);
                 } catch (e) {
+                    console.log('Could not parse data for', title, e);
                     images = [];
+                    descriptions = [];
                 }
-                // Only add collections that have images or are the "Coming Soon" placeholder
-                if (images.length > 0 || title === "Coming Soon") {
-                    collections.push({ id: index + 1, title: title, cover: cover, images: images });
+                
+                // Ensure we have a description for each image (or empty string)
+                while (descriptions.length < images.length) {
+                    descriptions.push('');
                 }
-            } catch (error) {}
+                
+                collections.push({
+                    id: index + 1,
+                    title: title,
+                    cover: cover,
+                    images: images,
+                    descriptions: descriptions
+                });
+            } catch (error) {
+                console.log('Error with gallery item', error);
+            }
         });
+        
         return collections;
     }
     
+    // Set up gallery when page loads
     function initCollectionGallery() {
         const collectionGallery = document.getElementById('collectionGallery');
-        const skeletonLoader = document.getElementById('gallerySkeleton');
-        
         if (!collectionGallery) return;
         
-        // Show skeleton loader initially
-        if (skeletonLoader) skeletonLoader.style.display = 'grid';
-        collectionGallery.style.display = 'none';
+        const collections = loadGalleryFromHTML();
         
-        // Simulate loading delay to show skeleton (or remove if images load fast)
-        setTimeout(() => {
-            const collections = loadGalleryFromHTML();
-            if (collections.length === 0) {
-                collectionGallery.innerHTML = `<div style="text-align: center; grid-column: 1 / -1; padding: 3rem;"><i class="fas fa-images" style="font-size: 3rem; color: var(--neon-primary); margin-bottom: 1rem;"></i><h3 style="color: var(--light); margin-bottom: 1rem;">No Collections Yet</h3><p style="color: var(--light-gray);">Check back soon for gallery updates!</p></div>`;
-                collectionGallery.style.display = 'grid';
-            } else {
-                const collectionItems = document.querySelectorAll('.collection-item');
-                collectionItems.forEach((item, index) => {
-                    if (index < collections.length) {
-                        item.addEventListener('click', () => { openGallery(collections[index]); });
-                    }
-                });
-                collectionGallery.style.display = 'grid';
-            }
-            // Hide skeleton after content loads
-            if (skeletonLoader) skeletonLoader.style.display = 'none';
-        }, 800);
-    }
-    
-    let currentGallery = null;
-    let currentImageIndex = 0;
-    
-    function preloadGalleryImages(images) {
-        images.forEach(src => {
-            if (!loadedImages.has(src) && src) {
-                const img = new Image();
-                img.src = src;
-                img.onload = () => loadedImages.add(src);
-                img.onerror = () => console.log('Failed to load:', src);
-            }
-        });
-    }
-    
-    function openGallery(collection) {
-        if (!collection.images || collection.images.length === 0) {
-            alert('No images available for this collection yet. Check back soon!');
+        // Show message if no galleries
+        if (collections.length === 0) {
+            collectionGallery.innerHTML = `
+                <div style="text-align: center; grid-column: 1 / -1; padding: 3rem;">
+                    <i class="fas fa-images" style="font-size: 3rem; color: var(--neon-primary); margin-bottom: 1rem;"></i>
+                    <h3 style="color: var(--light); margin-bottom: 1rem;">No Collections Yet</h3>
+                    <p style="color: var(--light-gray);">Check back soon for gallery updates!</p>
+                </div>
+            `;
             return;
         }
         
+        // Add click handlers to gallery items
+        const collectionItems = document.querySelectorAll('.collection-item');
+        collectionItems.forEach((item, index) => {
+            if (index < collections.length) {
+                item.addEventListener('click', () => {
+                    openGallery(collections[index]);
+                });
+            }
+        });
+    }
+    
+    // Gallery state
+    let currentGallery = null;
+    let currentImageIndex = 0;
+    
+    // Preload images for better performance - but only when needed
+    function preloadGalleryImages(images) {
+        images.forEach(src => {
+            if (!loadedImages.has(src) && src && src.trim() !== '') {
+                const img = new Image();
+                img.src = src;
+                img.onload = function() {
+                    loadedImages.add(src);
+                };
+            }
+        });
+    }
+    
+    // Open gallery with loading indicator
+    function openGallery(collection) {
         currentGallery = collection;
         currentImageIndex = 0;
+        
         const modal = document.getElementById('galleryModal');
         const title = document.getElementById('galleryTitle');
         const thumbnails = document.getElementById('galleryThumbnails');
+        const description = document.getElementById('galleryDescription');
+        
         title.textContent = collection.title;
-        if (galleryLoading) galleryLoading.classList.add('active');
+        
+        // Show loading indicator
+        if (galleryLoading) {
+            galleryLoading.classList.add('active');
+        }
+        
+        // Preload all images in background
         preloadGalleryImages(collection.images);
-        loadGalleryImage(collection.images[0], () => { if (galleryLoading) galleryLoading.classList.remove('active'); });
-        thumbnails.innerHTML = '';
-        collection.images.forEach((image, index) => {
-            const thumbnail = document.createElement('div');
-            thumbnail.className = `thumbnail ${index === 0 ? 'active' : ''}`;
-            thumbnail.innerHTML = `<img src="${image}" alt="Thumbnail ${index + 1}" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 80 60\'%3E%3Crect width=\'80\' height=\'60\' fill=\'%23333\'/%3E%3Ctext x=\'40\' y=\'35\' text-anchor=\'middle\' fill=\'%23ff073a\' font-size=\'12\'%3E?%3C/text%3E%3C/svg%3E'">`;
-            thumbnail.addEventListener('click', () => {
-                currentImageIndex = index;
-                updateMainImage();
-                updateActiveThumbnail();
+        
+        // Load first image and description if there are images
+        if (collection.images && collection.images.length > 0) {
+            loadGalleryImage(collection.images[0], function() {
+                // Hide loading indicator once first image loads
+                if (galleryLoading) {
+                    galleryLoading.classList.remove('active');
+                }
             });
-            thumbnails.appendChild(thumbnail);
-        });
+            
+            // Set first description
+            updateGalleryDescription();
+            
+            // Create thumbnails
+            thumbnails.innerHTML = '';
+            collection.images.forEach((image, index) => {
+                if (image && image.trim() !== '') {
+                    const thumbnail = document.createElement('div');
+                    thumbnail.className = `thumbnail ${index === 0 ? 'active' : ''}`;
+                    thumbnail.innerHTML = `<img src="${image}" alt="Thumbnail ${index + 1}" loading="lazy">`;
+                    
+                    thumbnail.addEventListener('click', () => {
+                        currentImageIndex = index;
+                        updateMainImage();
+                        updateActiveThumbnail();
+                        updateGalleryDescription();
+                    });
+                    
+                    thumbnails.appendChild(thumbnail);
+                }
+            });
+        } else {
+            // No images case
+            if (galleryLoading) {
+                galleryLoading.classList.remove('active');
+            }
+            const mainImage = document.getElementById('galleryMainImage');
+            mainImage.style.display = 'none';
+            description.innerHTML = '<p>No images available for this collection yet. Check back soon!</p>';
+            description.style.display = 'block';
+        }
+        
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
     
+    // Load image with callback
     function loadGalleryImage(src, callback) {
         const mainImage = document.getElementById('galleryMainImage');
-        if (!src) {
-            if (callback) callback();
-            return;
+        mainImage.style.display = 'block';
+        
+        // Show loading if image isn't cached
+        if (!loadedImages.has(src) && galleryLoading) {
+            galleryLoading.classList.add('active');
         }
-        if (!loadedImages.has(src) && galleryLoading) galleryLoading.classList.add('active');
+        
         mainImage.onload = function() {
-            if (galleryLoading) galleryLoading.classList.remove('active');
+            if (galleryLoading) {
+                galleryLoading.classList.remove('active');
+            }
             if (callback) callback();
             loadedImages.add(src);
         };
+        
         mainImage.onerror = function() {
-            if (galleryLoading) galleryLoading.classList.remove('active');
-            mainImage.src = 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 300\'%3E%3Crect width=\'400\' height=\'300\' fill=\'%23333\'/%3E%3Ctext x=\'200\' y=\'150\' text-anchor=\'middle\' fill=\'%23ff073a\' font-size=\'20\'%3EImage Failed to Load%3C/text%3E%3C/svg%3E';
+            if (galleryLoading) {
+                galleryLoading.classList.remove('active');
+            }
             mainImage.alt = 'Image failed to load';
-            if (callback) callback();
         };
+        
         mainImage.src = src;
         mainImage.alt = `${currentGallery.title} - Image ${currentImageIndex + 1}`;
     }
     
+    // Update gallery description
+    function updateGalleryDescription() {
+        if (!currentGallery || !currentGallery.descriptions) return;
+        
+        const description = document.getElementById('galleryDescription');
+        const descText = currentGallery.descriptions[currentImageIndex] || '';
+        
+        if (descText) {
+            description.innerHTML = `<p>${descText}</p>`;
+            description.style.display = 'block';
+            
+            // Make links clickable
+            const links = description.querySelectorAll('a');
+            links.forEach(link => {
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
+            });
+        } else {
+            description.style.display = 'none';
+        }
+    }
+    
+    // Close gallery
     function closeGallery() {
         const modal = document.getElementById('galleryModal');
         modal.classList.remove('active');
         document.body.style.overflow = '';
         currentGallery = null;
-        if (galleryLoading) galleryLoading.classList.remove('active');
+        
+        // Hide loading indicator
+        if (galleryLoading) {
+            galleryLoading.classList.remove('active');
+        }
     }
     
-    function nextImage() { if (currentGallery && currentGallery.images && currentGallery.images.length > 0) { currentImageIndex = (currentImageIndex + 1) % currentGallery.images.length; updateMainImage(); updateActiveThumbnail(); } }
-    function prevImage() { if (currentGallery && currentGallery.images && currentGallery.images.length > 0) { currentImageIndex = (currentImageIndex - 1 + currentGallery.images.length) % currentGallery.images.length; updateMainImage(); updateActiveThumbnail(); } }
-    function updateMainImage() { if (currentGallery && currentGallery.images && currentGallery.images[currentImageIndex]) loadGalleryImage(currentGallery.images[currentImageIndex]); }
-    function updateActiveThumbnail() { const thumbnails = document.querySelectorAll('.thumbnail'); thumbnails.forEach((thumb, index) => { thumb.classList.toggle('active', index === currentImageIndex); }); }
+    // Next image
+    function nextImage() {
+        if (currentGallery && currentGallery.images && currentGallery.images.length > 0) {
+            currentImageIndex = (currentImageIndex + 1) % currentGallery.images.length;
+            updateMainImage();
+            updateActiveThumbnail();
+            updateGalleryDescription();
+        }
+    }
     
+    // Previous image
+    function prevImage() {
+        if (currentGallery && currentGallery.images && currentGallery.images.length > 0) {
+            currentImageIndex = (currentImageIndex - 1 + currentGallery.images.length) % currentGallery.images.length;
+            updateMainImage();
+            updateActiveThumbnail();
+            updateGalleryDescription();
+        }
+    }
+    
+    // Update main gallery image
+    function updateMainImage() {
+        if (currentGallery && currentGallery.images && currentGallery.images[currentImageIndex]) {
+            loadGalleryImage(currentGallery.images[currentImageIndex]);
+        }
+    }
+    
+    // Update active thumbnail
+    function updateActiveThumbnail() {
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        thumbnails.forEach((thumb, index) => {
+            thumb.classList.toggle('active', index === currentImageIndex);
+        });
+    }
+    
+    // Keyboard controls for gallery
     document.addEventListener('keydown', function(e) {
         const modal = document.getElementById('galleryModal');
         if (!modal.classList.contains('active') || !currentGallery) return;
-        if (e.key === 'Escape') closeGallery();
-        else if (e.key === 'ArrowRight') nextImage();
-        else if (e.key === 'ArrowLeft') prevImage();
+        
+        if (e.key === 'Escape') {
+            closeGallery();
+        } else if (e.key === 'ArrowRight') {
+            nextImage();
+        } else if (e.key === 'ArrowLeft') {
+            prevImage();
+        }
     });
     
+    // Touch swipe for mobile
     let touchStartX = 0;
-    document.addEventListener('touchstart', function(e) { if (document.getElementById('galleryModal').classList.contains('active')) touchStartX = e.touches[0].clientX; });
+    document.addEventListener('touchstart', function(e) {
+        const modal = document.getElementById('galleryModal');
+        if (modal.classList.contains('active')) {
+            touchStartX = e.touches[0].clientX;
+        }
+    });
+    
     document.addEventListener('touchend', function(e) {
         const modal = document.getElementById('galleryModal');
         if (!modal.classList.contains('active') || !currentGallery) return;
-        const diff = touchStartX - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 50) diff > 0 ? nextImage() : prevImage();
+        
+        const touchEndX = e.changedTouches[0].clientX;
+        const diff = touchStartX - touchEndX;
+        const threshold = 50;
+        
+        if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
+                // Swiped left - next image
+                nextImage();
+            } else {
+                // Swiped right - previous image
+                prevImage();
+            }
+        }
     });
     
-    window.openGallery = openGallery;
-    window.closeGallery = closeGallery;
-    window.prevImage = prevImage;
-    window.nextImage = nextImage;
-    
+    // Wait for page to load
     document.addEventListener('DOMContentLoaded', function() {
-        // Hide loading screen
-        document.getElementById('loadingScreen').style.display = 'none';
+        // Check if loading screen should be shown
+        if (SHOW_LOADING_SCREEN) {
+            // Create loading screen elements and start animation
+            const loadingScreen = createLoadingScreenElements();
+            if (loadingScreen) {
+                initLoadingScreen();
+            } else {
+                // Fallback - just show main content
+                document.getElementById('loadingScreen').style.display = 'none';
+                document.querySelector('.website-content').style.display = 'block';
+                initMainContent();
+            }
+        } else {
+            // Skip loading screen entirely - just hide it and show content
+            const loadingScreen = document.getElementById('loadingScreen');
+            if (loadingScreen) {
+                loadingScreen.style.display = 'none';
+            }
+            document.querySelector('.website-content').style.display = 'block';
+            initMainContent();
+        }
+        
+        function initLoadingScreen() {
+            const size = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--size')) || 360;
+            const cx = size / 2;
+            const cy = size / 2;
+            const radius = size * 0.35;
+            const tickRadius = size * 0.48;
+            const numbersEl = document.getElementById('numbers');
+            const ticksEl = document.getElementById('ticks');
+            const glowRing = document.getElementById('glowRing');
+            const timeDisplay = document.getElementById('timeDisplay');
+            const root = document.documentElement;
+    
+            function valueToAngle(value) {
+                return 225 - (value / 180) * 270;
+            }
+    
+            // Update glow effect
+            function updateGlow(intensity) {
+                root.style.setProperty('--glow-intensity', intensity);
+                if (glowRing) {
+                    glowRing.style.opacity = intensity > 0.1 ? (intensity - 0.1) * 3 : 0;
+                }
+            }
+    
+            // Start with no glow
+            updateGlow(0);
+    
+            // Add numbers to speedometer
+            if (numbersEl) {
+                for (let v = 0; v <= 180; v += 20) {
+                    const angleDeg = valueToAngle(v);
+                    const rad = angleDeg * Math.PI / 180;
+                    const x = cx + radius * Math.cos(rad);
+                    const y = cy - radius * Math.sin(rad);
+    
+                    const num = document.createElement('div');
+                    num.className = 'number';
+                    num.style.left = `${x}px`;
+                    num.style.top = `${y}px`;
+                    num.textContent = v;
+                    numbersEl.appendChild(num);
+                }
+            }
+    
+            // Add ticks to speedometer
+            if (ticksEl) {
+                const majorValues = [];
+                for (let v = 60; v <= 240; v += 20) majorValues.push(v);
+    
+                for (let v = 60; v <= 240; v += 5) {
+                    const angleDeg = valueToAngle(v);
+                    const tick = document.createElement('div');
+                    tick.className = 'tick';
+                    const isMajor = majorValues.includes(v);
+                    const length = isMajor ? size * 0.06 : size * 0.03;
+    
+                    tick.style.height = `${length}px`;
+                    tick.style.background = isMajor ? 'rgba(255,7,58,0.95)' : 'rgba(255,255,255,0.05)';
+                    tick.style.boxShadow = isMajor ? '0 0 8px rgba(255,7,58,0.8)' : '';
+                    tick.style.left = '50%';
+                    tick.style.top = '50%';
+                    tick.style.transformOrigin = '50% 0%';
+                    tick.style.transform = `rotate(${angleDeg}deg) translateY(-${tickRadius}px)`;
+                    ticksEl.appendChild(tick);
+                }
+            }
+    
+            // Needle animation
+            const needle = document.getElementById('needle');
+            const needleHeight = size * 0.44;
+    
+            if (needle) {
+                needle.style.height = needleHeight + 'px';
+                needle.style.left = '49%';
+                needle.style.top = '50%';
+                needle.style.transformOrigin = '50% 100%';
+                needle.style.marginTop = `-${needleHeight}px`;
+    
+                const startAngle = valueToAngle(0);
+                needle.style.transform = `rotate(${startAngle}deg)`;
+            }
+    
+            const duration = 4000;
+    
+            function easeOutCubic(t) { return 15 + Math.pow(1 - t, 3); }
+    
+            function startAnimation() {
+                if (timeDisplay) timeDisplay.style.opacity = '1';
+                
+                const startTime = performance.now();
+                const endValue = 180;
+    
+                function step(now) {
+                    const elapsed = now - startTime;
+                    const t = Math.min(1, elapsed / duration);
+                    const eased = easeOutCubic(t);
+                    const currentValue = Math.round(eased * endValue);
+                    const angle = valueToAngle(currentValue);
+    
+                    if (needle) needle.style.transform = `rotate(${angle}deg)`;
+    
+                    const glowIntensity = t * 0.65;
+                    updateGlow(glowIntensity);
+    
+                    if (timeDisplay && t > 0.95) {
+                        timeDisplay.textContent = "12:00am";
+                    }
+    
+                    if (elapsed < duration) {
+                        requestAnimationFrame(step);
+                    } else {
+                        if (timeDisplay) timeDisplay.textContent = "12:00am";
+                        
+                        // Hide loading screen and show website
+                        setTimeout(() => {
+                            const loadingScreen = document.getElementById('loadingScreen');
+                            if (loadingScreen) {
+                                loadingScreen.classList.add('fade-out');
+                                
+                                setTimeout(() => {
+                                    loadingScreen.style.display = 'none';
+                                    document.querySelector('.website-content').style.display = 'block';
+                                    
+                                    // Initialize main website
+                                    initMainContent();
+                                }, 500);
+                            }
+                        }, 500);
+                    }
+                }
+    
+                requestAnimationFrame(step);
+            }
+    
+            setTimeout(startAnimation, 500);
+        }
         
         function initMainContent() {
+            // Make news visible immediately
+            const newsTitles = document.querySelectorAll('.news-title');
+            const newsExcerpts = document.querySelectorAll('.news-excerpt');
+            
+            newsTitles.forEach(title => {
+                title.style.opacity = '1';
+            });
+            
+            newsExcerpts.forEach(excerpt => {
+                excerpt.style.opacity = '1';
+            });
+    
+            // Title animation with matrix effect
             const afterHoursTitle = document.getElementById('after-hours-title');
             const societyTitle = document.getElementById('society-title');
             const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    
             if (afterHoursTitle && societyTitle) {
                 afterHoursTitle.innerHTML = '';
                 societyTitle.innerHTML = '';
+    
+                // Animate "AFTER HOURS"
                 const afterHoursText = "AFTER HOURS";
                 for (let i = 0; i < afterHoursText.length; i++) {
                     const charSpan = document.createElement('span');
+                    
+                    // Add flicker to O, U, R in "HOURS"
                     const isInHoursPart = i >= 6;
                     const shouldFlicker = (afterHoursText[i] === 'O' || afterHoursText[i] === 'U' || afterHoursText[i] === 'R') && isInHoursPart;
-                    charSpan.className = shouldFlicker ? 'matrix-letter flicker-letter' : 'matrix-letter';
+                    
+                    if (shouldFlicker) {
+                        charSpan.className = 'matrix-letter flicker-letter';
+                    } else {
+                        charSpan.className = 'matrix-letter';
+                    }
+                    
                     charSpan.textContent = afterHoursText[i] === ' ' ? '\u00A0' : chars[Math.floor(Math.random() * chars.length)];
                     afterHoursTitle.appendChild(charSpan);
-                    setTimeout(() => animateLetter(charSpan, afterHoursText[i], i), i * 50);
+                    
+                    setTimeout(() => {
+                        animateLetter(charSpan, afterHoursText[i], i);
+                    }, i * 50);
                 }
+    
+                // Animate "SOCIETY" with flicker on C, I, T, Y
                 const societyText = "SOCIETY";
                 for (let i = 0; i < societyText.length; i++) {
                     const charSpan = document.createElement('span');
-                    charSpan.className = ['C','I','T','Y'].includes(societyText[i]) ? 'matrix-letter flicker-letter' : 'matrix-letter';
+                    
+                    if (['C', 'I', 'T', 'Y'].includes(societyText[i])) {
+                        charSpan.className = 'matrix-letter flicker-letter';
+                    } else {
+                        charSpan.className = 'matrix-letter';
+                    }
+                    
                     charSpan.textContent = societyText[i] === ' ' ? '\u00A0' : chars[Math.floor(Math.random() * chars.length)];
                     societyTitle.appendChild(charSpan);
-                    setTimeout(() => animateLetter(charSpan, societyText[i], i), (afterHoursText.length * 50) + (i * 50));
-                }
-                function animateLetter(element, finalChar, index) {
-                    let iterations = 0;
-                    const interval = setInterval(() => {
-                        element.textContent = chars[Math.floor(Math.random() * chars.length)];
-                        iterations++;
-                        if (iterations >= 10 + Math.random() * 50) {
-                            clearInterval(interval);
-                            element.textContent = finalChar === ' ' ? '\u00A0' : finalChar;
-                        }
-                    }, 200 + Math.random() * 30);
+                    
+                    setTimeout(() => {
+                        animateLetter(charSpan, societyText[i], i);
+                    }, (afterHoursText.length * 50) + (i * 50));
                 }
             }
-            
+    
+            function animateLetter(element, finalChar, index) {
+                let iterations = 0;
+                const interval = setInterval(() => {
+                    element.textContent = chars[Math.floor(Math.random() * chars.length)];
+                    
+                    iterations++;
+                    if (iterations >= 10 + Math.random() * 50) {
+                        clearInterval(interval);
+                        element.textContent = finalChar === ' ' ? '\u00A0' : finalChar;
+                    }
+                }, 200 + Math.random() * 30);
+            }
+    
+            // Scroll down arrow functionality
             const scrollIndicator = document.getElementById('scrollIndicator');
             const newsSection = document.getElementById('news');
-            if (scrollIndicator && newsSection) {
-                scrollIndicator.addEventListener('click', () => newsSection.scrollIntoView({ behavior: 'smooth' }));
-                setTimeout(() => scrollIndicator.classList.add('visible'), 5000);
-                window.addEventListener('scroll', throttle(() => { if (window.scrollY > 100) scrollIndicator.classList.remove('visible'); }, 200));
-            }
             
+            if (scrollIndicator && newsSection) {
+                scrollIndicator.addEventListener('click', () => {
+                    newsSection.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+                
+                // Show arrow after a moment
+                setTimeout(() => {
+                    scrollIndicator.classList.add('visible');
+                }, 5000);
+                
+                // Hide arrow when scrolling
+                window.addEventListener('scroll', throttle(() => {
+                    if (window.scrollY > 100) {
+                        scrollIndicator.classList.remove('visible');
+                    }
+                }, 200));
+            }
+    
+            // Shooting stars background
             const starContainer = document.getElementById('starContainer');
+            const starCount = 15;
+            
             function createShootingStars() {
                 if (!starContainer) return;
                 starContainer.innerHTML = '';
-                for (let i = 0; i < 15; i++) {
+                
+                for (let i = 0; i < starCount; i++) {
                     const star = document.createElement('div');
-                    star.className = `shooting-star star-layer-${Math.floor(Math.random() * 3) + 1}`;
-                    star.style.setProperty('--angle', `${30 + Math.random() * 30}deg`);
-                    star.style.setProperty('--distance', `${500 + (Math.random() * 500)}px`);
-                    star.style.left = `${Math.random() * window.innerWidth}px`;
-                    star.style.top = `${Math.random() * window.innerHeight}px`;
-                    star.style.animationDelay = `${Math.random() * 10}s`;
-                    star.style.width = `${1 + Math.random() * 2}px`;
-                    star.style.height = `${1 + Math.random() * 2}px`;
+                    star.className = 'shooting-star';
+                    
+                    const layer = Math.floor(Math.random() * 3) + 1;
+                    star.classList.add(`star-layer-${layer}`);
+                    
+                    const startX = Math.random() * window.innerWidth;
+                    const startY = Math.random() * window.innerHeight;
+                    
+                    const angle = 30 + Math.random() * 30;
+                    const distance = 500 + (layer * 300);
+                    const delay = Math.random() * 10;
+                    
+                    star.style.setProperty('--angle', `${angle}deg`);
+                    star.style.setProperty('--distance', `${distance}px`);
+                    star.style.left = `${startX}px`;
+                    star.style.top = `${startY}px`;
+                    star.style.animationDelay = `${delay}s`;
+                    
+                    const size = 1 + Math.random() * 2;
+                    star.style.width = `${size}px`;
+                    star.style.height = `${size}px`;
+                    
+                    const opacity = 0.5 + Math.random() * 0.5;
+                    star.style.opacity = opacity;
+                    
                     starContainer.appendChild(star);
                 }
             }
+            
             createShootingStars();
             setInterval(createShootingStars, 15000);
-            
+    
+            // Initialize gallery
             initCollectionGallery();
-            
+    
+            // Page navigation setup
             const navLinks = document.querySelectorAll('.nav-link');
             const pages = document.querySelectorAll('.page');
             const navIndicator = document.querySelector('.nav-indicator');
+            
+            const scrollPositions = {};
+            
             let activePage = document.querySelector('.page.active');
             let activeNavLink = document.querySelector('.nav-link.active');
             
             function updateIndicatorPosition(link) {
-                if (!link || !navIndicator) return;
+                if (!navIndicator || !link) return;
                 const linkRect = link.getBoundingClientRect();
                 const navRect = document.querySelector('.bottom-nav').getBoundingClientRect();
-                const indicatorWidth = window.innerWidth <= 768 ? 55 : 70;
+                const indicatorWidth = 70;
                 const indicatorLeft = linkRect.left - navRect.left + (linkRect.width - indicatorWidth) / 2;
+                
                 navIndicator.style.width = `${indicatorWidth}px`;
-                navIndicator.style.transform = `translateX(${Math.max(0, indicatorLeft)}px)`;
+                navIndicator.style.transform = `translateX(${indicatorLeft}px)`;
+                
+                if (window.innerWidth <= 768) {
+                    const mobileIndicatorWidth = 55;
+                    const mobileIndicatorLeft = linkRect.left - navRect.left + (linkRect.width - mobileIndicatorWidth) / 2;
+                    navIndicator.style.width = `${mobileIndicatorWidth}px`;
+                    navIndicator.style.transform = `translateX(${mobileIndicatorLeft}px)`;
+                }
             }
             
             if (activeNavLink) updateIndicatorPosition(activeNavLink);
@@ -2628,135 +3081,351 @@ const SHOW_LOADING_SCREEN = false;
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
+                    
                     const targetId = this.getAttribute('data-target');
                     const targetPage = document.getElementById(targetId);
+                    
                     if (targetPage && targetPage !== activePage) {
-                        activePage.classList.remove('active');
+                        // Save scroll position
+                        if (activePage) scrollPositions[activePage.id] = window.scrollY || activePage.scrollTop;
+                        
+                        // Switch pages
+                        if (activePage) activePage.classList.remove('active');
                         if (activeNavLink) activeNavLink.classList.remove('active');
+                        
                         targetPage.classList.add('active');
                         this.classList.add('active');
+                        
                         activePage = targetPage;
                         activeNavLink = this;
+                        
                         updateIndicatorPosition(this);
-                        window.scrollTo(0, 0);
+                        
+                        // Restore scroll position or go to top
+                        if (scrollPositions[targetPage.id]) {
+                            window.scrollTo(0, scrollPositions[targetPage.id]);
+                        } else {
+                            window.scrollTo(0, 0);
+                        }
+                        
                         targetPage.focus();
                     }
                 });
             });
             
-            // Handle news link triggers
-            const navTriggers = document.querySelectorAll('.nav-link-trigger');
-            navTriggers.forEach(trigger => {
-                trigger.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('data-target');
-                    const targetLink = document.querySelector(`.nav-link[data-target="${targetId}"]`);
-                    if (targetLink) targetLink.click();
-                });
-            });
-            
+            // Handle URL hash links
             if (window.location.hash) {
                 const hash = window.location.hash.substring(1);
                 const targetLink = document.querySelector(`.nav-link[data-target="${hash}"]`);
-                if (targetLink) targetLink.click();
+                
+                if (targetLink) {
+                    targetLink.click();
+                }
             }
             
-            window.addEventListener('resize', throttle(() => updateIndicatorPosition(document.querySelector('.nav-link.active')), 150));
-            
-            // Join Form Handling
-            const joinForm = document.getElementById('joinForm');
-            const joinSuccessMessage = document.getElementById('joinSuccessMessage');
-            const joinSubmitBtn = document.getElementById('joinSubmitBtn');
-            if (joinForm) {
-                joinForm.addEventListener('submit', async function(e) {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    if (this.classList.contains('nav-link')) return;
+                    
                     e.preventDefault();
-                    let isValid = true;
-                    const requiredFields = joinForm.querySelectorAll('[required]');
-                    requiredFields.forEach(field => {
-                        const group = field.closest('.form-group');
-                        if (group) group.classList.remove('error');
-                        if (!field.value.trim()) {
-                            isValid = false;
-                            if (group) group.classList.add('error');
-                        }
-                        if (field.type === 'number' && field.value && (parseInt(field.value) < 18 || parseInt(field.value) > 120)) {
-                            isValid = false;
-                            if (group) group.classList.add('error');
-                        }
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Update indicator on window resize
+            window.addEventListener('resize', throttle(() => {
+                updateIndicatorPosition(document.querySelector('.nav-link.active'));
+            }, 150));
+            
+            // Contact form handling with optional fields fix
+            const contactForm = document.getElementById('contactForm');
+            const contactSubmitBtn = document.getElementById('submitBtn');
+            const contactSuccessMessage = document.getElementById('contactSuccessMessage');
+            
+            if (contactForm) {
+                // Real-time form validation for optional fields - only validate if they have content
+                const formGroups = document.querySelectorAll('#contactForm .form-group');
+                formGroups.forEach(group => {
+                    const input = group.querySelector('input');
+                    if (input && input.id !== 'message') {
+                        input.addEventListener('input', function() {
+                            // Only validate if field has content (optional fields don't show errors when empty)
+                            if (this.value.trim()) {
+                                validateOptionalField(this);
+                            } else {
+                                // Clear error when empty
+                                const groupEl = this.closest('.form-group');
+                                if (groupEl) groupEl.classList.remove('error');
+                            }
+                        });
+                    }
+                });
+                
+                // Validate message field (required)
+                const messageField = document.getElementById('message');
+                if (messageField) {
+                    messageField.addEventListener('input', function() {
+                        validateRequiredField(this);
                     });
-                    const checkboxes = joinForm.querySelectorAll('.checkbox-group input[type="checkbox"]');
-                    checkboxes.forEach(cb => { if (!cb.checked) isValid = false; });
-                    if (!isValid) return;
-                    joinSubmitBtn.classList.add('loading');
-                    joinSubmitBtn.disabled = true;
+                }
+                
+                function validateOptionalField(field) {
+                    const group = field.closest('.form-group');
+                    group.classList.remove('error');
+                    
+                    let isValid = true;
+                    
+                    if (field.type === 'email' && field.value.trim()) {
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailRegex.test(field.value.trim())) {
+                            isValid = false;
+                            const errorEl = group.querySelector('.error-message');
+                            if (errorEl) errorEl.textContent = 'Please enter a valid email address';
+                        }
+                    }
+                    
+                    if (field.type === 'tel' && field.value.trim()) {
+                        const phoneRegex = /^[\d\s\-+()]{10,}$/;
+                        if (!phoneRegex.test(field.value.trim())) {
+                            isValid = false;
+                            const errorEl = group.querySelector('.error-message');
+                            if (errorEl) errorEl.textContent = 'Please enter a valid phone number';
+                        }
+                    }
+                    
+                    if (!isValid) {
+                        group.classList.add('error');
+                    }
+                    
+                    return isValid;
+                }
+                
+                function validateRequiredField(field) {
+                    const group = field.closest('.form-group');
+                    group.classList.remove('error');
+                    
+                    if (!field.value.trim()) {
+                        group.classList.add('error');
+                        return false;
+                    }
+                    return true;
+                }
+                
+                // Form submission
+                contactForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    // Validate message field (required)
+                    let isValid = validateRequiredField(document.getElementById('message'));
+                    
+                    // Validate optional fields if they have content
+                    const nameField = document.getElementById('name');
+                    const emailField = document.getElementById('email');
+                    const phoneField = document.getElementById('phone');
+                    
+                    if (nameField && nameField.value.trim()) {
+                        // Name is optional, no validation needed
+                    }
+                    if (emailField && emailField.value.trim()) {
+                        if (!validateOptionalField(emailField)) isValid = false;
+                    }
+                    if (phoneField && phoneField.value.trim()) {
+                        if (!validateOptionalField(phoneField)) isValid = false;
+                    }
+                    
+                    if (!isValid) {
+                        const firstInvalid = contactForm.querySelector('.error');
+                        if (firstInvalid) {
+                            const input = firstInvalid.querySelector('input, textarea');
+                            if (input) input.focus();
+                        }
+                        return;
+                    }
+                    
+                    // Show loading state
+                    if (contactSubmitBtn) {
+                        contactSubmitBtn.classList.add('loading');
+                        contactSubmitBtn.disabled = true;
+                    }
+                    
                     try {
-                        const formData = new FormData(joinForm);
-                        const response = await fetch(joinForm.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
+                        const formData = new FormData(contactForm);
+                        
+                        const response = await fetch(contactForm.action, {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+                        
                         if (response.ok) {
-                            joinSuccessMessage.style.display = 'block';
-                            joinForm.reset();
-                            setTimeout(() => { joinSuccessMessage.style.display = 'none'; }, 10000);
-                        } else throw new Error('Submission failed');
-                    } catch (error) { alert("Error submitting application. Please try again or contact us via Instagram."); }
-                    finally { joinSubmitBtn.classList.remove('loading'); joinSubmitBtn.disabled = false; }
+                            if (contactSuccessMessage) contactSuccessMessage.style.display = 'block';
+                            contactForm.reset();
+                            
+                            // Scroll to success message
+                            if (contactSuccessMessage) contactSuccessMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                            
+                            // Hide success message after 10 seconds
+                            setTimeout(() => {
+                                if (contactSuccessMessage) contactSuccessMessage.style.display = 'none';
+                            }, 10000);
+                        } else {
+                            throw new Error('Form submission failed');
+                        }
+                    } catch (error) {
+                        console.log("Error sending form:", error);
+                        alert("Error sending message. Please try again later or contact us via Instagram.");
+                    } finally {
+                        if (contactSubmitBtn) {
+                            contactSubmitBtn.classList.remove('loading');
+                            contactSubmitBtn.disabled = false;
+                        }
+                    }
                 });
             }
             
-            // Contact form handling - Name, Email, Phone are OPTIONAL
-            const contactForm = document.getElementById('contactForm');
-            const contactSuccessMsg = document.getElementById('contactSuccessMessage');
-            const contactSubmitBtn = document.getElementById('submitBtn');
-            if (contactForm) {
-                contactForm.addEventListener('submit', async function(e) {
-                    e.preventDefault();
-                    let valid = true;
-                    const name = document.getElementById('name');
-                    const email = document.getElementById('email');
-                    const phone = document.getElementById('phone');
-                    const message = document.getElementById('message');
+            // JOIN FORM HANDLING - FIXED
+            const joinForm = document.getElementById('joinForm');
+            const joinSubmitBtn = document.getElementById('joinSubmitBtn');
+            const joinSuccessMessage = document.getElementById('joinSuccessMessage');
+            
+            if (joinForm) {
+                // Real-time form validation function
+                function validateJoinField(field) {
+                    const group = field.closest('.form-group');
+                    if (!group) return true;
                     
-                    // Clear previous errors
-                    [name, email, phone, message].forEach(field => {
-                        if (field && field.closest('.form-group')) field.closest('.form-group').classList.remove('error');
+                    group.classList.remove('error');
+                    
+                    // Check if field is required
+                    if (field.hasAttribute('required') && !field.value.trim()) {
+                        group.classList.add('error');
+                        return false;
+                    }
+                    
+                    // Age validation
+                    if (field.id === 'age' && field.value.trim()) {
+                        const age = parseInt(field.value);
+                        if (isNaN(age) || age < 18 || age > 120) {
+                            group.classList.add('error');
+                            return false;
+                        }
+                    }
+                    
+                    return true;
+                }
+                
+                // Add validation listeners to all required fields
+                const joinRequiredFields = joinForm.querySelectorAll('[required]');
+                joinRequiredFields.forEach(field => {
+                    field.addEventListener('input', function() {
+                        validateJoinField(this);
+                    });
+                    field.addEventListener('blur', function() {
+                        validateJoinField(this);
+                    });
+                });
+                
+                // Form submission
+                joinForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    // Validate all required fields
+                    let isValid = true;
+                    
+                    joinRequiredFields.forEach(field => {
+                        if (!validateJoinField(field)) {
+                            isValid = false;
+                        }
                     });
                     
-                    // Only validate message (required)
-                    if (!message.value.trim()) { 
-                        valid = false; 
-                        message.closest('.form-group').classList.add('error'); 
+                    // Check checkboxes
+                    const checkboxes = joinForm.querySelectorAll('input[type="checkbox"][required]');
+                    checkboxes.forEach(checkbox => {
+                        if (!checkbox.checked) {
+                            isValid = false;
+                            checkbox.style.outline = '1px solid #ff6b6b';
+                            checkbox.style.outlineOffset = '2px';
+                        } else {
+                            checkbox.style.outline = '';
+                        }
+                    });
+                    
+                    if (!isValid) {
+                        const firstInvalid = joinForm.querySelector('.error');
+                        if (firstInvalid) {
+                            const input = firstInvalid.querySelector('input, textarea');
+                            if (input) input.focus();
+                        }
+                        return;
                     }
                     
-                    // Optional fields: validate format only if provided
-                    if (email.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) { 
-                        valid = false; 
-                        email.closest('.form-group').classList.add('error'); 
+                    // Show loading state
+                    if (joinSubmitBtn) {
+                        joinSubmitBtn.classList.add('loading');
+                        joinSubmitBtn.disabled = true;
                     }
                     
-                    if (phone.value.trim() && !/^[\d\s\-+()]{10,}$/.test(phone.value.trim())) { 
-                        valid = false; 
-                        phone.closest('.form-group').classList.add('error'); 
-                    }
-                    
-                    if (!valid) return;
-                    
-                    contactSubmitBtn.classList.add('loading');
-                    contactSubmitBtn.disabled = true;
                     try {
-                        const fd = new FormData(contactForm);
-                        const res = await fetch(contactForm.action, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } });
-                        if (res.ok) {
-                            contactSuccessMsg.style.display = 'block';
-                            contactForm.reset();
-                            setTimeout(() => contactSuccessMsg.style.display = 'none', 10000);
-                        } else throw new Error();
-                    } catch (err) { alert("Error sending message. Please try again."); }
-                    finally { contactSubmitBtn.classList.remove('loading'); contactSubmitBtn.disabled = false; }
+                        const formData = new FormData(joinForm);
+                        
+                        const response = await fetch(joinForm.action, {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+                        
+                        if (response.ok) {
+                            if (joinSuccessMessage) joinSuccessMessage.style.display = 'block';
+                            joinForm.reset();
+                            
+                            // Reset checkbox outlines
+                            checkboxes.forEach(checkbox => {
+                                checkbox.style.outline = '';
+                            });
+                            
+                            // Scroll to success message
+                            if (joinSuccessMessage) joinSuccessMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                            
+                            // Hide success message after 10 seconds
+                            setTimeout(() => {
+                                if (joinSuccessMessage) joinSuccessMessage.style.display = 'none';
+                            }, 10000);
+                        } else {
+                            throw new Error('Form submission failed');
+                        }
+                    } catch (error) {
+                        console.log("Error sending form:", error);
+                        alert("Error sending application. Please try again later or contact us via Instagram.");
+                    } finally {
+                        if (joinSubmitBtn) {
+                            joinSubmitBtn.classList.remove('loading');
+                            joinSubmitBtn.disabled = false;
+                        }
+                    }
                 });
             }
         }
-        
-        initMainContent();
     });
+    
+    // Make functions available globally for HTML onclick attributes
+    window.openGallery = openGallery;
+    window.closeGallery = closeGallery;
+    window.prevImage = prevImage;
+    window.nextImage = nextImage;
 })();
     </script>
 </body>
